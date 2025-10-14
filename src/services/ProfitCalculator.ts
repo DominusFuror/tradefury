@@ -1,113 +1,87 @@
-import { Recipe, CraftingProfit, ServerInfo, AuctionData } from '../types';
-import { AuctionatorAPI, MockData } from './api';
+import { Recipe, CraftingProfit, MaterialCostInfo, PriceSource } from '../types';
+
+interface ProfitCalculationOptions {
+  priceMap?: Map<number, number> | null;
+}
+
+interface ResolvedPrice {
+  value: number | null;
+  source: PriceSource;
+}
 
 export class ProfitCalculator {
   static async calculateProfitsForRecipes(
     recipes: Recipe[],
-    server?: ServerInfo
+    options?: ProfitCalculationOptions
   ): Promise<CraftingProfit[]> {
-    const profits: CraftingProfit[] = [];
-
-    for (const recipe of recipes) {
-      const profit = await this.calculateProfitForRecipe(recipe, server);
-      profits.push(profit);
-    }
-
-    return profits;
+    return recipes.map((recipe) => this.calculateProfitForRecipe(recipe, options));
   }
 
-  static async calculateProfitForRecipe(
+  private static calculateProfitForRecipe(
     recipe: Recipe,
-    server?: ServerInfo
-  ): Promise<CraftingProfit> {
-    const materialPrices = await this.getMaterialPrices(recipe, server);
-    const totalCost = this.calculateTotalMaterialCost(recipe, materialPrices);
-    const sellPrice = await this.getSellPrice(recipe.resultItem, server);
+    options?: ProfitCalculationOptions
+  ): CraftingProfit {
+    const materialCosts: MaterialCostInfo[] = recipe.materials.map((material, index) => {
+      const resolved = this.resolvePrice(material.item.id, options?.priceMap);
 
-    const profit = sellPrice - totalCost;
-    const profitPercentage = totalCost > 0 ? (profit / totalCost) * 100 : 0;
+      return {
+        index,
+        itemId: material.item.id,
+        quantity: material.quantity,
+        unitPrice: resolved.value,
+        source: resolved.source
+      };
+    });
+
+    const totalCost = materialCosts.reduce((sum, info) => {
+      const unitPrice = info.unitPrice ?? 0;
+      return sum + unitPrice * info.quantity;
+    }, 0);
+
+    const hasMissingMaterialPrices = materialCosts.some((info) => info.unitPrice === null);
+
+    const resolvedSellPrice = this.resolvePrice(recipe.resultItem.id, options?.priceMap);
+    const resultUnitPrice = resolvedSellPrice.value;
+    const sellPriceSource = resolvedSellPrice.source;
+    const sellPrice = resultUnitPrice ?? 0;
+
+    const isCalculable = !hasMissingMaterialPrices && resultUnitPrice !== null;
+    const profit = isCalculable ? sellPrice - totalCost : 0;
+    const profitPercentage = isCalculable && totalCost > 0 ? (profit / totalCost) * 100 : 0;
     const roi = profitPercentage;
+    const hasMissingPrices = hasMissingMaterialPrices || resultUnitPrice === null;
 
     return {
       recipe,
       totalCost,
       sellPrice,
+      resultUnitPrice,
+      sellPriceSource,
       profit,
       profitPercentage,
-      roi
+      roi,
+      materialCosts,
+      hasMissingPrices,
+      isCalculable
     };
   }
 
-  private static async getMaterialPrices(
-    recipe: Recipe,
-    server?: ServerInfo
-  ): Promise<Map<number, AuctionData>> {
-    const itemIds = recipe.materials.map((material) => material.item.id);
-
-    if (!server) {
-      return this.buildMockPrices(itemIds);
+  private static resolvePrice(
+    itemId: number,
+    priceMap?: Map<number, number> | null
+  ): ResolvedPrice {
+    if (priceMap && priceMap.has(itemId)) {
+      const value = priceMap.get(itemId) ?? null;
+      return {
+        value,
+        source: value !== null ? 'auctionator' : 'unavailable'
+      };
     }
 
-    try {
-      const prices = await AuctionatorAPI.getBulkPrices(itemIds, server.name, server.faction);
-      if (prices.size > 0) {
-        return prices;
-      }
-    } catch (error) {
-      console.error('Failed to resolve material prices, using mock data fallback', error);
-    }
-
-    return this.buildMockPrices(itemIds);
-  }
-
-  private static buildMockPrices(itemIds: number[]): Map<number, AuctionData> {
-    const mockPrices = new Map<number, AuctionData>();
-    itemIds.forEach((itemId) => {
-      mockPrices.set(itemId, MockData.getSampleAuctionData(itemId));
-    });
-    return mockPrices;
-  }
-
-  private static calculateTotalMaterialCost(
-    recipe: Recipe,
-    materialPrices: Map<number, AuctionData>
-  ): number {
-    let totalCost = 0;
-
-    for (const material of recipe.materials) {
-      const auctionData = materialPrices.get(material.item.id);
-      if (auctionData) {
-        const pricePerItem = auctionData.minBuyout || auctionData.medianPrice || 0;
-        totalCost += pricePerItem * material.quantity;
-      } else {
-        const npcPrice = material.item.sellPrice || 0;
-        totalCost += npcPrice * material.quantity;
-      }
-    }
-
-    return totalCost;
-  }
-
-  private static async getSellPrice(item: ItemLike, server?: ServerInfo): Promise<number> {
-    if (!server) {
-      return this.getMockSellPrice(item.id);
-    }
-
-    try {
-      const auctionData = await AuctionatorAPI.getItemPrice(item.id, server.name, server.faction);
-      if (auctionData) {
-        return auctionData.medianPrice || auctionData.minBuyout || 0;
-      }
-    } catch (error) {
-      console.error('Failed to resolve sell price, using mock data fallback', error);
-    }
-
-    return this.getMockSellPrice(item.id);
-  }
-
-  private static getMockSellPrice(itemId: number): number {
-    const mockData = MockData.getSampleAuctionData(itemId);
-    return mockData.medianPrice || mockData.minBuyout || 0;
+    return {
+      value: null,
+      source: 'unavailable'
+    };
   }
 
   static calculateAverageProfit(profits: CraftingProfit[]): {
@@ -116,7 +90,9 @@ export class ProfitCalculator {
     profitableCount: number;
     totalCount: number;
   } {
-    if (profits.length === 0) {
+    const calculable = profits.filter((p) => p.isCalculable);
+
+    if (calculable.length === 0) {
       return {
         averageProfit: 0,
         averageROI: 0,
@@ -125,15 +101,15 @@ export class ProfitCalculator {
       };
     }
 
-    const profitableProfits = profits.filter((p) => p.profit > 0);
-    const averageProfit = profits.reduce((sum, p) => sum + p.profit, 0) / profits.length;
-    const averageROI = profits.reduce((sum, p) => sum + p.roi, 0) / profits.length;
+    const profitableProfits = calculable.filter((p) => p.profit > 0);
+    const averageProfit = calculable.reduce((sum, p) => sum + p.profit, 0) / calculable.length;
+    const averageROI = calculable.reduce((sum, p) => sum + p.roi, 0) / calculable.length;
 
     return {
       averageProfit,
       averageROI,
       profitableCount: profitableProfits.length,
-      totalCount: profits.length
+      totalCount: calculable.length
     };
   }
 
@@ -146,6 +122,9 @@ export class ProfitCalculator {
     }
   ): CraftingProfit[] {
     return profits.filter((profit) => {
+      if (!profit.isCalculable) {
+        return false;
+      }
       if (criteria.minProfit !== undefined && profit.profit < criteria.minProfit) {
         return false;
       }
@@ -161,6 +140,12 @@ export class ProfitCalculator {
 
   static rankByProfitability(profits: CraftingProfit[]): CraftingProfit[] {
     return [...profits].sort((a, b) => {
+      if (a.isCalculable !== b.isCalculable) {
+        return a.isCalculable ? -1 : 1;
+      }
+      if (!a.isCalculable && !b.isCalculable) {
+        return 0;
+      }
       if (Math.abs(a.roi - b.roi) > 0.1) {
         return b.roi - a.roi;
       }
@@ -169,6 +154,3 @@ export class ProfitCalculator {
   }
 }
 
-interface ItemLike {
-  id: number;
-}

@@ -96,6 +96,9 @@ export class WowheadAPI {
 }
 
 export class LocalStorageAPI {
+  private static readonly AUCTIONATOR_DATA_KEY = 'wow-auctionator-price-data';
+  private static readonly ITEM_NAME_CACHE_KEY = 'wow-item-name-cache';
+
   static saveServerInfo(serverInfo: ServerInfo): void {
     localStorage.setItem('wow-server-info', JSON.stringify(serverInfo));
   }
@@ -127,9 +130,76 @@ export class LocalStorageAPI {
     return data ? JSON.parse(data) : {};
   }
 
+  static saveAuctionatorData(payload: unknown): void {
+    localStorage.setItem(LocalStorageAPI.AUCTIONATOR_DATA_KEY, JSON.stringify(payload));
+  }
+
+  static getAuctionatorData(): unknown {
+    const data = localStorage.getItem(LocalStorageAPI.AUCTIONATOR_DATA_KEY);
+    return data ? JSON.parse(data) : null;
+  }
+
+  static saveItemNameCache(payload: {
+    nameToId: Record<string, number>;
+    idToName: Record<number, string>;
+  }): void {
+    localStorage.setItem(LocalStorageAPI.ITEM_NAME_CACHE_KEY, JSON.stringify(payload));
+  }
+
+  static getItemNameCache(): {
+    nameToId: Record<string, number>;
+    idToName: Record<number, string>;
+  } {
+    const data = localStorage.getItem(LocalStorageAPI.ITEM_NAME_CACHE_KEY);
+    if (!data) {
+      return { nameToId: {}, idToName: {} };
+    }
+
+    try {
+      const parsed = JSON.parse(data);
+      if (parsed && typeof parsed === 'object' && !Array.isArray(parsed)) {
+        const nameToIdRaw =
+          parsed.nameToId && typeof parsed.nameToId === 'object' ? parsed.nameToId : parsed;
+        const idToNameRaw =
+          parsed.idToName && typeof parsed.idToName === 'object' ? parsed.idToName : {};
+
+        const nameToId: Record<string, number> = {};
+        Object.entries(nameToIdRaw).forEach(([key, value]) => {
+          if (typeof value === 'number' && Number.isFinite(value)) {
+            nameToId[key] = value;
+          }
+        });
+
+        const idToName: Record<number, string> = {};
+        Object.entries(idToNameRaw).forEach(([key, value]) => {
+          const numericKey = Number(key);
+          if (!Number.isNaN(numericKey) && typeof value === 'string' && value.length > 0) {
+            idToName[numericKey] = value;
+          }
+        });
+
+        return { nameToId, idToName };
+      }
+    } catch (error) {
+      console.warn('Failed to parse item name cache from storage', error);
+    }
+
+    return { nameToId: {}, idToName: {} };
+  }
+
+  static clearItemNameCache(): void {
+    localStorage.removeItem(LocalStorageAPI.ITEM_NAME_CACHE_KEY);
+  }
+
+  static clearAuctionatorData(): void {
+    localStorage.removeItem(LocalStorageAPI.AUCTIONATOR_DATA_KEY);
+  }
+
   static clearAll(): void {
     localStorage.removeItem('wow-server-info');
     localStorage.removeItem('wow-user-preferences');
+    localStorage.removeItem(LocalStorageAPI.AUCTIONATOR_DATA_KEY);
+    localStorage.removeItem(LocalStorageAPI.ITEM_NAME_CACHE_KEY);
   }
 }
 
@@ -181,3 +251,4 @@ export const MockData = {
     isLearned: true
   })
 };
+

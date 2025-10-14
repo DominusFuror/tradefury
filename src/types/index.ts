@@ -23,6 +23,16 @@ export interface RecipeMaterial {
   quantity: number;
 }
 
+export type PriceSource = 'auctionator' | 'unavailable';
+
+export interface MaterialCostInfo {
+  index: number;
+  itemId: number;
+  quantity: number;
+  unitPrice: number | null;
+  source: PriceSource;
+}
+
 export interface Profession {
   id: number;
   name: string;
@@ -56,9 +66,14 @@ export interface CraftingProfit {
   recipe: Recipe;
   totalCost: number;
   sellPrice: number;
+  resultUnitPrice: number | null;
+  sellPriceSource: PriceSource;
   profit: number;
   profitPercentage: number;
   roi: number;
+  materialCosts: MaterialCostInfo[];
+  hasMissingPrices: boolean;
+  isCalculable: boolean;
 }
 
 export interface ServerInfo {
@@ -154,3 +169,4 @@ export const PROFESSIONS: Profession[] = [
     categories: ['Buff Foods', 'Feasts', 'Special']
   }
 ];
+

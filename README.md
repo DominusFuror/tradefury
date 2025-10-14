@@ -141,3 +141,4 @@ REACT_APP_WOWHEAD_API_URL=https://www.wowhead.com/wotlk/api
 ---
 
 Создано с ❤️ для игроков WoW WotLK
+

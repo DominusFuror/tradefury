@@ -6,6 +6,8 @@ import { ErrorBoundary } from './components/ErrorBoundary';
 import { Footer } from './components/Footer';
 import { LocalStorageAPI } from './services/api';
 import { useSupportedProfessions } from './hooks/useSupportedProfessions';
+import { useAuctionatorData } from './hooks/useAuctionatorData';
+import { AuctionatorPanel } from './components/AuctionatorPanel';
 
 const REFRESH_DELAY_MS = 1000;
 const PREFERENCES_KEY = 'selectedProfessionId';
@@ -20,6 +22,7 @@ function App() {
     isLoading: professionsLoading,
     error: professionsError
   } = useSupportedProfessions();
+  const auctionator = useAuctionatorData();
 
   useEffect(() => {
     const preferences = LocalStorageAPI.getUserPreferences() as Record<string, unknown>;
@@ -85,6 +88,13 @@ function App() {
         <main className="container mx-auto px-4 py-8">
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
             <div className="lg:col-span-1 space-y-6">
+              <AuctionatorPanel
+                metadata={auctionator.metadata}
+                isLoading={auctionator.isLoading}
+                error={auctionator.error}
+                onFileSelected={auctionator.handleFileSelection}
+                onClear={auctionator.clear}
+              />
               <ProfessionSelector
                 selectedProfession={selectedProfessionId}
                 onProfessionChange={handleProfessionChange}
@@ -123,7 +133,12 @@ function App() {
 
               {selectedProfession && (
                 <ErrorBoundary>
-                  <CraftingList profession={selectedProfession} isRefreshing={isRefreshing} />
+                  <CraftingList
+                    profession={selectedProfession}
+                    isRefreshing={isRefreshing}
+                    priceMap={auctionator.priceMap}
+                    hasPriceData={auctionator.hasData}
+                  />
                 </ErrorBoundary>
               )}
             </div>

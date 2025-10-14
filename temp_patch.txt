@@ -1,0 +1,20 @@
+*** Begin Patch
+*** Update File: src/components/CraftingItem.tsx
+@@
+-                {materialCosts.map((materialCost) => {
+-                  const recipeMaterial = recipe.materials[materialCost.index];
+-                  const hasPriceData = materialCost.unitPrice !== null;
+-                  const totalMaterialCost = hasPriceData
+-                    ? formatCurrency((materialCost.unitPrice ?? 0) * materialCost.quantity)
+-                    : null;
+-                  const unitPriceLabel = hasPriceData
+-                    ? ${formatCurrency(materialCost.unitPrice ?? 0)} each
+-                    : null;
++                {materialCosts.map((materialCost) => {
++                  const recipeMaterial = recipe.materials[materialCost.index];
++                  const hasPriceData = materialCost.unitPrice !== null;
++                  const totalMaterialCost = hasPriceData
++                    ? (materialCost.unitPrice ?? 0) * materialCost.quantity
++                    : null;
++                  const unitPriceValue = materialCost.unitPrice ?? 0;
+*** End Patch

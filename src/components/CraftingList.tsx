@@ -13,15 +13,23 @@ type FilterOption = 'all' | 'profitable' | 'unprofitable';
 interface CraftingListProps {
   profession: Profession;
   isRefreshing: boolean;
+  priceMap: Map<number, number> | null;
+  hasPriceData: boolean;
 }
 
-export const CraftingList: React.FC<CraftingListProps> = ({ profession, isRefreshing }) => {
+export const CraftingList: React.FC<CraftingListProps> = ({
+  profession,
+  isRefreshing,
+  priceMap,
+  hasPriceData
+}) => {
   const { recipes, isLoading: recipesLoading, error } = useProfessionRecipes(profession);
   const [craftingProfits, setCraftingProfits] = useState<CraftingProfit[]>([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [sortBy, setSortBy] = useState<SortOption>('profit');
   const [filterBy, setFilterBy] = useState<FilterOption>('all');
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
+  const [densityLevel, setDensityLevel] = useState<number>(1);
 
   const isLoading = isRefreshing || recipesLoading;
 
@@ -34,7 +42,9 @@ export const CraftingList: React.FC<CraftingListProps> = ({ profession, isRefres
         return;
       }
 
-      const profits = await ProfitCalculator.calculateProfitsForRecipes(recipes);
+      const profits = await ProfitCalculator.calculateProfitsForRecipes(recipes, {
+        priceMap
+      });
       if (!isCancelled) {
         setCraftingProfits(profits);
       }
@@ -45,7 +55,7 @@ export const CraftingList: React.FC<CraftingListProps> = ({ profession, isRefres
     return () => {
       isCancelled = true;
     };
-  }, [recipes]);
+  }, [recipes, priceMap]);
 
   const categories = useMemo(() => {
     const uniqueCategories = new Set(recipes.map((recipe) => recipe.category));
@@ -60,9 +70,9 @@ export const CraftingList: React.FC<CraftingListProps> = ({ profession, isRefres
 
       let matchesFilter = true;
       if (filterBy === 'profitable') {
-        matchesFilter = profit.profit > 0;
+        matchesFilter = profit.isCalculable && profit.profit > 0;
       } else if (filterBy === 'unprofitable') {
-        matchesFilter = profit.profit <= 0;
+        matchesFilter = profit.isCalculable && profit.profit <= 0;
       }
 
       return matchesSearch && matchesCategory && matchesFilter;
@@ -71,8 +81,14 @@ export const CraftingList: React.FC<CraftingListProps> = ({ profession, isRefres
     return filtered.sort((a, b) => {
       switch (sortBy) {
         case 'profit':
+          if (a.isCalculable !== b.isCalculable) {
+            return a.isCalculable ? -1 : 1;
+          }
           return b.profit - a.profit;
         case 'profitPercent':
+          if (a.isCalculable !== b.isCalculable) {
+            return a.isCalculable ? -1 : 1;
+          }
           return b.profitPercentage - a.profitPercentage;
         case 'name':
           return a.recipe.name.localeCompare(b.recipe.name);
@@ -122,10 +138,15 @@ export const CraftingList: React.FC<CraftingListProps> = ({ profession, isRefres
             <p className="text-gray-400 mt-1">
               Crafted items and reagent breakdown sourced from the local CSV database.
             </p>
+            {!hasPriceData && (
+              <p className="text-yellow-300 text-sm mt-2">
+                Import Auctionator.lua to use live auction prices for cost calculations.
+              </p>
+            )}
           </div>
           <div className="text-right">
             <div className="text-2xl font-bold text-wow-gold">
-              {craftingProfits.filter((p) => p.profit > 0).length}
+              {craftingProfits.filter((p) => p.isCalculable && p.profit > 0).length}
             </div>
             <div className="text-sm text-gray-400">Profitable crafts detected</div>
           </div>
@@ -133,7 +154,7 @@ export const CraftingList: React.FC<CraftingListProps> = ({ profession, isRefres
       </div>
 
       <div className="bg-gray-800/50 backdrop-blur-sm rounded-lg p-4 border border-gray-600/50">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
           <div className="relative">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
             <input
@@ -204,6 +225,22 @@ export const CraftingList: React.FC<CraftingListProps> = ({ profession, isRefres
               Unprofitable
             </button>
           </div>
+
+          <div className="flex flex-col">
+            <label className="text-sm text-gray-300">Row density</label>
+            <input
+              type="range"
+              min={0}
+              max={3}
+              step={1}
+              value={densityLevel}
+              onChange={(event) => setDensityLevel(Number(event.target.value))}
+              className="mt-2 w-full accent-blue-400"
+            />
+            <span className="text-xs text-gray-400 mt-1">
+              {['Ultra compact', 'Compact', 'Comfortable', 'Roomy'][densityLevel]}
+            </span>
+          </div>
         </div>
       </div>
 
@@ -221,7 +258,11 @@ export const CraftingList: React.FC<CraftingListProps> = ({ profession, isRefres
           </div>
         ) : (
           filteredAndSortedProfits.map((craftingProfit) => (
-            <CraftingItem key={craftingProfit.recipe.id} craftingProfit={craftingProfit} />
+            <CraftingItem
+              key={craftingProfit.recipe.id}
+              craftingProfit={craftingProfit}
+              densityLevel={densityLevel}
+            />
           ))
         )}
       </div>

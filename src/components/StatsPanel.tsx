@@ -2,25 +2,12 @@ import React from 'react';
 import { TrendingUp, TrendingDown, DollarSign, Target, Star } from 'lucide-react';
 import { CraftingProfit } from '../types';
 import { WowheadLink } from './WowheadLink';
+import { CurrencyAmount } from './CurrencyAmount';
 
 interface StatsPanelProps {
   craftingProfits: CraftingProfit[];
   professionName: string;
 }
-
-const formatCurrency = (amount: number): string => {
-  const absolute = Math.abs(Math.round(amount));
-  const gold = Math.floor(absolute / 10000);
-  const silver = Math.floor((absolute % 10000) / 100);
-  const copper = absolute % 100;
-
-  const parts: string[] = [];
-  if (gold > 0) parts.push(`${gold}g`);
-  if (gold > 0 || silver > 0) parts.push(`${silver}s`);
-  parts.push(`${copper}c`);
-
-  return parts.join(' ');
-};
 
 const getStatColor = (value: number) => {
   if (value > 0) return 'text-green-400';
@@ -29,24 +16,27 @@ const getStatColor = (value: number) => {
 };
 
 export const StatsPanel: React.FC<StatsPanelProps> = ({ craftingProfits, professionName }) => {
-  const profitableCrafts = craftingProfits.filter((p) => p.profit > 0);
-  const unprofitableCrafts = craftingProfits.filter((p) => p.profit <= 0);
+  const calculableCrafts = craftingProfits.filter((p) => p.isCalculable);
+  const profitableCrafts = calculableCrafts.filter((p) => p.profit > 0);
+  const unprofitableCrafts = calculableCrafts.filter((p) => p.profit <= 0);
 
-  const totalProfit = craftingProfits.reduce((sum, p) => sum + p.profit, 0);
-  const averageProfit = craftingProfits.length > 0 ? totalProfit / craftingProfits.length : 0;
+  const totalProfit = calculableCrafts.reduce((sum, p) => sum + p.profit, 0);
+  const averageProfit = calculableCrafts.length > 0 ? totalProfit / calculableCrafts.length : 0;
   const averageROI =
-    craftingProfits.length > 0
-      ? craftingProfits.reduce((sum, p) => sum + p.roi, 0) / craftingProfits.length
+    calculableCrafts.length > 0
+      ? calculableCrafts.reduce((sum, p) => sum + p.roi, 0) / calculableCrafts.length
       : 0;
 
   const bestCraft =
-    craftingProfits.length > 0
-      ? craftingProfits.reduce((best, current) => (current.profit > best.profit ? current : best))
+    profitableCrafts.length > 0
+      ? profitableCrafts.reduce((best, current) => (current.profit > best.profit ? current : best))
       : null;
 
   const worstCraft =
-    craftingProfits.length > 0
-      ? craftingProfits.reduce((worst, current) => (current.profit < worst.profit ? current : worst))
+    unprofitableCrafts.length > 0
+      ? unprofitableCrafts.reduce((worst, current) =>
+          current.profit < worst.profit ? current : worst
+        )
       : null;
 
   return (
@@ -107,7 +97,7 @@ export const StatsPanel: React.FC<StatsPanelProps> = ({ craftingProfits, profess
             <TrendingUp className="h-5 w-5 mr-2" />
             Best performer
           </h4>
-          {bestCraft && bestCraft.profit > 0 ? (
+          {bestCraft ? (
             <div>
               <div className="flex items-center space-x-2">
                 <WowheadLink
@@ -129,12 +119,17 @@ export const StatsPanel: React.FC<StatsPanelProps> = ({ craftingProfits, profess
                 </WowheadLink>
                 <span className="text-white font-medium">{bestCraft.recipe.name}</span>
               </div>
-              <p className="text-green-400 font-bold">
-                +{formatCurrency(bestCraft.profit)} ({bestCraft.roi.toFixed(1)}% ROI)
+              <p className="text-green-400 font-bold flex items-center gap-2">
+                <CurrencyAmount amount={bestCraft.profit} size="sm" showSign />
+                <span>({bestCraft.roi.toFixed(1)}% ROI)</span>
               </p>
             </div>
           ) : (
-            <p className="text-gray-400">No profitable crafts identified.</p>
+            <p className="text-gray-400">
+              {calculableCrafts.length === 0
+                ? 'No crafts have enough data for analysis yet.'
+                : 'No profitable crafts identified.'}
+            </p>
           )}
         </div>
 
@@ -143,7 +138,7 @@ export const StatsPanel: React.FC<StatsPanelProps> = ({ craftingProfits, profess
             <TrendingDown className="h-5 w-5 mr-2" />
             Worst performer
           </h4>
-          {worstCraft && worstCraft.profit < 0 ? (
+          {worstCraft ? (
             <div>
               <div className="flex items-center space-x-2">
                 <WowheadLink
@@ -165,12 +160,17 @@ export const StatsPanel: React.FC<StatsPanelProps> = ({ craftingProfits, profess
                 </WowheadLink>
                 <span className="text-white font-medium">{worstCraft.recipe.name}</span>
               </div>
-              <p className="text-red-400 font-bold">
-                {formatCurrency(worstCraft.profit)} ({worstCraft.roi.toFixed(1)}% ROI)
+              <p className="text-red-400 font-bold flex items-center gap-2">
+                <CurrencyAmount amount={worstCraft.profit} size="sm" showSign />
+                <span>({worstCraft.roi.toFixed(1)}% ROI)</span>
               </p>
             </div>
           ) : (
-            <p className="text-gray-400">No loss-making crafts identified.</p>
+            <p className="text-gray-400">
+              {calculableCrafts.length === 0
+                ? 'No crafts have enough data for analysis yet.'
+                : 'No loss-making crafts identified.'}
+            </p>
           )}
         </div>
       </div>
@@ -183,23 +183,21 @@ export const StatsPanel: React.FC<StatsPanelProps> = ({ craftingProfits, profess
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div>
             <p className="text-gray-400 text-sm">Average profit</p>
-            <p className={`text-xl font-bold ${getStatColor(averageProfit)}`}>
-              {averageProfit > 0 ? '+' : ''}
-              {formatCurrency(averageProfit)}
+            <p className={`text-xl font-bold ${getStatColor(averageProfit)} flex items-center justify-end`}>
+              <CurrencyAmount amount={averageProfit} size="sm" showSign />
             </p>
           </div>
           <div>
             <p className="text-gray-400 text-sm">Total profit</p>
-            <p className={`text-xl font-bold ${getStatColor(totalProfit)}`}>
-              {totalProfit > 0 ? '+' : ''}
-              {formatCurrency(totalProfit)}
+            <p className={`text-xl font-bold ${getStatColor(totalProfit)} flex items-center justify-end`}>
+              <CurrencyAmount amount={totalProfit} size="sm" showSign />
             </p>
           </div>
           <div>
             <p className="text-gray-400 text-sm">Share of profitable crafts</p>
             <p className="text-xl font-bold text-white">
-              {craftingProfits.length > 0
-                ? ((profitableCrafts.length / craftingProfits.length) * 100).toFixed(1)
+              {calculableCrafts.length > 0
+                ? ((profitableCrafts.length / calculableCrafts.length) * 100).toFixed(1)
                 : 0}
               %
             </p>
@@ -209,3 +207,4 @@ export const StatsPanel: React.FC<StatsPanelProps> = ({ craftingProfits, profess
     </div>
   );
 };
+

@@ -62,7 +62,7 @@ export const ProfessionSelector: React.FC<ProfessionSelectorProps> = ({
         </button>
 
         {isOpen && professions.length > 0 && (
-          <div className="absolute top-full left-0 right-0 mt-1 bg-gray-800 border border-gray-600 rounded-lg shadow-xl z-10 max-h-80 overflow-y-auto">
+          <div className="absolute top-full left-0 right-0 mt-1 bg-gray-800 border border-gray-600 rounded-lg shadow-xl z-40 max-h-80 overflow-y-auto">
             {professions.map((profession) => (
               <button
                 key={profession.id}
@@ -109,3 +109,4 @@ export const ProfessionSelector: React.FC<ProfessionSelectorProps> = ({
     </div>
   );
 };
+

@@ -1,5 +1,8 @@
 import Papa from 'papaparse';
 
+import { ItemNameResolver } from './ItemNameResolver';
+import { loadItemIdToNameMap } from './ItemNameIndex';
+
 const CRAFTING_DB_FILE = 'craftingdb.csv';
 const SKILL_LINE_FILE = 'SkillLineAbility.csv';
 const ITEM_FILE = 'Item.csv';
@@ -277,6 +280,22 @@ export class GameDataRepository {
   private readonly items = new Map<number, ItemRecord>();
   private readonly itemDisplayInfo = new Map<number, ItemDisplayRecord>();
   private readonly professionSpellIds = new Map<number, Set<number>>();
+  private readonly unsubscribeItemNameListener = ItemNameResolver.addListener(
+    ({ id, name }: { id: number; name: string }) => {
+      const item = this.items.get(id);
+      if (!item) {
+        return;
+      }
+
+      if (!item.name) {
+        this.items.set(id, {
+          ...item,
+          name
+        });
+      }
+    }
+  );
+  private itemNameOverrides: Map<number, string> = new Map();
 
   private constructor() {}
 
@@ -301,6 +320,15 @@ export class GameDataRepository {
   }
 
   private async performLoad(): Promise<void> {
+    this.itemNameOverrides = new Map(await loadItemIdToNameMap());
+    if (this.itemNameOverrides.size > 0) {
+      const primeMap = new Map<string, number>();
+      this.itemNameOverrides.forEach((name, id) => {
+        primeMap.set(name, id);
+      });
+      ItemNameResolver.prime(primeMap);
+    }
+
     const skillLineResults = await parseCsvFile<SkillLineAbilityRow>(SKILL_LINE_FILE);
 
     const spellToProfession = new Map<number, { professionId: number; minSkill: number }>();
@@ -380,39 +408,62 @@ export class GameDataRepository {
 
   private async loadItems(itemIds: Set<number>): Promise<void> {
     await new Promise<void>((resolve, reject) => {
+      const idsMissingNames = new Set<number>();
+
       Papa.parse<ItemRow>(getCsvUrl(ITEM_FILE), {
         download: true,
         header: true,
         skipEmptyLines: true,
         worker: true,
         step: (stepResult) => {
-          const row = stepResult.data;
-          const id = parseNumber(row.ID);
-          if (id === null || !itemIds.has(id)) {
-            return;
+        const row = stepResult.data;
+        const id = parseNumber(row.ID);
+        if (id === null || !itemIds.has(id)) {
+          return;
+        }
+
+        const displayInfoId = parseNumber(row.DisplayInfoID);
+        const overrideName = this.itemNameOverrides.get(id) ?? null;
+        const csvName = extractItemName(row);
+        const resolvedName = csvName ?? overrideName ?? null;
+
+        if (!this.items.has(id)) {
+          this.items.set(id, {
+            id,
+            displayInfoId,
+            name: resolvedName
+          });
+
+          if (!resolvedName) {
+            idsMissingNames.add(id);
+          } else if (overrideName) {
+            // ensure overrides stay current
+            this.itemNameOverrides.set(id, resolvedName);
           }
-
-          const displayInfoId = parseNumber(row.DisplayInfoID);
-          const name = extractItemName(row);
-
-          if (!this.items.has(id)) {
+        } else {
+          const existing = this.items.get(id);
+          if (existing) {
+            const updatedName = existing.name ?? resolvedName;
             this.items.set(id, {
-              id,
-              displayInfoId,
-              name
+              ...existing,
+              displayInfoId: existing.displayInfoId ?? displayInfoId ?? null,
+              name: updatedName ?? null
             });
-          } else {
-            const existing = this.items.get(id);
-            if (existing) {
-              this.items.set(id, {
-                ...existing,
-                displayInfoId: existing.displayInfoId ?? displayInfoId ?? null,
-                name: existing.name ?? name ?? null
-              });
+
+            if (!updatedName) {
+              idsMissingNames.add(id);
+            } else if (overrideName) {
+              this.itemNameOverrides.set(id, updatedName);
             }
           }
+        }
+      },
+      complete: () => {
+          if (idsMissingNames.size > 0) {
+            ItemNameResolver.queueIdResolution(idsMissingNames);
+          }
+          resolve();
         },
-        complete: () => resolve(),
         error: (error) => reject(error)
       });
     });
