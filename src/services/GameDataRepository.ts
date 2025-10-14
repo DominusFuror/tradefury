@@ -9,6 +9,7 @@ const ITEM_FILE = 'Item.csv';
 const ITEM_DISPLAY_INFO_FILE = 'ItemDisplayInfo.csv';
 
 const CREATE_ITEM_EFFECT_ID = '24';
+const ENCHANT_SCROLL_EFFECT_ID = '53';
 const FALLBACK_ICON_URL =
   'https://wow.zamimg.com/images/wow/icons/large/inv_misc_questionmark.jpg';
 
@@ -199,20 +200,30 @@ const extractCreateItemEffect = (
 ): { itemId: number; quantity: number } | null => {
   for (const index of EFFECT_INDEXES) {
     const effect = row[`Effect_${index}` as keyof CraftingDbRow];
-    if (effect !== CREATE_ITEM_EFFECT_ID) {
-      continue;
-    }
-
     const itemId = parseNumber(row[`EffectItemType_${index}` as keyof CraftingDbRow]);
-    if (itemId === null || itemId <= 0) {
-      continue;
+
+    if (effect === CREATE_ITEM_EFFECT_ID) {
+      if (itemId === null || itemId <= 0) {
+        continue;
+      }
+
+      const basePoints = parseNumber(row[`EffectBasePoints_${index}` as keyof CraftingDbRow]) ?? 0;
+      return {
+        itemId,
+        quantity: basePoints + 1
+      };
     }
 
-    const basePoints = parseNumber(row[`EffectBasePoints_${index}` as keyof CraftingDbRow]) ?? 0;
-    return {
-      itemId,
-      quantity: basePoints + 1
-    };
+    if (effect === ENCHANT_SCROLL_EFFECT_ID) {
+      if (itemId === null || itemId <= 0) {
+        continue;
+      }
+
+      return {
+        itemId,
+        quantity: 1
+      };
+    }
   }
 
   return null;

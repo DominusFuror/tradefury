@@ -82,10 +82,10 @@ function App() {
 
   return (
     <ErrorBoundary>
-      <div className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900">
+      <div className="min-h-screen flex flex-col bg-gradient-to-br from-[#070708] via-[#0d0d10] to-[#15161a]">
         <Header onRefresh={handleRefresh} isLoading={isRefreshing} />
 
-        <main className="container mx-auto px-4 py-8">
+        <main className="flex-1 container mx-auto px-4 py-8">
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
             <div className="lg:col-span-1 space-y-6">
               <AuctionatorPanel
@@ -102,7 +102,7 @@ function App() {
               />
 
               {professionsLoading && (
-                <div className="bg-gray-800/50 border border-gray-600/50 text-gray-300 px-4 py-3 rounded-lg">
+                <div className="bg-[#121217]/80 border border-[#2a2b31] text-gray-300 px-4 py-3 rounded-lg">
                   Loading profession data...
                 </div>
               )}
@@ -116,15 +116,15 @@ function App() {
 
             <div className="lg:col-span-3">
               {refreshError && (
-                <div className="bg-red-900/50 border border-red-500 text-red-200 px-4 py-3 rounded-lg mb-6">
+                <div className="bg-[#2a1313] border border-red-600/70 text-red-200 px-4 py-3 rounded-lg mb-6">
                   {refreshError}
                 </div>
               )}
 
               {!selectedProfession && (
-                <div className="bg-blue-900/50 border border-blue-500 text-blue-200 px-6 py-8 rounded-lg text-center">
-                  <h3 className="text-xl font-bold mb-2">Welcome to the WotLK Crafting Monitor</h3>
-                  <p>
+                <div className="bg-[#141518]/85 border border-[#2a2b31] text-gray-200 px-6 py-8 rounded-lg text-center">
+                  <h3 className="text-xl font-bold mb-2 text-white">Welcome to the WotLK Crafting Monitor</h3>
+                  <p className="text-gray-300">
                     Pick a profession on the left to explore its crafting recipes. Data is sourced
                     directly from the local CSV exports of the Wrath of the Lich King client.
                   </p>
@@ -137,6 +137,7 @@ function App() {
                     profession={selectedProfession}
                     isRefreshing={isRefreshing}
                     priceMap={auctionator.priceMap}
+                    priceHistory={auctionator.priceHistory}
                     hasPriceData={auctionator.hasData}
                   />
                 </ErrorBoundary>

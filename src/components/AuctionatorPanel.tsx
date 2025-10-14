@@ -36,7 +36,7 @@ export const AuctionatorPanel: React.FC<AuctionatorPanelProps> = ({
   };
 
   return (
-    <div className="bg-gray-800/50 backdrop-blur-sm rounded-lg border border-gray-600/50 p-4">
+    <div className="bg-[#111216]/85 backdrop-blur-sm rounded-lg border border-[#24252b] p-4">
       <div className="flex items-center justify-between mb-3">
         <h3 className="text-lg font-semibold text-white">Auctionator Prices</h3>
         <button
@@ -58,7 +58,7 @@ export const AuctionatorPanel: React.FC<AuctionatorPanelProps> = ({
       </div>
 
       {metadata ? (
-        <div className="bg-gray-900/40 border border-gray-700/50 rounded-md p-3 text-sm text-gray-300 space-y-1">
+        <div className="bg-[#16171d]/85 border border-[#2c2d34] rounded-md p-3 text-sm text-gray-300 space-y-1">
           <div>
             <span className="text-gray-400">Source:</span>{' '}
             <span className="font-medium text-white">{metadata.source}</span>

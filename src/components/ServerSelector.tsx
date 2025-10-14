@@ -33,7 +33,7 @@ export const ServerSelector: React.FC<ServerSelectorProps> = ({
   );
 
   return (
-    <div className="bg-gray-800/50 backdrop-blur-sm rounded-lg p-4 border border-gray-600/50">
+    <div className="bg-[#111216]/85 backdrop-blur-sm rounded-lg p-4 border border-[#24252b]">
       <h3 className="text-lg font-semibold text-white mb-4 flex items-center">
         <Server className="h-5 w-5 mr-2 text-wow-blue" />
         Выбор сервера
@@ -42,7 +42,7 @@ export const ServerSelector: React.FC<ServerSelectorProps> = ({
       <div className="relative">
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="w-full flex items-center justify-between bg-gray-700/50 hover:bg-gray-600/50 border border-gray-500/50 rounded-lg px-4 py-3 text-left transition-colors duration-200"
+          className="w-full flex items-center justify-between bg-[#1a1b21]/80 hover:bg-[#22232a]/80 border border-[#2e3036] rounded-lg px-4 py-3 text-left transition-colors duration-200"
         >
           <div className="flex items-center space-x-3">
             {selectedServer ? (
@@ -71,7 +71,7 @@ export const ServerSelector: React.FC<ServerSelectorProps> = ({
                   onServerChange(server);
                   setIsOpen(false);
                 }}
-                className="w-full flex items-center justify-between px-4 py-3 hover:bg-gray-700/50 transition-colors duration-200 text-left"
+                className="w-full flex items-center justify-between px-4 py-3 hover:bg-[#1a1b21]/80 transition-colors duration-200 text-left"
               >
                 <div>
                   <div className="text-white font-medium">{server.name}</div>

@@ -26,7 +26,7 @@ export const ProfessionSelector: React.FC<ProfessionSelectorProps> = ({
   };
 
   return (
-    <div className="bg-gray-800/50 backdrop-blur-sm rounded-lg p-4 border border-gray-600/50">
+    <div className="bg-[#111216]/85 backdrop-blur-sm rounded-lg p-4 border border-[#24252b]">
       <h3 className="text-lg font-semibold text-white mb-4 flex items-center">
         <Star className="h-5 w-5 mr-2 text-wow-purple" />
         Select a Profession
@@ -36,7 +36,7 @@ export const ProfessionSelector: React.FC<ProfessionSelectorProps> = ({
         <button
           type="button"
           onClick={() => setIsOpen((open) => !open)}
-          className="w-full flex items-center justify-between bg-gray-700/50 hover:bg-gray-600/50 border border-gray-500/50 rounded-lg px-4 py-3 text-left transition-colors duration-200 disabled:opacity-60 disabled:cursor-not-allowed"
+          className="w-full flex items-center justify-between bg-[#1a1b21]/80 hover:bg-[#22232a]/80 border border-[#2e3036] rounded-lg px-4 py-3 text-left transition-colors duration-200 disabled:opacity-60 disabled:cursor-not-allowed"
           disabled={professions.length === 0}
         >
           <div className="flex items-center space-x-3">
@@ -68,7 +68,7 @@ export const ProfessionSelector: React.FC<ProfessionSelectorProps> = ({
                 key={profession.id}
                 type="button"
                 onClick={() => handleSelect(profession.id)}
-                className="w-full flex items-center space-x-3 px-4 py-3 hover:bg-gray-700/50 transition-colors duration-200 text-left border-b border-gray-700/50 last:border-b-0"
+                className="w-full flex items-center space-x-3 px-4 py-3 hover:bg-[#1a1b21]/80 transition-colors duration-200 text-left border-b border-gray-700/50 last:border-b-0"
               >
                 <span className="text-lg" aria-hidden>
                   {profession.icon}
@@ -97,7 +97,7 @@ export const ProfessionSelector: React.FC<ProfessionSelectorProps> = ({
               {selected.categories.map((category, index) => (
                 <span
                   key={`${selected.id}-category-${index}`}
-                  className="px-2 py-1 bg-gray-700/50 text-gray-300 text-xs rounded"
+                  className="px-2 py-1 bg-[#1a1b21]/80 text-gray-300 text-xs rounded"
                 >
                   {category}
                 </span>

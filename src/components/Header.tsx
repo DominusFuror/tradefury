@@ -8,7 +8,7 @@ interface HeaderProps {
 
 export const Header: React.FC<HeaderProps> = ({ onRefresh, isLoading }) => {
   return (
-    <header className="bg-black/20 backdrop-blur-sm border-b border-yellow-500/20">
+    <header className="bg-[#09090c]/80 backdrop-blur-sm border-b border-[#26272d]">
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-3">

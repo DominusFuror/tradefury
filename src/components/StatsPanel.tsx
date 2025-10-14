@@ -40,14 +40,14 @@ export const StatsPanel: React.FC<StatsPanelProps> = ({ craftingProfits, profess
       : null;
 
   return (
-    <div className="bg-gray-800/50 backdrop-blur-sm rounded-lg p-6 border border-gray-600/50">
+    <div className="bg-[#111216]/85 backdrop-blur-sm rounded-lg p-6 border border-[#24252b]">
       <h3 className="text-xl font-bold text-white mb-6 flex items-center">
         <Star className="h-6 w-6 mr-3 text-wow-purple" />
         Key metrics for {professionName}
       </h3>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-        <div className="bg-gray-900/50 rounded-lg p-4 border border-gray-600/30">
+        <div className="bg-[#16171d]/85 rounded-lg p-4 border border-[#2c2d34]">
           <div className="flex items-center justify-between">
             <div>
               <p className="text-gray-400 text-sm">Tracked recipes</p>
@@ -57,7 +57,7 @@ export const StatsPanel: React.FC<StatsPanelProps> = ({ craftingProfits, profess
           </div>
         </div>
 
-        <div className="bg-gray-900/50 rounded-lg p-4 border border-gray-600/30">
+        <div className="bg-[#16171d]/85 rounded-lg p-4 border border-[#2c2d34]">
           <div className="flex items-center justify-between">
             <div>
               <p className="text-gray-400 text-sm">Profitable</p>
@@ -67,7 +67,7 @@ export const StatsPanel: React.FC<StatsPanelProps> = ({ craftingProfits, profess
           </div>
         </div>
 
-        <div className="bg-gray-900/50 rounded-lg p-4 border border-gray-600/30">
+        <div className="bg-[#16171d]/85 rounded-lg p-4 border border-[#2c2d34]">
           <div className="flex items-center justify-between">
             <div>
               <p className="text-gray-400 text-sm">Unprofitable</p>
@@ -77,7 +77,7 @@ export const StatsPanel: React.FC<StatsPanelProps> = ({ craftingProfits, profess
           </div>
         </div>
 
-        <div className="bg-gray-900/50 rounded-lg p-4 border border-gray-600/30">
+        <div className="bg-[#16171d]/85 rounded-lg p-4 border border-[#2c2d34]">
           <div className="flex items-center justify-between">
             <div>
               <p className="text-gray-400 text-sm">Average ROI</p>
@@ -92,7 +92,7 @@ export const StatsPanel: React.FC<StatsPanelProps> = ({ craftingProfits, profess
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div className="bg-gray-900/50 rounded-lg p-4 border border-gray-600/30">
+        <div className="bg-[#16171d]/85 rounded-lg p-4 border border-[#2c2d34]">
           <h4 className="text-lg font-semibold text-green-400 mb-3 flex items-center">
             <TrendingUp className="h-5 w-5 mr-2" />
             Best performer
@@ -133,7 +133,7 @@ export const StatsPanel: React.FC<StatsPanelProps> = ({ craftingProfits, profess
           )}
         </div>
 
-        <div className="bg-gray-900/50 rounded-lg p-4 border border-gray-600/30">
+        <div className="bg-[#16171d]/85 rounded-lg p-4 border border-[#2c2d34]">
           <h4 className="text-lg font-semibold text-red-400 mb-3 flex items-center">
             <TrendingDown className="h-5 w-5 mr-2" />
             Worst performer
@@ -175,7 +175,7 @@ export const StatsPanel: React.FC<StatsPanelProps> = ({ craftingProfits, profess
         </div>
       </div>
 
-      <div className="mt-6 bg-gray-900/50 rounded-lg p-4 border border-gray-600/30">
+      <div className="mt-6 bg-[#16171d]/85 rounded-lg p-4 border border-[#2c2d34]">
         <h4 className="text-lg font-semibold text-wow-gold mb-3 flex items-center">
           <DollarSign className="h-5 w-5 mr-2" />
           Profit summary

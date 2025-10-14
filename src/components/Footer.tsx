@@ -3,7 +3,7 @@ import { Heart, Github, ExternalLink } from "lucide-react";
 
 export const Footer: React.FC = () => {
   return (
-    <footer className="bg-black/20 backdrop-blur-sm border-t border-yellow-500/20 mt-8">
+    <footer className="bg-[#09090c]/80 backdrop-blur-sm border-t border-[#26272d] mt-8">
       <div className="container mx-auto px-4 py-3">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 text-sm">
           <div>
@@ -57,7 +57,7 @@ export const Footer: React.FC = () => {
           </div>
         </div>
 
-        <div className="border-t border-gray-600/40 mt-3 pt-3 text-center text-[11px] md:text-xs text-gray-500 leading-relaxed">
+        <div className="border-t border-[#26272d] mt-3 pt-3 text-center text-[11px] md:text-xs text-gray-500 leading-relaxed">
           Copyright 2024 WoW WotLK Crafting Monitor. World of Warcraft is a trademark of Blizzard Entertainment.
         </div>
       </div>
