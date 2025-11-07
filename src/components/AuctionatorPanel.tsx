@@ -1,13 +1,17 @@
-import React, { useRef } from 'react';
-import { UploadCloud, Loader2, Trash2 } from 'lucide-react';
+import React, { useRef, useState } from 'react';
+import { UploadCloud, Loader2, Trash2, Download } from 'lucide-react';
 import { AuctionatorMetadata } from '../hooks/useAuctionatorData';
+import { loadItemIdToNameMap } from '../services/ItemNameIndex';
+import { ItemNameResolver } from '../services/ItemNameResolver';
+import { PriceHistoryEntry } from '../services/AuctionatorDataService';
 
 interface AuctionatorPanelProps {
   metadata: AuctionatorMetadata | null;
   isLoading: boolean;
   error: string | null;
-  onFileSelected: (file: File) => void;
-  onClear: () => void;
+  onFileSelected: (file: File) => void | Promise<void>;
+  onClear: () => Promise<void>;
+  priceHistory: Map<number, PriceHistoryEntry[]> | null;
 }
 
 const formatTimestamp = (timestamp: string): string => {
@@ -23,15 +27,59 @@ export const AuctionatorPanel: React.FC<AuctionatorPanelProps> = ({
   isLoading,
   error,
   onFileSelected,
-  onClear
+  onClear,
+  priceHistory
 }) => {
   const fileInputRef = useRef<HTMLInputElement | null>(null);
+  const [isExporting, setIsExporting] = useState(false);
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (file) {
-      onFileSelected(file);
+      void onFileSelected(file);
       event.target.value = '';
+    }
+  };
+
+  const handleExportHistory = async () => {
+    if (!priceHistory || priceHistory.size === 0 || !metadata) {
+      return;
+    }
+
+    try {
+      setIsExporting(true);
+      const overrides = await loadItemIdToNameMap();
+
+      const items = Array.from(priceHistory.entries()).map(([itemId, historyEntries]) => ({
+        id: itemId,
+        name: ItemNameResolver.getNameForId(itemId) ?? overrides.get(itemId) ?? `Item #${itemId}`,
+        history: historyEntries
+      }));
+
+      const payload = {
+        source: metadata.source,
+        importedAt: metadata.importedAt,
+        exportedAt: new Date().toISOString(),
+        totalItems: items.length,
+        items
+      };
+
+      const blob = new Blob([JSON.stringify(payload, null, 2)], {
+        type: 'application/json;charset=utf-8'
+      });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = `price-history-${new Date().toISOString().replace(/[:.]/g, '-')}.json`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+    } catch (exportError) {
+      console.error('Failed to export price history', exportError);
+      alert('Failed to export price history. Check console for details.');
+    } finally {
+      setIsExporting(false);
     }
   };
 
@@ -74,11 +122,27 @@ export const AuctionatorPanel: React.FC<AuctionatorPanelProps> = ({
 
           <button
             type="button"
-            onClick={onClear}
+            onClick={() => {
+              void onClear();
+            }}
             className="mt-2 inline-flex items-center space-x-2 text-xs text-red-300 hover:text-red-200 transition-colors duration-150"
           >
             <Trash2 className="h-3.5 w-3.5" />
             <span>Clear imported data</span>
+          </button>
+
+          <button
+            type="button"
+            onClick={handleExportHistory}
+            disabled={isExporting}
+            className="mt-2 inline-flex items-center space-x-2 text-xs text-blue-300 hover:text-blue-200 transition-colors duration-150 disabled:opacity-60"
+          >
+            {isExporting ? (
+              <Loader2 className="h-3.5 w-3.5 animate-spin" />
+            ) : (
+              <Download className="h-3.5 w-3.5" />
+            )}
+            <span>{isExporting ? 'Exporting…' : 'Export price history'}</span>
           </button>
         </div>
       ) : (

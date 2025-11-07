@@ -1,9 +1,11 @@
 import Papa from 'papaparse';
 
+import { decodeHtmlEntities } from '../utils/html';
 import { ItemNameResolver } from './ItemNameResolver';
 import { loadItemIdToNameMap } from './ItemNameIndex';
 
 const CRAFTING_DB_FILE = 'craftingdb.csv';
+const CRAFTING_WITH_SKILL_FILE = 'crafting_with_skill.csv';
 const SKILL_LINE_FILE = 'SkillLineAbility.csv';
 const ITEM_FILE = 'Item.csv';
 const ITEM_DISPLAY_INFO_FILE = 'ItemDisplayInfo.csv';
@@ -26,6 +28,9 @@ export interface SpellRecord {
   name: string;
   iconId: number | null;
   minSkill: number;
+  maxSkill: number | null;
+  trivialSkillLow: number | null;
+  trivialSkillHigh: number | null;
   resultItemId: number;
   resultItemQuantity: number;
   reagents: ReagentEntry[];
@@ -42,10 +47,19 @@ export interface ItemDisplayRecord {
   iconName: string | null;
 }
 
+interface CraftingSkillRow {
+  SpellID: string;
+  SkillName: string;
+  RequiredSkill: string;
+}
+
 interface SkillLineAbilityRow {
   SkillLine: string;
   Spell: string;
   MinSkillLineRank: string;
+  MaxSkillLineRank?: string;
+  TrivialSkillLineRankHigh?: string;
+  TrivialSkillLineRankLow?: string;
 }
 
 interface CraftingDbRow {
@@ -91,6 +105,20 @@ interface ItemDisplayRow {
   InventoryIcon_1?: string;
 }
 
+const SKILL_NAME_TO_PROFESSION_ID: Record<string, number> = {
+  Alchemy: 171,
+  Blacksmithing: 164,
+  Cooking: 185,
+  Enchanting: 333,
+  Engineering: 202,
+  'First Aid': 129,
+  Inscription: 773,
+  Jewelcrafting: 755,
+  Leatherworking: 165,
+  Mining: 186,
+  Tailoring: 197
+};
+
 const EFFECT_INDEXES: ReadonlyArray<1 | 2 | 3> = [1, 2, 3];
 const REAGENT_INDEXES: ReadonlyArray<1 | 2 | 3 | 4 | 5 | 6 | 7 | 8> = [1, 2, 3, 4, 5, 6, 7, 8];
 
@@ -109,7 +137,11 @@ const parseString = (value?: string | null): string | null => {
   }
 
   const trimmedValue = value.trim();
-  return trimmedValue.length > 0 ? trimmedValue : null;
+  if (trimmedValue.length === 0) {
+    return null;
+  }
+
+  return decodeHtmlEntities(trimmedValue);
 };
 
 const createIconUrl = (iconName: string | null | undefined): string => {
@@ -254,11 +286,15 @@ const resolveSpellName = (row: CraftingDbRow): string => {
   return russianName ?? englishName ?? `Spell #${row.ID}`;
 };
 
-const normalizeSpellRecord = (
-  row: CraftingDbRow,
-  professionId: number,
-  minSkill: number
-): SpellRecord | null => {
+interface SpellProfessionMeta {
+  professionId: number;
+  minSkill: number;
+  maxSkill: number | null;
+  trivialSkillLow: number | null;
+  trivialSkillHigh: number | null;
+}
+
+const normalizeSpellRecord = (row: CraftingDbRow, meta: SpellProfessionMeta): SpellRecord | null => {
   const spellId = parseNumber(row.ID);
   if (spellId === null) {
     return null;
@@ -271,10 +307,13 @@ const normalizeSpellRecord = (
 
   return {
     spellId,
-    professionId,
+    professionId: meta.professionId,
     name: resolveSpellName(row),
     iconId: parseNumber(row.SpellIconID),
-    minSkill,
+    minSkill: meta.minSkill,
+    maxSkill: meta.maxSkill,
+    trivialSkillLow: meta.trivialSkillLow,
+    trivialSkillHigh: meta.trivialSkillHigh,
     resultItemId: createEffect.itemId,
     resultItemQuantity: createEffect.quantity,
     reagents: extractReagents(row)
@@ -298,12 +337,14 @@ export class GameDataRepository {
         return;
       }
 
-      if (!item.name) {
-        this.items.set(id, {
-          ...item,
-          name
-        });
+      if (item.name === name) {
+        return;
       }
+
+      this.items.set(id, {
+        ...item,
+        name
+      });
     }
   );
   private itemNameOverrides: Map<number, string> = new Map();
@@ -340,17 +381,20 @@ export class GameDataRepository {
       ItemNameResolver.prime(primeMap);
     }
 
-    const skillLineResults = await parseCsvFile<SkillLineAbilityRow>(SKILL_LINE_FILE);
+    const skillRows = await parseCsvFile<CraftingSkillRow>(CRAFTING_WITH_SKILL_FILE);
 
-    const spellToProfession = new Map<number, { professionId: number; minSkill: number }>();
+    const spellToProfession = new Map<number, SpellProfessionMeta>();
     const professionSpellIds = new Map<number, Set<number>>();
 
-    for (const row of skillLineResults.data) {
-      const professionId = parseNumber(row.SkillLine);
-      const spellId = parseNumber(row.Spell);
-      const minSkill = parseNumber(row.MinSkillLineRank) ?? 0;
+    for (const row of skillRows.data) {
+      const spellId = parseNumber(row.SpellID);
+      const professionId =
+        typeof row.SkillName === 'string'
+          ? SKILL_NAME_TO_PROFESSION_ID[row.SkillName.trim()]
+          : undefined;
+      const minSkillValue = parseNumber(row.RequiredSkill) ?? 0;
 
-      if (professionId === null || spellId === null) {
+      if (spellId === null || !professionId) {
         continue;
       }
 
@@ -359,10 +403,82 @@ export class GameDataRepository {
       }
 
       professionSpellIds.get(professionId)?.add(spellId);
-      spellToProfession.set(spellId, {
-        professionId,
-        minSkill
-      });
+      const existingMeta = spellToProfession.get(spellId);
+
+      if (!existingMeta) {
+        spellToProfession.set(spellId, {
+          professionId,
+          minSkill: minSkillValue,
+          maxSkill: null,
+          trivialSkillLow: null,
+          trivialSkillHigh: null
+        });
+      } else if (existingMeta.professionId === professionId) {
+        if (minSkillValue > 0 && (existingMeta.minSkill <= 0 || minSkillValue < existingMeta.minSkill)) {
+          existingMeta.minSkill = minSkillValue;
+        } else if (existingMeta.minSkill <= 0 && minSkillValue <= 0) {
+          existingMeta.minSkill = Math.max(existingMeta.minSkill, minSkillValue);
+        }
+      }
+    }
+
+    const skillLineRows = await parseCsvFile<SkillLineAbilityRow>(SKILL_LINE_FILE);
+    for (const row of skillLineRows.data) {
+      const professionId = parseNumber(row.SkillLine);
+      const spellId = parseNumber(row.Spell);
+      if (professionId === null || spellId === null) {
+        continue;
+      }
+
+      const minSkill = parseNumber(row.MinSkillLineRank);
+      const maxSkill = parseNumber(row.MaxSkillLineRank);
+      const trivialHigh = parseNumber(row.TrivialSkillLineRankHigh);
+      const trivialLow = parseNumber(row.TrivialSkillLineRankLow);
+
+      if (!professionSpellIds.has(professionId)) {
+        professionSpellIds.set(professionId, new Set());
+      }
+
+      professionSpellIds.get(professionId)?.add(spellId);
+
+      const existingMeta = spellToProfession.get(spellId);
+      if (!existingMeta) {
+        spellToProfession.set(spellId, {
+          professionId,
+          minSkill: minSkill ?? 0,
+          maxSkill: maxSkill ?? null,
+          trivialSkillLow: trivialLow ?? null,
+          trivialSkillHigh: trivialHigh ?? null
+        });
+        continue;
+      }
+
+      if (existingMeta.professionId !== professionId) {
+        continue;
+      }
+
+      if (minSkill !== null && minSkill > 0 && (existingMeta.minSkill <= 0 || minSkill < existingMeta.minSkill)) {
+        existingMeta.minSkill = minSkill;
+      }
+
+      if (maxSkill !== null) {
+        existingMeta.maxSkill =
+          existingMeta.maxSkill === null ? maxSkill : Math.max(existingMeta.maxSkill, maxSkill);
+      }
+
+      if (trivialLow !== null) {
+        existingMeta.trivialSkillLow =
+          existingMeta.trivialSkillLow === null
+            ? trivialLow
+            : Math.min(existingMeta.trivialSkillLow, trivialLow);
+      }
+
+      if (trivialHigh !== null) {
+        existingMeta.trivialSkillHigh =
+          existingMeta.trivialSkillHigh === null
+            ? trivialHigh
+            : Math.max(existingMeta.trivialSkillHigh, trivialHigh);
+      }
     }
 
     this.professionSpellIds.clear();
@@ -382,11 +498,7 @@ export class GameDataRepository {
         return;
       }
 
-      const normalizedSpell = normalizeSpellRecord(
-        craftingRow,
-        professionMeta.professionId,
-        professionMeta.minSkill
-      );
+      const normalizedSpell = normalizeSpellRecord(craftingRow, professionMeta);
 
       if (!normalizedSpell) {
         return;

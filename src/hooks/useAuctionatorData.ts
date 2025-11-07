@@ -11,6 +11,8 @@ export interface AuctionatorMetadata {
   itemCount: number;
 }
 
+const SHARED_STORAGE_ENABLED = process.env.REACT_APP_ENABLE_SHARED_STORAGE === 'true';
+
 export const useAuctionatorData = () => {
   const [priceMap, setPriceMap] = useState<Map<number, number> | null>(null);
   const [priceHistory, setPriceHistory] = useState<Map<number, PriceHistoryEntry[]> | null>(null);
@@ -39,10 +41,44 @@ export const useAuctionatorData = () => {
   }, []);
 
   useEffect(() => {
-    const stored = AuctionatorDataService.load();
-    if (stored) {
-      setFromParsedData(stored);
-    }
+    let cancelled = false;
+
+    const loadData = async () => {
+      const local = await AuctionatorDataService.load();
+      if (!cancelled && local) {
+        setFromParsedData(local);
+      }
+
+      if (!SHARED_STORAGE_ENABLED || cancelled) {
+        return;
+      }
+
+      try {
+        const shared = await AuctionatorDataService.loadShared();
+        if (cancelled || !shared) {
+          return;
+        }
+
+        const currentLocal = await AuctionatorDataService.load();
+        const merged = AuctionatorDataService.mergePreferRecent(currentLocal, shared);
+        if (!merged) {
+          return;
+        }
+
+        await AuctionatorDataService.save(merged);
+        if (!cancelled) {
+          setFromParsedData(merged);
+        }
+      } catch (err) {
+        console.error('Failed to load shared Auctionator data', err);
+      }
+    };
+
+    loadData();
+
+    return () => {
+      cancelled = true;
+    };
     // intentionally run only on mount
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -54,9 +90,12 @@ export const useAuctionatorData = () => {
     try {
       const content = await file.text();
       const parsed = await AuctionatorDataService.parse(content, file.name);
-      const existing = AuctionatorDataService.load();
+      const existing = await AuctionatorDataService.load();
       const merged = AuctionatorDataService.mergeWithExisting(existing, parsed);
-      AuctionatorDataService.save(merged);
+      await AuctionatorDataService.save(merged);
+      if (SHARED_STORAGE_ENABLED) {
+        await AuctionatorDataService.syncToShared(merged);
+      }
       setFromParsedData(merged);
     } catch (err) {
       console.error('Failed to parse Auctionator.lua file', err);
@@ -66,8 +105,12 @@ export const useAuctionatorData = () => {
     }
   }, [setFromParsedData]);
 
-  const clear = useCallback(() => {
-    AuctionatorDataService.clear();
+  const clear = useCallback(async () => {
+    try {
+      await AuctionatorDataService.clear();
+    } catch (err) {
+      console.error('Failed to clear Auctionator data', err);
+    }
     setPriceMap(null);
     setPriceHistory(null);
     setMetadata(null);

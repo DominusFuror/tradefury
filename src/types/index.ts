@@ -46,6 +46,9 @@ export interface Recipe {
   name: string;
   profession: Profession;
   skillLevel: number;
+  maxSkillLevel?: number | null;
+  trivialSkillLow?: number | null;
+  trivialSkillHigh?: number | null;
   resultItem: Item;
   materials: RecipeMaterial[];
   category: string;
@@ -87,84 +90,84 @@ export const PROFESSIONS: Profession[] = [
   {
     id: 171,
     name: 'Alchemy',
-    icon: 'ALC',
+    icon: 'https://wow.zamimg.com/images/wow/icons/large/trade_alchemy.jpg',
     maxLevel: 450,
     categories: ['Transmute', 'Elixirs', 'Flasks', 'Potions']
   },
   {
     id: 164,
     name: 'Blacksmithing',
-    icon: 'BSM',
+    icon: 'https://wow.zamimg.com/images/wow/icons/large/trade_blacksmithing.jpg',
     maxLevel: 450,
     categories: ['Armor', 'Weapons', 'Enhancements', 'Shields']
   },
   {
     id: 333,
     name: 'Enchanting',
-    icon: 'ENC',
+    icon: 'https://wow.zamimg.com/images/wow/icons/large/trade_engraving.jpg',
     maxLevel: 450,
     categories: ['Weapon Enchants', 'Armor Enchants', 'Scrolls', 'Wands']
   },
   {
     id: 202,
     name: 'Engineering',
-    icon: 'ENG',
+    icon: 'https://wow.zamimg.com/images/wow/icons/large/trade_engineering.jpg',
     maxLevel: 450,
     categories: ['Gadgets', 'Bombs', 'Scopes', 'Armor']
   },
   {
     id: 773,
     name: 'Inscription',
-    icon: 'INS',
+    icon: 'https://wow.zamimg.com/images/wow/icons/large/inv_inscription_tradeskill01.jpg',
     maxLevel: 450,
     categories: ['Glyphs', 'Scrolls', 'Darkmoon Cards', 'Off-hand']
   },
   {
     id: 755,
     name: 'Jewelcrafting',
-    icon: 'JWL',
+    icon: 'https://wow.zamimg.com/images/wow/icons/large/inv_misc_gem_01.jpg',
     maxLevel: 450,
     categories: ['Gem Cuts', 'Meta Gems', 'Figurines', 'Prismatic']
   },
   {
     id: 165,
     name: 'Leatherworking',
-    icon: 'LWK',
+    icon: 'https://wow.zamimg.com/images/wow/icons/large/inv_misc_armorkit_17.jpg',
     maxLevel: 450,
     categories: ['Leather Armor', 'Mail Armor', 'Drums', 'Armorkits']
   },
   {
     id: 197,
     name: 'Tailoring',
-    icon: 'TAL',
+    icon: 'https://wow.zamimg.com/images/wow/icons/large/trade_tailoring.jpg',
     maxLevel: 450,
     categories: ['Cloth Armor', 'Bags', 'Embroidery', 'Special Cloth']
   },
   {
     id: 186,
     name: 'Mining',
-    icon: 'MIN',
+    icon: 'https://wow.zamimg.com/images/wow/icons/large/trade_mining.jpg',
     maxLevel: 450,
     categories: ['Smelting', 'Prospecting']
   },
   {
     id: 182,
     name: 'Herbalism',
-    icon: 'HRB',
+    icon: 'https://wow.zamimg.com/images/wow/icons/large/trade_herbalism.jpg',
     maxLevel: 450,
     categories: ['Gathering']
   },
   {
     id: 393,
     name: 'Skinning',
-    icon: 'SKN',
+    icon: 'https://wow.zamimg.com/images/wow/icons/large/inv_misc_pelt_wolf_01.jpg',
     maxLevel: 450,
     categories: ['Gathering']
   },
   {
     id: 185,
     name: 'Cooking',
-    icon: 'COOK',
+    icon: 'https://wow.zamimg.com/images/wow/icons/large/inv_misc_food_15.jpg',
     maxLevel: 450,
     categories: ['Buff Foods', 'Feasts', 'Special']
   }

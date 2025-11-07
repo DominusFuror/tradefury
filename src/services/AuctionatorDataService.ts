@@ -1,9 +1,12 @@
-import { LocalStorageAPI } from './api';
+import { PersistentStorage } from './api';
 import { ItemNameResolver } from './ItemNameResolver';
 import { loadItemNameIndex, normalizeItemName } from './ItemNameIndex';
+import { SharedStorageClient } from './SharedStorageClient';
+import { decodeHtmlEntities } from '../utils/html';
 
 const STORAGE_KEY_VERSION = 2;
 const HISTORY_LIMIT = 50;
+const SHARED_STORAGE_ENABLED = process.env.REACT_APP_ENABLE_SHARED_STORAGE === 'true';
 
 export interface PriceHistoryEntry {
   price: number;
@@ -15,6 +18,18 @@ export interface AuctionatorParsedData {
   itemPrices: Map<number, PriceHistoryEntry[]>;
   importedAt: string;
   source: string;
+}
+
+interface RawHistoryRecord {
+  key: number;
+  totalPrice: number;
+  quantity: number;
+}
+
+interface PricingHistoryParseResult {
+  index: Map<string, number>;
+  entriesByItemId: Map<number, RawHistoryRecord[]>;
+  maxKey: number | null;
 }
 
 interface AuctionatorStoragePayloadV1 {
@@ -183,16 +198,17 @@ const parseNamedPriceDatabase = (tableBlock: string): Map<string, number> => {
         }
       } else if (depth >= 2 && currentRealm) {
         const priceMatch = rawValue.match(/(-?\d+)/);
-        if (priceMatch) {
-          const price = Number(priceMatch[1]);
-          if (!Number.isNaN(price) && price > 0) {
-            const existing = prices.get(key);
-            if (existing === undefined || price < existing) {
-              prices.set(key, price);
+          if (priceMatch) {
+            const price = Number(priceMatch[1]);
+            if (!Number.isNaN(price) && price > 0) {
+              const decodedKey = decodeHtmlEntities(key);
+              const existing = prices.get(decodedKey);
+              if (existing === undefined || price < existing) {
+                prices.set(decodedKey, price);
+              }
             }
           }
         }
-      }
     }
 
     depth += openCount;
@@ -235,20 +251,104 @@ const fromHistoryObject = (obj: Record<number, PriceHistoryEntry[]>): Map<number
   return map;
 };
 
-const parsePricingHistoryIndex = (tableBlock: string): Map<string, number> => {
+const createHistoryEntry = (price: number, importedAt: string, source: string): PriceHistoryEntry => ({
+  price,
+  importedAt,
+  source
+});
+
+const createStoragePayload = (data: AuctionatorParsedData): AuctionatorStoragePayloadV2 => ({
+  version: STORAGE_KEY_VERSION,
+  source: data.source,
+  importedAt: data.importedAt,
+  itemPrices: toHistoryObject(data.itemPrices)
+});
+
+const parseStoragePayload = (raw: AuctionatorStoragePayload | null): AuctionatorParsedData | null => {
+  if (!raw || !raw.itemPrices) {
+    return null;
+  }
+
+  if (raw.version <= 1) {
+    const legacy = raw as AuctionatorStoragePayloadV1;
+    const history = new Map<number, PriceHistoryEntry[]>();
+    Object.entries(legacy.itemPrices).forEach(([id, priceValue]) => {
+      const numericId = Number(id);
+      const numericPrice = Number(priceValue);
+      if (!Number.isNaN(numericId) && Number.isFinite(numericPrice)) {
+        history.set(numericId, [
+          createHistoryEntry(
+            numericPrice,
+            legacy.importedAt || STORAGE_FALLBACK.importedAt,
+            legacy.source || STORAGE_FALLBACK.source
+          )
+        ]);
+      }
+    });
+
+    return {
+      itemPrices: history,
+      importedAt: legacy.importedAt || STORAGE_FALLBACK.importedAt,
+      source: legacy.source || STORAGE_FALLBACK.source
+    };
+  }
+
+  const v2 = raw as AuctionatorStoragePayloadV2;
+
+  return {
+    itemPrices: fromHistoryObject(v2.itemPrices),
+    importedAt: v2.importedAt || STORAGE_FALLBACK.importedAt,
+    source: v2.source || STORAGE_FALLBACK.source
+  };
+};
+
+const extractLastScanTime = (content: string): number | null => {
+  const match = content.match(/AUCTIONATOR_LAST_SCAN_TIME\s*=\s*(\d+)/);
+  if (!match) {
+    return null;
+  }
+
+  const value = Number(match[1]);
+  return Number.isFinite(value) ? value : null;
+};
+
+const parsePricingHistoryData = (tableBlock: string): PricingHistoryParseResult => {
   const lines = tableBlock.split(/\r?\n/);
-  const nameToId = new Map<string, number>();
+  const index = new Map<string, number>();
+  const entriesByItemId = new Map<number, RawHistoryRecord[]>();
 
   let depth = 0;
   let currentItemName: string | null = null;
+  let currentNormalizedName: string | null = null;
+  let currentItemId: number | null = null;
+  let pendingEntries: RawHistoryRecord[] = [];
+  let maxKey: number | null = null;
+
+  const commitCurrent = () => {
+    if (currentNormalizedName && currentItemId !== null) {
+      index.set(currentNormalizedName, currentItemId);
+      if (pendingEntries.length > 0) {
+        const existing = entriesByItemId.get(currentItemId) ?? [];
+        entriesByItemId.set(currentItemId, existing.concat(pendingEntries));
+      }
+    }
+
+    currentItemName = null;
+    currentNormalizedName = null;
+    currentItemId = null;
+    pendingEntries = [];
+  };
 
   for (const rawLine of lines) {
     const line = rawLine.trim();
+    const openCount = (rawLine.match(/{/g) || []).length;
+    const closeCount = (rawLine.match(/}/g) || []).length;
+
     if (!line) {
-      depth += (rawLine.match(/{/g) || []).length;
-      depth -= (rawLine.match(/}/g) || []).length;
-      if (depth <= 1) {
-        currentItemName = null;
+      depth += openCount;
+      depth -= closeCount;
+      if (depth < 2 && currentItemName) {
+        commitCurrent();
       }
       if (depth < 0) {
         depth = 0;
@@ -256,33 +356,142 @@ const parsePricingHistoryIndex = (tableBlock: string): Map<string, number> => {
       continue;
     }
 
-    const openCount = (rawLine.match(/{/g) || []).length;
-    const closeCount = (rawLine.match(/}/g) || []).length;
-
     const itemStartMatch = line.match(/^\["([^"]+)"\]\s*=\s*{\s*,?\s*$/);
-    if (itemStartMatch) {
-      currentItemName = itemStartMatch[1];
-    } else if (currentItemName && line.startsWith('["is"]')) {
-      const idMatch = line.match(/\["is"\]\s*=\s*"(\d+):/);
-      if (idMatch) {
-        const itemId = Number(idMatch[1]);
-        if (!Number.isNaN(itemId)) {
-          nameToId.set(normalizeItemName(currentItemName), itemId);
+    if (itemStartMatch && depth === 1) {
+      commitCurrent();
+      const decoded = decodeHtmlEntities(itemStartMatch[1]);
+      currentItemName = decoded;
+      currentNormalizedName = normalizeItemName(decoded);
+      depth += openCount;
+      depth -= closeCount;
+      if (depth < 0) {
+        depth = 0;
+      }
+      continue;
+    }
+
+    if (currentItemName) {
+      const keyValue = extractBracketKeyValue(line);
+
+      if (keyValue && keyValue.key === 'is') {
+        const idMatch = keyValue.rawValue.match(/"(\d+):/);
+        if (idMatch) {
+          const parsedId = Number(idMatch[1]);
+          if (!Number.isNaN(parsedId)) {
+            currentItemId = parsedId;
+            if (currentNormalizedName) {
+              index.set(currentNormalizedName, parsedId);
+            }
+          }
+        }
+      } else if (keyValue && /^\d+$/.test(keyValue.key)) {
+        const keyNumber = Number(keyValue.key);
+        if (Number.isFinite(keyNumber)) {
+          const valueWithoutComment = keyValue.rawValue.split('--')[0].trim();
+          const sanitized = valueWithoutComment.replace(/[},]$/, '').trim();
+          const valueMatch = sanitized.match(/^"([^"]+)"/);
+          if (valueMatch) {
+            const [pricePart, quantityPart] = valueMatch[1].split(':');
+            const totalPrice = Number(pricePart);
+            const quantity = Number(quantityPart ?? '1');
+            if (Number.isFinite(totalPrice) && totalPrice > 0) {
+              const record: RawHistoryRecord = {
+                key: keyNumber,
+                totalPrice,
+                quantity: Number.isFinite(quantity) && quantity > 0 ? quantity : 1
+              };
+              pendingEntries.push(record);
+              if (maxKey === null || keyNumber > maxKey) {
+                maxKey = keyNumber;
+              }
+            }
+          }
         }
       }
     }
 
     depth += openCount;
     depth -= closeCount;
-    if (depth <= 1) {
-      currentItemName = null;
+    if (depth < 2 && currentItemName) {
+      commitCurrent();
     }
     if (depth < 0) {
       depth = 0;
     }
   }
 
-  return nameToId;
+  commitCurrent();
+
+  return {
+    index,
+    entriesByItemId,
+    maxKey
+  };
+};
+
+const convertRawHistoryToEntries = (
+  rawHistory: Map<number, RawHistoryRecord[]>,
+  source: string,
+  anchorTimestamp?: number,
+  maxKeyOverride: number | null = null
+): Map<number, PriceHistoryEntry[]> => {
+  const history = new Map<number, PriceHistoryEntry[]>();
+  let globalMaxKey: number | null = maxKeyOverride;
+
+  if (globalMaxKey === null) {
+    rawHistory.forEach((records) => {
+      records.forEach((record) => {
+        if (globalMaxKey === null || record.key > globalMaxKey) {
+          globalMaxKey = record.key;
+        }
+      });
+    });
+  }
+
+  const anchorSeconds = anchorTimestamp ?? Math.floor(Date.now() / 1000);
+
+  rawHistory.forEach((records, itemId) => {
+    const sortedRecords = [...records].sort((a, b) => a.key - b.key);
+    const entries: PriceHistoryEntry[] = [];
+
+    sortedRecords.forEach(({ key, totalPrice, quantity }) => {
+      if (!Number.isFinite(totalPrice) || totalPrice <= 0) {
+        return;
+      }
+
+      const perItemPrice = Math.round(totalPrice / Math.max(quantity, 1));
+      if (!Number.isFinite(perItemPrice) || perItemPrice <= 0) {
+        return;
+      }
+
+      let importedAtSeconds = anchorSeconds;
+      if (globalMaxKey !== null) {
+        const deltaMinutes = globalMaxKey - key;
+        importedAtSeconds = anchorSeconds - deltaMinutes * 60;
+      }
+
+      const importedAt = new Date(Math.max(importedAtSeconds, 0) * 1000).toISOString();
+      const duplicate = entries.find(
+        (entry) => entry.price === perItemPrice && entry.importedAt === importedAt
+      );
+
+      if (!duplicate) {
+        entries.push(createHistoryEntry(perItemPrice, importedAt, source));
+      }
+    });
+
+    entries.sort(
+      (a, b) => new Date(a.importedAt).getTime() - new Date(b.importedAt).getTime()
+    );
+
+    if (entries.length > HISTORY_LIMIT) {
+      history.set(itemId, entries.slice(-HISTORY_LIMIT));
+    } else if (entries.length > 0) {
+      history.set(itemId, entries);
+    }
+  });
+
+  return history;
 };
 
 const mapNamePricesToItemIds = (
@@ -301,7 +510,8 @@ const mapNamePricesToItemIds = (
   const resolvedNames = new Map<string, number>();
 
   namePrices.forEach((price, name) => {
-    const normalized = normalizeItemName(name);
+    const decodedName = decodeHtmlEntities(name);
+    const normalized = normalizeItemName(decodedName);
     let itemId = itemNameIndex.get(normalized);
 
     if (itemId === undefined) {
@@ -313,11 +523,11 @@ const mapNamePricesToItemIds = (
     }
 
     if (itemId === undefined) {
-      unknownNames.add(name);
+      unknownNames.add(decodedName);
       return;
     }
 
-    resolvedNames.set(name, itemId);
+    resolvedNames.set(decodedName, itemId);
 
     const existing = prices.get(itemId);
     if (existing === undefined || price < existing) {
@@ -327,12 +537,6 @@ const mapNamePricesToItemIds = (
 
   return { prices, unknownNames, resolvedViaHistory, resolvedNames };
 };
-
-const createHistoryEntry = (price: number, importedAt: string, source: string): PriceHistoryEntry => ({
-  price,
-  importedAt,
-  source
-});
 
 const mergeHistories = (
   existing: Map<number, PriceHistoryEntry[]>,
@@ -373,16 +577,27 @@ const mergeHistories = (
 export const AuctionatorDataService = {
   async parse(content: string, sourceLabel: string): Promise<AuctionatorParsedData> {
     const priceBlock = extractTableBlock(content, 'AUCTIONATOR_PRICE_DATABASE');
-    if (!priceBlock) {
-      throw new Error('Failed to locate AUCTIONATOR_PRICE_DATABASE in provided file.');
+    const historyBlock = extractTableBlock(content, 'AUCTIONATOR_PRICING_HISTORY');
+
+    if (!priceBlock && !historyBlock) {
+      throw new Error(
+        'Auctionator.lua does not contain AUCTIONATOR_PRICE_DATABASE or AUCTIONATOR_PRICING_HISTORY sections.'
+      );
     }
 
-    const namePrices = parseNamedPriceDatabase(priceBlock);
+    if (!priceBlock) {
+      console.warn(
+        `[Auctionator] AUCTIONATOR_PRICE_DATABASE not found in ${sourceLabel}. Proceeding with pricing history only.`
+      );
+    }
 
-    const historyBlock = extractTableBlock(content, 'AUCTIONATOR_PRICING_HISTORY');
-    const historyIndex = historyBlock
-      ? parsePricingHistoryIndex(historyBlock)
-      : new Map<string, number>();
+    const namePrices = priceBlock ? parseNamedPriceDatabase(priceBlock) : new Map<string, number>();
+
+    const historyData = historyBlock ? parsePricingHistoryData(historyBlock) : null;
+    const historyIndex = historyData?.index ?? new Map<string, number>();
+    const rawHistory = historyData?.entriesByItemId ?? new Map<number, RawHistoryRecord[]>();
+    const historyMaxKey = historyData?.maxKey ?? null;
+    const lastScanTime = extractLastScanTime(content);
 
     const itemNameIndex = await loadItemNameIndex();
     const resolved = mapNamePricesToItemIds(namePrices, itemNameIndex, historyIndex);
@@ -423,7 +638,7 @@ export const AuctionatorDataService = {
       }
     }
 
-    if (itemPrices.size === 0) {
+    if (itemPrices.size === 0 && priceBlock) {
       itemPrices = parseLegacyPriceDatabase(priceBlock);
       if (itemPrices.size > 0) {
         ItemNameResolver.queueIdResolution(itemPrices.keys());
@@ -448,17 +663,43 @@ export const AuctionatorDataService = {
       );
     }
 
-    if (itemPrices.size === 0) {
-      console.warn('Auctionator parser did not find any price entries in AUCTIONATOR_PRICE_DATABASE.');
-    } else {
-      console.info(`[Auctionator] Loaded ${itemPrices.size} price entries from ${sourceLabel}`);
+    const anchorTimestamp = lastScanTime ?? Math.floor(Date.now() / 1000);
+    const importedAt = new Date(anchorTimestamp * 1000).toISOString();
+    const historyFromFile = convertRawHistoryToEntries(
+      rawHistory,
+      sourceLabel,
+      anchorTimestamp,
+      historyMaxKey
+    );
+
+    if (historyFromFile.size > 0) {
+      ItemNameResolver.queueIdResolution(Array.from(historyFromFile.keys()));
+      console.info(
+        `[Auctionator] Loaded pricing history for ${historyFromFile.size} item(s) from ${sourceLabel}`
+      );
     }
 
-    const importedAt = new Date().toISOString();
     const history = new Map<number, PriceHistoryEntry[]>();
-    itemPrices.forEach((price, itemId) => {
-      history.set(itemId, [createHistoryEntry(price, importedAt, sourceLabel)]);
+    historyFromFile.forEach((entries, itemId) => {
+      history.set(itemId, [...entries]);
     });
+
+    if (itemPrices.size > 0) {
+      itemPrices.forEach((price, itemId) => {
+        const existingEntries = history.get(itemId) ? [...history.get(itemId)!] : [];
+        const latestEntry = createHistoryEntry(price, importedAt, sourceLabel);
+        const duplicate = existingEntries.find(
+          (entry) => entry.price === latestEntry.price && entry.importedAt === latestEntry.importedAt
+        );
+        if (!duplicate) {
+          existingEntries.push(latestEntry);
+          existingEntries.sort(
+            (a, b) => new Date(a.importedAt).getTime() - new Date(b.importedAt).getTime()
+          );
+        }
+        history.set(itemId, existingEntries.slice(-HISTORY_LIMIT));
+      });
+    }
 
     return {
       itemPrices: history,
@@ -467,63 +708,36 @@ export const AuctionatorDataService = {
     };
   },
 
-  save(data: AuctionatorParsedData): void {
-    const payload: AuctionatorStoragePayloadV2 = {
-      version: STORAGE_KEY_VERSION,
-      source: data.source,
-      importedAt: data.importedAt,
-      itemPrices: toHistoryObject(data.itemPrices)
-    };
-
-    LocalStorageAPI.saveAuctionatorData(payload);
+  async save(data: AuctionatorParsedData): Promise<void> {
+    const payload = createStoragePayload(data);
+    try {
+      await PersistentStorage.saveAuctionatorData(payload);
+    } catch (error) {
+      console.error('Failed to persist Auctionator price data locally', error);
+    }
   },
 
-  load(): AuctionatorParsedData | null {
+  async load(): Promise<AuctionatorParsedData | null> {
     try {
-      const raw = LocalStorageAPI.getAuctionatorData() as AuctionatorStoragePayload | null;
-      if (!raw || !raw.itemPrices) {
-        return null;
-      }
-
-      if (raw.version <= 1) {
-        const legacy = raw as AuctionatorStoragePayloadV1;
-        const history = new Map<number, PriceHistoryEntry[]>();
-        Object.entries(legacy.itemPrices).forEach(([id, priceValue]) => {
-          const numericId = Number(id);
-          const numericPrice = Number(priceValue);
-          if (!Number.isNaN(numericId) && Number.isFinite(numericPrice)) {
-            history.set(numericId, [
-              createHistoryEntry(
-                numericPrice,
-                legacy.importedAt || STORAGE_FALLBACK.importedAt,
-                legacy.source || STORAGE_FALLBACK.source
-              )
-            ]);
-          }
-        });
-
-        return {
-          itemPrices: history,
-          importedAt: legacy.importedAt || STORAGE_FALLBACK.importedAt,
-          source: legacy.source || STORAGE_FALLBACK.source
-        };
-      }
-
-      const v2 = raw as AuctionatorStoragePayloadV2;
-
-      return {
-        itemPrices: fromHistoryObject(v2.itemPrices),
-        importedAt: v2.importedAt || STORAGE_FALLBACK.importedAt,
-        source: v2.source || STORAGE_FALLBACK.source
-      };
+      const raw = (await PersistentStorage.getAuctionatorData()) as
+        | AuctionatorStoragePayload
+        | null;
+      return parseStoragePayload(raw);
     } catch (error) {
       console.error('Failed to load Auctionator price data from storage', error);
       return null;
     }
   },
 
-  clear(): void {
-    LocalStorageAPI.clearAuctionatorData();
+  async clear(): Promise<void> {
+    try {
+      await PersistentStorage.clearAuctionatorData();
+    } catch (error) {
+      console.warn('Failed to clear local Auctionator price data', error);
+    }
+    if (SHARED_STORAGE_ENABLED) {
+      await this.clearShared();
+    }
   },
 
   mergeWithExisting(
@@ -540,5 +754,84 @@ export const AuctionatorDataService = {
       importedAt: incoming.importedAt,
       source: incoming.source
     };
+  },
+
+  mergePreferRecent(
+    first: AuctionatorParsedData | null,
+    second: AuctionatorParsedData | null
+  ): AuctionatorParsedData | null {
+    if (!first && !second) {
+      return null;
+    }
+    if (!first) {
+      return second;
+    }
+    if (!second) {
+      return first;
+    }
+
+    const firstTime = new Date(first.importedAt).getTime();
+    const secondTime = new Date(second.importedAt).getTime();
+    const firstValid = Number.isFinite(firstTime);
+    const secondValid = Number.isFinite(secondTime);
+
+    if (!firstValid && !secondValid) {
+      return this.mergeWithExisting(first, second);
+    }
+
+    if (!firstValid) {
+      return this.mergeWithExisting(first, second);
+    }
+
+    if (!secondValid) {
+      return this.mergeWithExisting(second, first);
+    }
+
+    if (secondTime >= firstTime) {
+      return this.mergeWithExisting(first, second);
+    }
+
+    return this.mergeWithExisting(second, first);
+  },
+
+  async loadShared(): Promise<AuctionatorParsedData | null> {
+    if (!SHARED_STORAGE_ENABLED) {
+      return null;
+    }
+
+    try {
+      const raw = (await SharedStorageClient.getAuctionatorData()) as AuctionatorStoragePayload | null;
+      return parseStoragePayload(raw);
+    } catch (error) {
+      console.error('Failed to load shared Auctionator price data', error);
+      return null;
+    }
+  },
+
+  async syncToShared(data: AuctionatorParsedData): Promise<void> {
+    if (!SHARED_STORAGE_ENABLED) {
+      return;
+    }
+
+    try {
+      const existingRaw = (await SharedStorageClient.getAuctionatorData()) as AuctionatorStoragePayload | null;
+      const existingParsed = parseStoragePayload(existingRaw);
+      const merged = this.mergePreferRecent(existingParsed, data) ?? data;
+      await SharedStorageClient.saveAuctionatorData(createStoragePayload(merged));
+    } catch (error) {
+      console.error('Failed to persist shared Auctionator price data', error);
+    }
+  },
+
+  async clearShared(): Promise<void> {
+    if (!SHARED_STORAGE_ENABLED) {
+      return;
+    }
+
+    try {
+      await SharedStorageClient.clearAuctionatorData();
+    } catch (error) {
+      console.error('Failed to clear shared Auctionator price data', error);
+    }
   }
 };

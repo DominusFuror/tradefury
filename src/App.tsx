@@ -1,13 +1,14 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { Header } from './components/Header';
 import { ProfessionSelector } from './components/ProfessionSelector';
 import { CraftingList } from './components/CraftingList';
 import { ErrorBoundary } from './components/ErrorBoundary';
 import { Footer } from './components/Footer';
-import { LocalStorageAPI } from './services/api';
+import { PersistentStorage } from './services/api';
 import { useSupportedProfessions } from './hooks/useSupportedProfessions';
 import { useAuctionatorData } from './hooks/useAuctionatorData';
 import { AuctionatorPanel } from './components/AuctionatorPanel';
+import { ItemNameMappingPanel } from './components/ItemNameMappingPanel';
 
 const REFRESH_DELAY_MS = 1000;
 const PREFERENCES_KEY = 'selectedProfessionId';
@@ -16,6 +17,7 @@ function App() {
   const [selectedProfessionId, setSelectedProfessionId] = useState<number | null>(null);
   const [isRefreshing, setIsRefreshing] = useState(false);
   const [refreshError, setRefreshError] = useState<string | null>(null);
+  const preferencesRef = useRef<Record<string, unknown>>({});
 
   const {
     professions,
@@ -25,12 +27,30 @@ function App() {
   const auctionator = useAuctionatorData();
 
   useEffect(() => {
-    const preferences = LocalStorageAPI.getUserPreferences() as Record<string, unknown>;
-    const savedProfession = preferences?.[PREFERENCES_KEY];
+    let isCancelled = false;
 
-    if (typeof savedProfession === 'number') {
-      setSelectedProfessionId(savedProfession);
-    }
+    const loadPreferences = async () => {
+      try {
+        const preferences = await PersistentStorage.getUserPreferences();
+        if (isCancelled) {
+          return;
+        }
+        const savedProfession = preferences?.[PREFERENCES_KEY];
+        preferencesRef.current = preferences;
+
+        if (typeof savedProfession === 'number') {
+          setSelectedProfessionId(savedProfession);
+        }
+      } catch (error) {
+        console.warn('Failed to load stored user preferences', error);
+      }
+    };
+
+    loadPreferences();
+
+    return () => {
+      isCancelled = true;
+    };
   }, []);
 
   useEffect(() => {
@@ -54,11 +74,19 @@ function App() {
 
   const handleProfessionChange = (professionId: number) => {
     setSelectedProfessionId(professionId);
-    LocalStorageAPI.saveUserPreferences({
-      ...((LocalStorageAPI.getUserPreferences() as Record<string, unknown>) || {}),
-      [PREFERENCES_KEY]: professionId
-    });
     setRefreshError(null);
+
+    (async () => {
+      try {
+        preferencesRef.current = {
+          ...preferencesRef.current,
+          [PREFERENCES_KEY]: professionId
+        };
+        await PersistentStorage.saveUserPreferences(preferencesRef.current);
+      } catch (error) {
+        console.warn('Failed to persist updated preferences', error);
+      }
+    })();
   };
 
   const handleRefresh = async () => {
@@ -94,12 +122,14 @@ function App() {
                 error={auctionator.error}
                 onFileSelected={auctionator.handleFileSelection}
                 onClear={auctionator.clear}
+                priceHistory={auctionator.priceHistory}
               />
               <ProfessionSelector
                 selectedProfession={selectedProfessionId}
                 onProfessionChange={handleProfessionChange}
                 professions={professions}
               />
+              <ItemNameMappingPanel />
 
               {professionsLoading && (
                 <div className="bg-[#121217]/80 border border-[#2a2b31] text-gray-300 px-4 py-3 rounded-lg">

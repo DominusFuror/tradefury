@@ -1,4 +1,4 @@
-import { LocalStorageAPI } from './api';
+import { PersistentStorage } from './api';
 import { normalizeItemName, registerNameMapping } from './ItemNameIndex';
 
 export interface ItemNameResolutionListener {
@@ -10,11 +10,20 @@ interface CacheState {
   idToName: Map<number, string>;
 }
 
+export interface ManualMappingResult {
+  success: boolean;
+  previousName: string | null;
+  previousOwnerId: number | null;
+  previousOwnerName: string | null;
+  error?: string;
+}
+
 const WOWHEAD_ITEM_XML_URL = 'https://www.wowhead.com/wotlk/item=';
 const WOWHEAD_SEARCH_XML_URL = 'https://www.wowhead.com/wotlk/search?q=';
 const MAX_CONCURRENT_XML_REQUESTS = 3;
 
 let cacheState: CacheState | null = null;
+let cacheLoadPromise: Promise<void> | null = null;
 let persistScheduled = false;
 let pendingIds: Set<number> = new Set();
 let activeRequests = 0;
@@ -24,15 +33,47 @@ const listeners = new Set<ItemNameResolutionListener>();
 
 const ensureCache = (): CacheState => {
   if (!cacheState) {
-    const stored = LocalStorageAPI.getItemNameCache();
     cacheState = {
-      nameToId: new Map(
-        Object.entries(stored.nameToId).map(([key, value]) => [key, value])
-      ),
-      idToName: new Map(
-        Object.entries(stored.idToName).map(([key, value]) => [Number(key), value])
-      )
+      nameToId: new Map(),
+      idToName: new Map()
     };
+
+    if (!cacheLoadPromise) {
+      cacheLoadPromise = PersistentStorage.getItemNameCache()
+        .then((stored) => {
+          const cache = cacheState;
+          if (!cache) {
+            return;
+          }
+
+          Object.entries(stored.nameToId).forEach(([key, value]) => {
+            if (typeof value === 'number' && Number.isFinite(value)) {
+              if (!cache.nameToId.has(key)) {
+                cache.nameToId.set(key, value);
+              }
+            }
+          });
+
+          Object.entries(stored.idToName).forEach(([key, value]) => {
+            const numericKey = Number(key);
+            if (!Number.isNaN(numericKey) && typeof value === 'string') {
+              if (!cache.idToName.has(numericKey)) {
+                cache.idToName.set(numericKey, value);
+              }
+            }
+          });
+
+          cache.idToName.forEach((name, id) => {
+            registerNameMapping(name, id);
+          });
+        })
+        .catch((error) => {
+          console.warn('Failed to hydrate item name cache', error);
+        })
+        .finally(() => {
+          cacheLoadPromise = null;
+        });
+    }
   }
 
   return cacheState;
@@ -56,11 +97,15 @@ const schedulePersist = (): void => {
       idToName: Object.fromEntries(cacheState.idToName)
     };
 
-    try {
-      LocalStorageAPI.saveItemNameCache(payload);
-    } catch (error) {
-      console.warn('Failed to persist item name cache', error);
-    }
+    const write = async () => {
+      try {
+        await PersistentStorage.saveItemNameCache(payload);
+      } catch (error) {
+        console.warn('Failed to persist item name cache', error);
+      }
+    };
+
+    void write();
   };
 
   if (typeof window !== 'undefined' && 'requestIdleCallback' in window) {
@@ -71,6 +116,9 @@ const schedulePersist = (): void => {
     setTimeout(persist, 0);
   }
 };
+
+// Warm cache load so stored mappings are available as soon as possible.
+ensureCache();
 
 const notifyListeners = (entry: { id: number; name: string }): void => {
   listeners.forEach((listener) => {
@@ -105,6 +153,71 @@ const storeMapping = (name: string, itemId: number, shouldPersist: boolean): boo
   }
 
   return isNewMapping;
+};
+
+const overrideMapping = (itemId: number, displayName: string): ManualMappingResult => {
+  if (!Number.isFinite(itemId) || itemId <= 0) {
+    return {
+      success: false,
+      previousName: null,
+      previousOwnerId: null,
+      previousOwnerName: null,
+      error: 'Item ID должен быть положительным целым числом.'
+    };
+  }
+
+  const trimmedName = displayName.trim();
+  if (!trimmedName) {
+    return {
+      success: false,
+      previousName: null,
+      previousOwnerId: null,
+      previousOwnerName: null,
+      error: 'Название предмета не может быть пустым.'
+    };
+  }
+
+  const normalized = normalizeItemName(trimmedName);
+  if (!normalized) {
+    return {
+      success: false,
+      previousName: null,
+      previousOwnerId: null,
+      previousOwnerName: null,
+      error: 'Не удалось обработать указанное название предмета.'
+    };
+  }
+
+  const cache = ensureCache();
+  const previousName = cache.idToName.get(itemId) ?? null;
+  const existingOwner = cache.nameToId.get(normalized);
+  const previousOwnerId = existingOwner !== undefined && existingOwner !== itemId ? existingOwner : null;
+  const previousOwnerName =
+    previousOwnerId !== null ? cache.idToName.get(previousOwnerId) ?? null : null;
+
+  if (previousOwnerId !== null) {
+    cache.idToName.delete(previousOwnerId);
+  }
+
+  cache.nameToId.forEach((value, key) => {
+    if (value === itemId && key !== normalized) {
+      cache.nameToId.delete(key);
+    }
+  });
+
+  cache.nameToId.set(normalized, itemId);
+  cache.idToName.set(itemId, trimmedName);
+  registerNameMapping(trimmedName, itemId);
+
+  schedulePersist();
+  notifyListeners({ id: itemId, name: trimmedName });
+
+  return {
+    success: true,
+    previousName,
+    previousOwnerId,
+    previousOwnerName
+  };
 };
 
 const fetchXml = async (url: string): Promise<Document | null> => {
@@ -356,6 +469,28 @@ export const ItemNameResolver = {
     return () => listeners.delete(listener);
   },
 
+  getNameForId(itemId: number): string | null {
+    if (!Number.isFinite(itemId)) {
+      return null;
+    }
+    return ensureCache().idToName.get(itemId) ?? null;
+  },
+
+  getIdForName(name: string): number | null {
+    const trimmed = name.trim();
+    if (!trimmed) {
+      return null;
+    }
+
+    const normalized = normalizeItemName(trimmed);
+    const cached = ensureCache().nameToId.get(normalized);
+    return cached ?? null;
+  },
+
+  setManualMapping(itemId: number, displayName: string): ManualMappingResult {
+    return overrideMapping(itemId, displayName);
+  },
+
   clearCache(): void {
     cacheState = {
       nameToId: new Map(),
@@ -363,6 +498,8 @@ export const ItemNameResolver = {
     };
     pendingIds = new Set();
     activeRequests = 0;
-    LocalStorageAPI.clearItemNameCache();
+    void PersistentStorage.clearItemNameCache().catch((error) => {
+      console.warn('Failed to clear stored item name cache', error);
+    });
   }
 };

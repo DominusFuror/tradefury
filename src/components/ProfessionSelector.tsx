@@ -1,4 +1,5 @@
-import React, { useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { ChevronDown, Star } from 'lucide-react';
 import { Profession } from '../types';
 
@@ -14,6 +15,8 @@ export const ProfessionSelector: React.FC<ProfessionSelectorProps> = ({
   professions
 }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [dropdownStyle, setDropdownStyle] = useState<React.CSSProperties | null>(null);
+  const toggleRef = useRef<HTMLButtonElement | null>(null);
 
   const selected = useMemo(
     () => professions.find((profession) => profession.id === selectedProfession) ?? null,
@@ -24,6 +27,39 @@ export const ProfessionSelector: React.FC<ProfessionSelectorProps> = ({
     onProfessionChange(professionId);
     setIsOpen(false);
   };
+
+  const updateDropdownPosition = useCallback(() => {
+    const toggle = toggleRef.current;
+    if (!toggle) {
+      return;
+    }
+    const rect = toggle.getBoundingClientRect();
+    setDropdownStyle({
+      position: 'absolute',
+      top: rect.bottom + window.scrollY + 4,
+      left: rect.left + window.scrollX,
+      width: rect.width,
+      zIndex: 9999
+    });
+  }, []);
+
+  useEffect(() => {
+    if (!isOpen) {
+      return;
+    }
+
+    updateDropdownPosition();
+
+    const handleScrollOrResize = () => updateDropdownPosition();
+
+    window.addEventListener('scroll', handleScrollOrResize, true);
+    window.addEventListener('resize', handleScrollOrResize);
+
+    return () => {
+      window.removeEventListener('scroll', handleScrollOrResize, true);
+      window.removeEventListener('resize', handleScrollOrResize);
+    };
+  }, [isOpen, updateDropdownPosition]);
 
   return (
     <div className="bg-[#111216]/85 backdrop-blur-sm rounded-lg p-4 border border-[#24252b]">
@@ -37,14 +73,18 @@ export const ProfessionSelector: React.FC<ProfessionSelectorProps> = ({
           type="button"
           onClick={() => setIsOpen((open) => !open)}
           className="w-full flex items-center justify-between bg-[#1a1b21]/80 hover:bg-[#22232a]/80 border border-[#2e3036] rounded-lg px-4 py-3 text-left transition-colors duration-200 disabled:opacity-60 disabled:cursor-not-allowed"
+          ref={toggleRef}
           disabled={professions.length === 0}
         >
           <div className="flex items-center space-x-3">
             {selected ? (
               <>
-                <span className="text-lg" aria-hidden>
-                  {selected.icon}
-                </span>
+                <img
+                  src={selected.icon}
+                  alt={`${selected.name} icon`}
+                  className="w-10 h-10 rounded-sm object-contain bg-[#1a1b21]/60 p-1"
+                  loading="lazy"
+                />
                 <div>
                   <div className="text-white font-medium">{selected.name}</div>
                   <div className="text-sm text-gray-400">Max rank: {selected.maxLevel}</div>
@@ -62,28 +102,37 @@ export const ProfessionSelector: React.FC<ProfessionSelectorProps> = ({
         </button>
 
         {isOpen && professions.length > 0 && (
-          <div className="absolute top-full left-0 right-0 mt-1 bg-gray-800 border border-gray-600 rounded-lg shadow-xl z-40 max-h-80 overflow-y-auto">
-            {professions.map((profession) => (
-              <button
-                key={profession.id}
-                type="button"
-                onClick={() => handleSelect(profession.id)}
-                className="w-full flex items-center space-x-3 px-4 py-3 hover:bg-[#1a1b21]/80 transition-colors duration-200 text-left border-b border-gray-700/50 last:border-b-0"
-              >
-                <span className="text-lg" aria-hidden>
-                  {profession.icon}
-                </span>
-                <div className="flex-1">
-                  <div className="text-white font-medium">{profession.name}</div>
-                  <div className="text-sm text-gray-400">Max rank: {profession.maxLevel}</div>
-                  <div className="text-xs text-gray-500 mt-1">
-                    {profession.categories.slice(0, 3).join(', ')}
-                    {profession.categories.length > 3 && '...'}
+          createPortal(
+            <div
+              className="bg-gray-800 border border-gray-600 rounded-lg shadow-xl max-h-80 overflow-y-auto"
+              style={dropdownStyle ?? undefined}
+            >
+              {professions.map((profession) => (
+                <button
+                  key={profession.id}
+                  type="button"
+                  onClick={() => handleSelect(profession.id)}
+                  className="w-full flex items-center space-x-3 px-4 py-3 hover:bg-[#1a1b21]/80 transition-colors duration-200 text-left border-b border-gray-700/50 last:border-b-0"
+                >
+                  <img
+                    src={profession.icon}
+                    alt={`${profession.name} icon`}
+                    className="w-10 h-10 rounded-sm object-contain bg-[#1a1b21]/60 p-1"
+                    loading="lazy"
+                  />
+                  <div className="flex-1">
+                    <div className="text-white font-medium">{profession.name}</div>
+                    <div className="text-sm text-gray-400">Max rank: {profession.maxLevel}</div>
+                    <div className="text-xs text-gray-500 mt-1">
+                      {profession.categories.slice(0, 3).join(', ')}
+                      {profession.categories.length > 3 && '...'}
+                    </div>
                   </div>
-                </div>
-              </button>
-            ))}
-          </div>
+                </button>
+              ))}
+            </div>,
+            document.body
+          )
         )}
       </div>
 

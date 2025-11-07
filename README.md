@@ -49,7 +49,7 @@ npm run build
 - **AuctionatorAPI** - интеграция с API аукциона
 - **WowheadAPI** - получение данных о предметах и рецептах
 - **ProfitCalculator** - расчет профита и ROI
-- **LocalStorageAPI** - сохранение настроек пользователя
+- **PersistentStorage** - сохранение настроек пользователя
 
 ### Типы данных
 
@@ -69,6 +69,7 @@ npm run build
 REACT_APP_API_URL=http://localhost:3001/api
 REACT_APP_AUCTIONATOR_API_KEY=your_api_key
 REACT_APP_WOWHEAD_API_URL=https://www.wowhead.com/wotlk/api
+REACT_APP_ENABLE_SHARED_STORAGE=false
 ```
 
 ### Настройка API

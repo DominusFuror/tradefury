@@ -1,11 +1,74 @@
 import { gameDataRepository, SpellRecord } from './GameDataRepository';
 import { Item, ItemQuality, Profession, Recipe, RecipeMaterial } from '../types';
+import { ItemNameResolver } from './ItemNameResolver';
 
 const DEFAULT_ITEM_LEVEL = 0;
 const DEFAULT_ITEM_QUALITY: ItemQuality = 'Common';
 
 const itemCache = new Map<number, Item>();
 const recipeCache = new Map<number, Recipe[]>();
+
+ItemNameResolver.addListener(({ id, name }) => {
+  const cachedItem = itemCache.get(id);
+  if (cachedItem && cachedItem.name !== name) {
+    itemCache.set(id, {
+      ...cachedItem,
+      name
+    });
+  }
+
+  recipeCache.forEach((recipes, professionId) => {
+    let cacheUpdated = false;
+    const updatedRecipes = recipes.map((recipe) => {
+      let recipeChanged = false;
+      let resultItem = recipe.resultItem;
+
+      if (resultItem.id === id && resultItem.name !== name) {
+        resultItem = {
+          ...resultItem,
+          name
+        };
+        recipeChanged = true;
+      }
+
+      let materials = recipe.materials;
+      let materialsChanged = false;
+      const normalizedMaterials = materials.map((material) => {
+        if (material.item.id === id && material.item.name !== name) {
+          materialsChanged = true;
+          return {
+            ...material,
+            item: {
+              ...material.item,
+              name
+            }
+          };
+        }
+        return material;
+      });
+
+      if (materialsChanged) {
+        materials = normalizedMaterials;
+        recipeChanged = true;
+      }
+
+      if (recipeChanged) {
+        cacheUpdated = true;
+        return {
+          ...recipe,
+          resultItem,
+          materials
+        };
+      }
+
+      return recipe;
+    });
+
+    if (cacheUpdated) {
+      recipeCache.set(professionId, updatedRecipes);
+    }
+  });
+});
 
 const ensureRepositoryLoaded = async (): Promise<void> => {
   await gameDataRepository.load();
@@ -70,6 +133,9 @@ const mapSpellToRecipe = (spell: SpellRecord, profession: Profession): Recipe | 
     name: spell.name,
     profession,
     skillLevel: spell.minSkill,
+    maxSkillLevel: spell.maxSkill,
+    trivialSkillLow: spell.trivialSkillLow,
+    trivialSkillHigh: spell.trivialSkillHigh,
     resultItem,
     materials,
     category: profession.categories[0] ?? 'General',

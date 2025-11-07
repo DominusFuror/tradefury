@@ -1,7 +1,11 @@
 import Papa from 'papaparse';
+import { decodeHtmlEntities } from '../utils/html';
 
 const ITEM_FILE = 'Item.csv';
-const ITEM_NAME_OVERRIDE_FILE = 'itemsidnames/items_new.csv';
+const ITEM_NAME_OVERRIDE_FILES = [
+  'itemsidnames/items_new.csv',
+  'itemsidnames/items_from_crafting.csv'
+];
 
 const ITEM_NAME_KEYS = [
   'Name_lang_ruRU',
@@ -22,6 +26,7 @@ interface ItemRow {
 interface ItemOverrideRow {
   id: string;
   name: string;
+  [key: string]: string | undefined;
 }
 
 type ItemNameIndex = Map<string, number>;
@@ -61,7 +66,11 @@ const parseString = (value?: string | null): string | null => {
   }
 
   const trimmed = value.trim();
-  return trimmed.length > 0 ? trimmed : null;
+  if (trimmed.length === 0) {
+    return null;
+  }
+
+  return decodeHtmlEntities(trimmed);
 };
 
 export const normalizeItemName = (name: string): string =>
@@ -72,11 +81,12 @@ export const normalizeItemName = (name: string): string =>
     .trim()
     .toLowerCase();
 
-const createOverrideMap = async (): Promise<ItemIdNameMap> =>
-  new Promise<ItemIdNameMap>((resolve) => {
-    const overrides: ItemIdNameMap = new Map();
-
-    Papa.parse<ItemOverrideRow>(getDbFileUrl(ITEM_NAME_OVERRIDE_FILE), {
+const parseOverrideFile = async (
+  fileName: string,
+  overrides: ItemIdNameMap
+): Promise<void> =>
+  new Promise((resolve) => {
+    Papa.parse<ItemOverrideRow>(getDbFileUrl(fileName), {
       download: true,
       header: true,
       skipEmptyLines: true,
@@ -91,13 +101,23 @@ const createOverrideMap = async (): Promise<ItemIdNameMap> =>
 
         overrides.set(parsedId, parsedName);
       },
-      complete: () => resolve(overrides),
+      complete: () => resolve(),
       error: (error) => {
-        console.warn('[Auctionator] Failed to load items_new.csv overrides', error);
-        resolve(overrides);
+        console.warn(`[Auctionator] Failed to load ${fileName} overrides`, error);
+        resolve();
       }
     });
   });
+
+const createOverrideMap = async (): Promise<ItemIdNameMap> => {
+  const overrides: ItemIdNameMap = new Map();
+
+  for (const fileName of ITEM_NAME_OVERRIDE_FILES) {
+    await parseOverrideFile(fileName, overrides);
+  }
+
+  return overrides;
+};
 
 export const loadItemIdToNameMap = async (): Promise<ItemIdNameMap> => {
   if (cachedOverrides) {

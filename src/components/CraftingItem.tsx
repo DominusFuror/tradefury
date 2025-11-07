@@ -68,11 +68,10 @@ export const CraftingItem: React.FC<CraftingItemProps> = ({
   const [isExpanded, setIsExpanded] = useState(false);
   const {
     recipe,
-    totalCost,
-    sellPrice,
-    profit,
-    profitPercentage,
-    roi,
+  totalCost,
+  sellPrice,
+  profit,
+  roi,
     materialCosts,
     hasMissingPrices,
     sellPriceSource,
@@ -201,8 +200,8 @@ export const CraftingItem: React.FC<CraftingItemProps> = ({
             </div>
           </div>
 
-          <div className={`flex items-center ${metricsGap}`}>
-            <div className="text-right">
+          <div className={`flex flex-wrap lg:flex-nowrap items-center ${metricsGap}`}>
+            <div className="text-right min-w-[8.5rem]">
               <div className={`${labelTextSize} text-gray-400`}>Material cost</div>
               <div>
                 <CurrencyAmount
@@ -215,7 +214,7 @@ export const CraftingItem: React.FC<CraftingItemProps> = ({
                 <div className="text-[10px] text-yellow-300 mt-1">Missing auction data</div>
               )}
             </div>
-            <div className="text-right">
+            <div className="text-right min-w-[8.5rem]">
               <div className={`${labelTextSize} text-gray-400`}>Expected sale price</div>
               {sellPriceSource === 'auctionator' && resultUnitPrice !== null ? (
                 <>
@@ -241,8 +240,8 @@ export const CraftingItem: React.FC<CraftingItemProps> = ({
                 <div className="text-[10px] text-yellow-300 mt-1">Not enough auction data</div>
               )}
             </div>
-            <div className="text-right">
-              <div className={`${labelTextSize} text-gray-400`}>Profit</div>
+            <div className="text-right min-w-[8.5rem]">
+              <div className={`${labelTextSize} text-gray-400`}>Net profit</div>
               {isCalculable ? (
                 <div className={`font-bold flex items-center space-x-1 ${getProfitColor(profit)}`}>
                   {getProfitIcon(profit)}
@@ -256,12 +255,12 @@ export const CraftingItem: React.FC<CraftingItemProps> = ({
                 <div className="text-[10px] text-yellow-300 mt-1">Unable to calculate</div>
               )}
             </div>
-            <div className="text-right">
-              <div className={`${labelTextSize} text-gray-400`}>Profit %</div>
+            <div className="text-right min-w-[6.5rem]">
+              <div className={`${labelTextSize} text-gray-400`}>ROI</div>
               {isCalculable ? (
-                <div className={`font-bold ${getProfitColor(profitPercentage)} ${valueTextSize}`}>
-                  {profitPercentage > 0 ? '+' : ''}
-                  {profitPercentage.toFixed(1)}%
+                <div className={`font-bold ${getProfitColor(roi)} ${valueTextSize}`}>
+                  {roi > 0 ? '+' : ''}
+                  {roi.toFixed(1)}%
                 </div>
               ) : (
                 <div className="text-[10px] text-yellow-300 mt-1">Unable to calculate</div>

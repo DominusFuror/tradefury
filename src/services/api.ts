@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { AuctionData, Item, Recipe, ServerInfo } from '../types';
+import { SharedStorageClient } from './SharedStorageClient';
 
 // Base URL for a future backend proxy. For now the project relies on mock data.
 const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:3001/api';
@@ -95,111 +96,120 @@ export class WowheadAPI {
   }
 }
 
-export class LocalStorageAPI {
-  private static readonly AUCTIONATOR_DATA_KEY = 'wow-auctionator-price-data';
-  private static readonly ITEM_NAME_CACHE_KEY = 'wow-item-name-cache';
+const STORAGE_KEYS = {
+  AUCTIONATOR_DATA: 'auctionator-data',
+  ITEM_NAME_CACHE: 'item-name-cache',
+  SERVER_INFO: 'server-info',
+  USER_PREFERENCES: 'user-preferences'
+} as const;
 
-  static saveServerInfo(serverInfo: ServerInfo): void {
-    localStorage.setItem('wow-server-info', JSON.stringify(serverInfo));
+const isPlainObject = (value: unknown): value is Record<string, unknown> =>
+  typeof value === 'object' && value !== null && !Array.isArray(value);
+
+export class PersistentStorage {
+  static async saveServerInfo(serverInfo: ServerInfo): Promise<void> {
+    await SharedStorageClient.writeJson(STORAGE_KEYS.SERVER_INFO, serverInfo);
   }
 
-  static getServerInfo(): ServerInfo | null {
-    const data = localStorage.getItem('wow-server-info');
-    if (!data) {
+  static async getServerInfo(): Promise<ServerInfo | null> {
+    const data = await SharedStorageClient.readJson<Record<string, unknown>>(
+      STORAGE_KEYS.SERVER_INFO
+    );
+    if (!isPlainObject(data)) {
       return null;
     }
 
-    try {
-      const parsed = JSON.parse(data);
-      return {
-        ...parsed,
-        lastUpdated: parsed?.lastUpdated ? new Date(parsed.lastUpdated) : new Date()
-      };
-    } catch (error) {
-      console.error('Failed to parse stored server info', error);
+    const name = typeof data.name === 'string' ? data.name : null;
+    const region = typeof data.region === 'string' ? data.region : null;
+    const faction =
+      data.faction === 'Alliance' || data.faction === 'Horde' ? data.faction : null;
+    if (!name || !region || !faction) {
       return null;
     }
+
+    const lastUpdatedRaw = data.lastUpdated;
+    const lastUpdated =
+      typeof lastUpdatedRaw === 'string' || lastUpdatedRaw instanceof Date
+        ? new Date(lastUpdatedRaw)
+        : new Date();
+
+    return {
+      name,
+      region,
+      faction,
+      lastUpdated
+    };
   }
 
-  static saveUserPreferences(preferences: unknown): void {
-    localStorage.setItem('wow-user-preferences', JSON.stringify(preferences));
+  static async saveUserPreferences(preferences: unknown): Promise<void> {
+    await SharedStorageClient.writeJson(STORAGE_KEYS.USER_PREFERENCES, preferences ?? {});
   }
 
-  static getUserPreferences(): unknown {
-    const data = localStorage.getItem('wow-user-preferences');
-    return data ? JSON.parse(data) : {};
+  static async getUserPreferences(): Promise<Record<string, unknown>> {
+    const data = await SharedStorageClient.readJson(STORAGE_KEYS.USER_PREFERENCES);
+    if (isPlainObject(data)) {
+      return data;
+    }
+    return {};
   }
 
-  static saveAuctionatorData(payload: unknown): void {
-    localStorage.setItem(LocalStorageAPI.AUCTIONATOR_DATA_KEY, JSON.stringify(payload));
+  static async saveAuctionatorData(payload: unknown): Promise<void> {
+    await SharedStorageClient.writeJson(STORAGE_KEYS.AUCTIONATOR_DATA, payload ?? null);
   }
 
-  static getAuctionatorData(): unknown {
-    const data = localStorage.getItem(LocalStorageAPI.AUCTIONATOR_DATA_KEY);
-    return data ? JSON.parse(data) : null;
+  static async getAuctionatorData(): Promise<unknown> {
+    return SharedStorageClient.readJson(STORAGE_KEYS.AUCTIONATOR_DATA);
   }
 
-  static saveItemNameCache(payload: {
+  static async saveItemNameCache(payload: {
     nameToId: Record<string, number>;
     idToName: Record<number, string>;
-  }): void {
-    localStorage.setItem(LocalStorageAPI.ITEM_NAME_CACHE_KEY, JSON.stringify(payload));
+  }): Promise<void> {
+    await SharedStorageClient.writeJson(STORAGE_KEYS.ITEM_NAME_CACHE, payload);
   }
 
-  static getItemNameCache(): {
+  static async getItemNameCache(): Promise<{
     nameToId: Record<string, number>;
     idToName: Record<number, string>;
-  } {
-    const data = localStorage.getItem(LocalStorageAPI.ITEM_NAME_CACHE_KEY);
-    if (!data) {
+  }> {
+    const data = await SharedStorageClient.readJson(STORAGE_KEYS.ITEM_NAME_CACHE);
+    if (!isPlainObject(data)) {
       return { nameToId: {}, idToName: {} };
     }
 
-    try {
-      const parsed = JSON.parse(data);
-      if (parsed && typeof parsed === 'object' && !Array.isArray(parsed)) {
-        const nameToIdRaw =
-          parsed.nameToId && typeof parsed.nameToId === 'object' ? parsed.nameToId : parsed;
-        const idToNameRaw =
-          parsed.idToName && typeof parsed.idToName === 'object' ? parsed.idToName : {};
+    const nameToIdRaw = isPlainObject(data.nameToId) ? data.nameToId : data;
+    const idToNameRaw = isPlainObject(data.idToName) ? data.idToName : {};
 
-        const nameToId: Record<string, number> = {};
-        Object.entries(nameToIdRaw).forEach(([key, value]) => {
-          if (typeof value === 'number' && Number.isFinite(value)) {
-            nameToId[key] = value;
-          }
-        });
-
-        const idToName: Record<number, string> = {};
-        Object.entries(idToNameRaw).forEach(([key, value]) => {
-          const numericKey = Number(key);
-          if (!Number.isNaN(numericKey) && typeof value === 'string' && value.length > 0) {
-            idToName[numericKey] = value;
-          }
-        });
-
-        return { nameToId, idToName };
+    const nameToId: Record<string, number> = {};
+    Object.entries(nameToIdRaw).forEach(([key, value]) => {
+      if (typeof value === 'number' && Number.isFinite(value)) {
+        nameToId[key] = value;
       }
-    } catch (error) {
-      console.warn('Failed to parse item name cache from storage', error);
-    }
+    });
 
-    return { nameToId: {}, idToName: {} };
+    const idToName: Record<number, string> = {};
+    Object.entries(idToNameRaw).forEach(([key, value]) => {
+      const numericKey = Number(key);
+      if (!Number.isNaN(numericKey) && typeof value === 'string' && value.length > 0) {
+        idToName[numericKey] = value;
+      }
+    });
+
+    return { nameToId, idToName };
   }
 
-  static clearItemNameCache(): void {
-    localStorage.removeItem(LocalStorageAPI.ITEM_NAME_CACHE_KEY);
+  static async clearItemNameCache(): Promise<void> {
+    await SharedStorageClient.deleteKey(STORAGE_KEYS.ITEM_NAME_CACHE);
   }
 
-  static clearAuctionatorData(): void {
-    localStorage.removeItem(LocalStorageAPI.AUCTIONATOR_DATA_KEY);
+  static async clearAuctionatorData(): Promise<void> {
+    await SharedStorageClient.deleteKey(STORAGE_KEYS.AUCTIONATOR_DATA);
   }
 
-  static clearAll(): void {
-    localStorage.removeItem('wow-server-info');
-    localStorage.removeItem('wow-user-preferences');
-    localStorage.removeItem(LocalStorageAPI.AUCTIONATOR_DATA_KEY);
-    localStorage.removeItem(LocalStorageAPI.ITEM_NAME_CACHE_KEY);
+  static async clearAll(): Promise<void> {
+    await Promise.all(
+      Object.values(STORAGE_KEYS).map((key) => SharedStorageClient.deleteKey(key))
+    );
   }
 }
 

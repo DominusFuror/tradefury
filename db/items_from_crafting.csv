@@ -1,0 +1,4937 @@
+id,name
+118,Minor Healing Potion
+159,Refreshing Spring Water
+723,Goretusk Liver
+724,Goretusk Liver Pie
+729,Stringy Vulture Meat
+730,Murloc Eye
+731,Goretusk Snout
+733,Westfall Stew
+765,Silverleaf
+769,Chunk of Boar Meat
+774,Malachite
+783,Light Hide
+785,Mageroyal
+787,Slitherskin Mackerel
+814,Flask of Oil
+818,Tigerseye
+858,Lesser Healing Potion
+878,Fist-sized Spinneret
+929,Healing Potion
+954,Scroll of Strength
+955,Scroll of Intellect
+1015,Lean Wolf Flank
+1017,Seasoned Wolf Kabob
+1080,Tough Condor Meat
+1081,Crisp Spider Meat
+1082,Redridge Goulash
+1113,Conjured Bread
+1114,Conjured Rye
+1179,Ice Cold Milk
+1180,Scroll of Stamina
+1181,Scroll of Spirit
+1206,Moss Agate
+1210,Shadowgem
+1251,Linen Bandage
+1288,Large Venom Sac
+1450,Potion of Fervor
+1468,Murloc Fin
+1475,Small Venom Sac
+1477,Scroll of Agility II
+1487,Conjured Pumpernickel
+1529,Jade
+1705,Lesser Moonstone
+1710,Greater Healing Potion
+1711,Scroll of Stamina II
+1712,Scroll of Spirit II
+2136,Conjured Purified Water
+2251,Gooey Spider Leg
+2288,Conjured Fresh Water
+2289,Scroll of Strength II
+2290,Scroll of Intellect II
+2300,Embossed Leather Vest
+2302,Handstitched Leather Boots
+2303,Handstitched Leather Pants
+2304,Light Armor Kit
+2305,Deprecated Light Winter Cloak
+2306,Deprecated Light Winter Boots
+2307,Fine Leather Boots
+2308,Fine Leather Cloak
+2309,Embossed Leather Boots
+2310,Embossed Leather Cloak
+2311,White Leather Jerkin
+2312,Fine Leather Gloves
+2313,Medium Armor Kit
+2314,Toughened Leather Armor
+2315,Dark Leather Boots
+2316,Dark Leather Cloak
+2317,Dark Leather Tunic
+2318,Light Leather
+2319,Medium Leather
+2320,Coarse Thread
+2321,Fine Thread
+2324,Bleach
+2325,Black Dye
+2447,Peacebloom
+2449,Earthroot
+2450,Briarthorn
+2452,Swiftthistle
+2453,Bruiseweed
+2454,Elixir of Lion&apos;s Strength
+2455,Minor Mana Potion
+2456,Minor Rejuvenation Potion
+2457,Elixir of Minor Agility
+2458,Elixir of Minor Fortitude
+2459,Swiftness Potion
+2460,Elixir of Tongues (NYI)
+2568,Brown Linen Vest
+2569,Linen Boots
+2570,Linen Cloak
+2572,Red Linen Robe
+2575,Red Linen Shirt
+2576,White Linen Shirt
+2577,Blue Linen Shirt
+2578,Barbaric Linen Vest
+2579,Green Linen Shirt
+2580,Reinforced Linen Cape
+2581,Heavy Linen Bandage
+2582,Green Woolen Vest
+2583,Woolen Boots
+2584,Woolen Cape
+2585,Gray Woolen Robe
+2587,Gray Woolen Shirt
+2589,Linen Cloth
+2592,Wool Cloth
+2593,Flask of Port
+2594,Flagon of Mead
+2596,Skin of Dwarven Stout
+2604,Red Dye
+2605,Green Dye
+2672,Stringy Wolf Meat
+2673,Coyote Meat
+2674,Crawler Meat
+2675,Crawler Claw
+2677,Boar Ribs
+2678,Mild Spices
+2679,Charred Wolf Meat
+2680,Spiced Wolf Meat
+2681,Roasted Boar Meat
+2682,Cooked Crab Claw
+2683,Crab Cake
+2684,Coyote Steak
+2685,Succulent Pork Ribs
+2687,Dry Pork Ribs
+2770,Copper Ore
+2771,Tin Ore
+2772,Iron Ore
+2775,Silver Ore
+2776,Gold Ore
+2835,Rough Stone
+2836,Coarse Stone
+2838,Heavy Stone
+2840,Copper Bar
+2841,Bronze Bar
+2842,Silver Bar
+2844,Copper Mace
+2845,Copper Axe
+2847,Copper Shortsword
+2848,Bronze Mace
+2849,Bronze Axe
+2850,Bronze Shortsword
+2851,Copper Chain Belt
+2852,Copper Chain Pants
+2853,Copper Bracers
+2854,Runed Copper Bracers
+2857,Runed Copper Belt
+2862,Rough Sharpening Stone
+2863,Coarse Sharpening Stone
+2864,Runed Copper Breastplate
+2865,Rough Bronze Leggings
+2866,Rough Bronze Cuirass
+2867,Rough Bronze Bracers
+2868,Patterned Bronze Bracers
+2869,Silvered Bronze Breastplate
+2870,Shining Silver Breastplate
+2871,Heavy Sharpening Stone
+2880,Weak Flux
+2886,Crag Boar Rib
+2888,Beer Basted Boar Ribs
+2901,Mining Pick
+2924,Crocolisk Meat
+2934,Ruined Leather Scraps
+2996,Bolt of Linen Cloth
+2997,Bolt of Woolen Cloth
+3012,Scroll of Agility
+3030,Razor Arrow
+3164,Discolored Worg Heart
+3172,Boar Intestines
+3173,Bear Meat
+3174,Spider Ichor
+3182,Spider&apos;s Silk
+3220,Blood Sausage
+3239,Rough Weightstone
+3240,Coarse Weightstone
+3241,Heavy Weightstone
+3300,Rabbit&apos;s Foot
+3355,Wild Steelbloom
+3356,Kingsblood
+3357,Liferoot
+3358,Khadgar&apos;s Whisker
+3369,Grave Moss
+3371,Empty Vial
+3372,Leaded Vial
+3382,Weak Troll&apos;s Blood Elixir
+3383,Elixir of Wisdom
+3384,Minor Magic Resistance Potion
+3385,Lesser Mana Potion
+3386,Potion of Curing
+3387,Limited Invulnerability Potion
+3388,Strong Troll&apos;s Blood Elixir
+3389,Elixir of Defense
+3390,Elixir of Lesser Agility
+3391,Elixir of Ogre&apos;s Strength
+3404,Buzzard Wing
+3466,Strong Flux
+3469,Copper Chain Boots
+3470,Rough Grinding Stone
+3471,Copper Chain Vest
+3472,Runed Copper Gauntlets
+3473,Runed Copper Pants
+3474,Gemmed Copper Gauntlets
+3478,Coarse Grinding Stone
+3480,Rough Bronze Shoulders
+3481,Silvered Bronze Shoulders
+3482,Silvered Bronze Boots
+3483,Silvered Bronze Gauntlets
+3484,Green Iron Boots
+3485,Green Iron Gauntlets
+3486,Heavy Grinding Stone
+3487,Heavy Copper Broadsword
+3488,Copper Battle Axe
+3489,Thick War Axe
+3490,Deadly Bronze Poniard
+3491,Heavy Bronze Mace
+3492,Mighty Iron Hammer
+3530,Wool Bandage
+3531,Heavy Wool Bandage
+3575,Iron Bar
+3576,Tin Bar
+3577,Gold Bar
+3662,Crocolisk Steak
+3663,Murloc Fin Soup
+3664,Crocolisk Gumbo
+3665,Curiously Tasty Omelet
+3666,Gooey Spider Cake
+3667,Tender Crocolisk Meat
+3685,Raptor Egg
+3712,Turtle Meat
+3719,Hillman&apos;s Cloak
+3726,Big Bear Steak
+3727,Hot Lion Chops
+3728,Tasty Lion Steak
+3729,Soothing Turtle Bisque
+3730,Big Bear Meat
+3731,Lion Meat
+3772,Conjured Spring Water
+3818,Fadeleaf
+3819,Wintersbite
+3820,Stranglekelp
+3821,Goldthorn
+3823,Lesser Invisibility Potion
+3824,Shadow Oil
+3825,Elixir of Fortitude
+3826,Major Troll&apos;s Blood Elixir
+3827,Mana Potion
+3828,Elixir of Detect Lesser Invisibility
+3829,Frost Oil
+3835,Green Iron Bracers
+3836,Green Iron Helm
+3837,Golden Scale Coif
+3840,Green Iron Shoulders
+3841,Golden Scale Shoulders
+3842,Green Iron Leggings
+3843,Golden Scale Leggings
+3844,Green Iron Hauberk
+3845,Golden Scale Cuirass
+3846,Polished Steel Boots
+3847,Golden Scale Boots
+3848,Big Bronze Knife
+3849,Hardened Iron Shortsword
+3850,Jade Serpentblade
+3851,Solid Iron Maul
+3852,Golden Iron Destroyer
+3853,Moonsteel Broadsword
+3854,Frost Tiger Blade
+3855,Massive Iron Axe
+3856,Shadow Crescent Axe
+3857,Coal
+3858,Mithril Ore
+3859,Steel Bar
+3860,Mithril Bar
+3864,Citrine
+3928,Superior Healing Potion
+4096,Coarse Gorilla Hair
+4231,Cured Light Hide
+4232,Medium Hide
+4233,Cured Medium Hide
+4234,Heavy Leather
+4235,Heavy Hide
+4236,Cured Heavy Hide
+4237,Handstitched Leather Belt
+4238,Linen Bag
+4239,Embossed Leather Gloves
+4240,Woolen Bag
+4241,Green Woolen Bag
+4242,Embossed Leather Pants
+4243,Fine Leather Tunic
+4244,Hillman&apos;s Leather Vest
+4245,Small Silk Pack
+4246,Fine Leather Belt
+4247,Hillman&apos;s Leather Gloves
+4248,Dark Leather Gloves
+4249,Dark Leather Belt
+4250,Hillman&apos;s Belt
+4251,Hillman&apos;s Shoulders
+4252,Dark Leather Shoulders
+4253,Toughened Leather Gloves
+4254,Barbaric Gloves
+4255,Green Leather Armor
+4256,Guardian Armor
+4257,Green Leather Belt
+4258,Guardian Belt
+4259,Green Leather Bracers
+4260,Guardian Leather Bracers
+4262,Gem-studded Leather Belt
+4264,Barbaric Belt
+4265,Heavy Armor Kit
+4289,Salt
+4291,Silken Thread
+4304,Thick Leather
+4305,Bolt of Silk Cloth
+4306,Silk Cloth
+4307,Heavy Linen Gloves
+4308,Green Linen Bracers
+4309,Handstitched Linen Britches
+4310,Heavy Woolen Gloves
+4311,Heavy Woolen Cloak
+4312,Soft-soled Linen Boots
+4313,Red Woolen Boots
+4314,Double-stitched Woolen Shoulders
+4315,Reinforced Woolen Shoulders
+4316,Heavy Woolen Pants
+4317,Phoenix Pants
+4318,Gloves of Meditation
+4319,Azure Silk Gloves
+4320,Spidersilk Boots
+4321,Spider Silk Slippers
+4322,Enchanter&apos;s Cowl
+4323,Shadow Hood
+4324,Azure Silk Vest
+4325,Boots of the Enchanter
+4326,Long Silken Cloak
+4327,Icy Cloak
+4328,Spider Belt
+4329,Star Belt
+4330,Stylish Red Shirt
+4331,Phoenix Gloves
+4332,Bright Yellow Shirt
+4333,Dark Silk Shirt
+4334,Formal White Shirt
+4335,Rich Purple Silk Shirt
+4336,Black Swashbuckler&apos;s Shirt
+4337,Thick Spider&apos;s Silk
+4338,Mageweave Cloth
+4339,Bolt of Mageweave
+4340,Gray Dye
+4341,Yellow Dye
+4342,Purple Dye
+4343,Brown Linen Pants
+4344,Brown Linen Shirt
+4357,Rough Blasting Powder
+4358,Rough Dynamite
+4359,Handful of Copper Bolts
+4360,Rough Copper Bomb
+4361,Copper Tube
+4362,Rough Boomstick
+4363,Copper Modulator
+4364,Coarse Blasting Powder
+4365,Coarse Dynamite
+4366,Target Dummy
+4367,Small Seaforium Charge
+4368,Flying Tiger Goggles
+4369,Deadly Blunderbuss
+4370,Large Copper Bomb
+4371,Bronze Tube
+4372,Lovingly Crafted Boomstick
+4373,Shadow Goggles
+4374,Small Bronze Bomb
+4375,Whirring Bronze Gizmo
+4376,Flame Deflector
+4377,Heavy Blasting Powder
+4378,Heavy Dynamite
+4379,Silver-plated Shotgun
+4380,Big Bronze Bomb
+4381,Minor Recombobulator
+4382,Bronze Framework
+4383,Moonsight Rifle
+4384,Explosive Sheep
+4385,Green Tinted Goggles
+4386,Ice Deflector
+4387,Iron Strut
+4388,Discombobulator Ray
+4389,Gyrochronatom
+4390,Iron Grenade
+4391,Compact Harvest Reaper Kit
+4392,Advanced Target Dummy
+4393,Craftsman&apos;s Monocle
+4394,Big Iron Bomb
+4395,Goblin Land Mine
+4396,Mechanical Dragonling
+4397,Gnomish Cloaking Device
+4398,Large Seaforium Charge
+4399,Wooden Stock
+4400,Heavy Stock
+4401,Mechanical Squirrel Box
+4402,Small Flame Sac
+4403,Portable Bronze Mortar
+4404,Silver Contact
+4405,Crude Scope
+4406,Standard Scope
+4407,Accurate Scope
+4419,Scroll of Intellect III
+4422,Scroll of Stamina III
+4424,Scroll of Spirit III
+4425,Scroll of Agility III
+4426,Scroll of Strength III
+4455,Raptor Hide Harness
+4456,Raptor Hide Belt
+4457,Barbecued Buzzard Wing
+4461,Raptor Hide
+4470,Simple Wood
+4589,Long Elegant Feather
+4592,Longjaw Mud Snapper
+4593,Bristle Whisker Catfish
+4594,Rockscale Cod
+4596,Discolored Healing Potion
+4603,Raw Spotted Yellowtail
+4611,Blue Pearl
+4623,Lesser Stoneshield Potion
+4625,Firebloom
+4655,Giant Clam Meat
+4703,Broken Tools
+4791,Enchanted Water
+4852,Flash Bomb
+5051,Dig Rat
+5060,Thieves&apos; Tools
+5081,Kodo Hide Bag
+5082,Thin Kodo Leather
+5095,Rainbow Fin Albacore
+5175,Earth Totem
+5176,Fire Totem
+5177,Water Totem
+5178,Air Totem
+5184,Filled Crystal Phial
+5232,Minor Soulstone
+5349,Conjured Muffin
+5350,Conjured Water
+5373,Lucky Charm
+5396,Key to Searing Gorge
+5455,Divined Scroll
+5462,Dartol&apos;s Rod of Transformation
+5465,Small Spider Leg
+5466,Scorpid Stinger
+5467,Kodo Meat
+5468,Soft Frenzy Flesh
+5469,Strider Meat
+5470,Thunder Lizard Tail
+5471,Stag Meat
+5472,Kaldorei Spider Kabob
+5473,Scorpid Surprise
+5474,Roasted Kodo Meat
+5476,Fillet of Frenzy
+5477,Strider Stew
+5478,Dig Rat Stew
+5479,Crispy Lizard Tail
+5480,Lean Venison
+5498,Small Lustrous Pearl
+5500,Iridescent Pearl
+5503,Clam Meat
+5504,Tangy Clam Meat
+5507,Ornate Spyglass
+5513,Mana Jade
+5514,Mana Agate
+5525,Boiled Clams
+5526,Clam Chowder
+5527,Goblin Deviled Clams
+5540,Pearl-handled Dagger
+5541,Iridescent Hammer
+5542,Pearl-clasped Cloak
+5631,Rage Potion
+5633,Great Rage Potion
+5634,Free Action Potion
+5635,Sharp Claw
+5637,Large Fang
+5639,Filled Jade Phial
+5645,Filled Tourmaline Phial
+5646,Vial of Blessed Water
+5739,Barbaric Harness
+5762,Red Linen Bag
+5763,Red Woolen Bag
+5764,Green Silk Pack
+5765,Black Silk Pack
+5766,Lesser Wizard&apos;s Robe
+5770,Robes of Arcana
+5780,Murloc Scale Belt
+5781,Murloc Scale Breastplate
+5782,Thick Murloc Armor
+5783,Murloc Scale Bracers
+5784,Slimy Murloc Scale
+5785,Thick Murloc Scale
+5868,Filled Etched Phial
+5956,Blacksmith Hammer
+5957,Handstitched Leather Vest
+5958,Fine Leather Pants
+5961,Dark Leather Pants
+5962,Guardian Pants
+5963,Barbaric Leggings
+5964,Barbaric Shoulders
+5965,Guardian Cloak
+5966,Guardian Gloves
+5996,Elixir of Water Breathing
+5997,Elixir of Minor Defense
+6037,Truesilver Bar
+6038,Giant Clam Scorcho
+6040,Golden Scale Bracers
+6041,Steel Weapon Chain
+6042,Iron Shield Spike
+6043,Iron Counterweight
+6048,Shadow Protection Potion
+6049,Fire Protection Potion
+6050,Frost Protection Potion
+6051,Holy Protection Potion
+6052,Nature Protection Potion
+6149,Greater Mana Potion
+6182,Dim Torch
+6214,Heavy Copper Maul
+6217,Copper Rod
+6218,Runed Copper Rod
+6219,Arclight Spanner
+6238,Brown Linen Robe
+6239,Red Linen Vest
+6240,Blue Linen Vest
+6241,White Linen Robe
+6242,Blue Linen Robe
+6243,Green Woolen Robe
+6260,Blue Dye
+6261,Orange Dye
+6263,Blue Overalls
+6264,Greater Adept&apos;s Robe
+6265,Soul Shard
+6289,Raw Longjaw Mud Snapper
+6290,Brilliant Smallfish
+6291,Raw Brilliant Smallfish
+6303,Raw Slitherskin Mackerel
+6308,Raw Bristle Whisker Catfish
+6316,Loch Frenzy Delight
+6317,Raw Loch Frenzy
+6338,Silver Rod
+6339,Runed Silver Rod
+6350,Rough Bronze Boots
+6358,Oily Blackmouth
+6359,Firefin Snapper
+6361,Raw Rainbow Fin Albacore
+6362,Raw Rockscale Cod
+6370,Blackmouth Oil
+6371,Fire Oil
+6372,Swim Speed Potion
+6373,Elixir of Firepower
+6384,Stylish Blue Shirt
+6385,Stylish Green Shirt
+6450,Silk Bandage
+6451,Heavy Silk Bandage
+6452,Anti-Venom
+6453,Strong Anti-Venom
+6466,Deviate Scale Cloak
+6467,Deviate Scale Gloves
+6468,Deviate Scale Belt
+6470,Deviate Scale
+6471,Perfect Deviate Scale
+6522,Deviate Fish
+6530,Nightcrawlers
+6533,Aquadynamic Fish Attractor
+6657,Savory Deviate Delight
+6662,Elixir of Giant Growth
+6709,Moonglow Vest
+6712,Practice Lock
+6714,Ez-Thro Dynamite
+6730,Ironforge Chain
+6731,Ironforge Breastplate
+6733,Ironforge Gauntlets
+6786,Simple Dress
+6787,White Woolen Dress
+6795,White Swashbuckler&apos;s Shirt
+6796,Red Swashbuckler&apos;s Shirt
+6836,Dress Shoes
+6887,Spotted Yellowtail
+6888,Herb Baked Egg
+6889,Small Egg
+6890,Smoked Bear Meat
+6948,Hearthstone
+7005,Skinning Knife
+7026,Linen Belt
+7027,Boots of Darkness
+7046,Azure Silk Pants
+7047,Hands of Darkness
+7048,Azure Silk Hood
+7049,Truefaith Gloves
+7050,Silk Headband
+7051,Earthen Vest
+7052,Azure Silk Belt
+7053,Azure Silk Cloak
+7054,Robe of Power
+7055,Crimson Silk Belt
+7056,Crimson Silk Cloak
+7057,Green Silken Shoulders
+7058,Crimson Silk Vest
+7059,Crimson Silk Shoulders
+7060,Azure Shoulders
+7061,Earthen Silk Belt
+7062,Crimson Silk Pantaloons
+7063,Crimson Silk Robe
+7064,Crimson Silk Gloves
+7065,Green Silk Armor
+7067,Elemental Earth
+7068,Elemental Fire
+7069,Elemental Air
+7070,Elemental Water
+7071,Iron Buckle
+7072,Naga Scale
+7075,Core of Earth
+7076,Essence of Earth
+7077,Heart of Fire
+7078,Essence of Fire
+7079,Globe of Water
+7080,Essence of Water
+7081,Breath of Wind
+7082,Essence of Air
+7134,Sturdy Dragonmaw Shinbone
+7135,Broken Dragonmaw Shinbone
+7148,Goblin Jumper Cables
+7166,Copper Dagger
+7189,Goblin Rocket Boots
+7190,Scorched Rocket Boots
+7191,Fused Wiring
+7206,Mirror Lake Water Sample
+7268,Xavian Water Sample
+7276,Handstitched Leather Cloak
+7277,Handstitched Leather Bracers
+7278,Light Leather Quiver
+7279,Small Leather Ammo Pouch
+7280,Rugged Leather Pants
+7281,Light Leather Bracers
+7282,Light Leather Pants
+7283,Black Whelp Cloak
+7284,Red Whelp Gloves
+7285,Nimble Leather Gloves
+7286,Black Whelp Scale
+7287,Red Whelp Scale
+7348,Fletcher&apos;s Gloves
+7349,Herbalist&apos;s Gloves
+7352,Earthen Leather Shoulders
+7358,Pilferer&apos;s Gloves
+7359,Heavy Earthen Gloves
+7371,Heavy Quiver
+7372,Heavy Leather Ammo Pouch
+7373,Dusky Leather Leggings
+7374,Dusky Leather Armor
+7375,Green Whelp Armor
+7377,Frost Leather Cloak
+7378,Dusky Bracers
+7386,Green Whelp Bracers
+7387,Dusky Belt
+7390,Dusky Boots
+7391,Swift Boots
+7392,Green Whelp Scale
+7506,Gnomish Universal Remote
+7676,Thistle Tea
+7733,Staff of Prehistoria
+7740,Gni&apos;kiv Medallion
+7741,The Shaft of Tsol
+7769,Filled Brown Waterskin
+7770,Filled Blue Waterskin
+7771,Filled Red Waterskin
+7866,Empty Thaumaturgy Vessel
+7867,Vessel of Dragon&apos;s Blood
+7909,Aquamarine
+7910,Star Ruby
+7911,Truesilver Ore
+7912,Solid Stone
+7913,Barbaric Iron Shoulders
+7914,Barbaric Iron Breastplate
+7915,Barbaric Iron Helm
+7916,Barbaric Iron Boots
+7917,Barbaric Iron Gloves
+7918,Heavy Mithril Shoulder
+7919,Heavy Mithril Gauntlet
+7920,Mithril Scale Pants
+7921,Heavy Mithril Pants
+7922,Steel Plate Helm
+7924,Mithril Scale Bracers
+7925,Mithril Scale Gloves
+7926,Ornate Mithril Pants
+7927,Ornate Mithril Gloves
+7928,Ornate Mithril Shoulder
+7929,Orcish War Leggings
+7930,Heavy Mithril Breastplate
+7931,Mithril Coif
+7932,Mithril Scale Shoulders
+7933,Heavy Mithril Boots
+7934,Heavy Mithril Helm
+7935,Ornate Mithril Breastplate
+7936,Ornate Mithril Boots
+7937,Ornate Mithril Helm
+7938,Truesilver Gauntlets
+7939,Truesilver Breastplate
+7941,Heavy Mithril Axe
+7942,Blue Glittering Axe
+7943,Wicked Mithril Blade
+7944,Dazzling Mithril Rapier
+7945,Big Black Mace
+7946,Runed Mithril Hammer
+7947,Ebon Shiv
+7954,The Shatterer
+7955,Copper Claymore
+7956,Bronze Warhammer
+7957,Bronze Greatsword
+7958,Bronze Battle Axe
+7959,Blight
+7960,Truesilver Champion
+7961,Phantom Blade
+7963,Steel Breastplate
+7964,Solid Sharpening Stone
+7965,Solid Weightstone
+7966,Solid Grinding Stone
+7967,Mithril Shield Spike
+7969,Mithril Spurs
+7970,E.C.A.C.
+7971,Black Pearl
+7972,Ichor of Undeath
+7974,Zesty Clam Meat
+8007,Mana Citrine
+8008,Mana Ruby
+8067,Crafted Light Shot
+8068,Crafted Heavy Shot
+8069,Crafted Solid Shot
+8075,Conjured Sourdough
+8076,Conjured Sweet Roll
+8077,Conjured Mineral Water
+8078,Conjured Sparkling Water
+8079,Conjured Crystal Water
+8150,Deeprock Salt
+8151,Flask of Mojo
+8152,Flask of Big Mojo
+8153,Wildvine
+8154,Scorpid Scale
+8165,Worn Dragonscale
+8167,Turtle Scale
+8169,Thick Hide
+8170,Rugged Leather
+8171,Rugged Hide
+8172,Cured Thick Hide
+8173,Thick Armor Kit
+8174,Comfortable Leather Hat
+8175,Nightscape Tunic
+8176,Nightscape Headband
+8185,Turtle Scale Leggings
+8187,Turtle Scale Gloves
+8189,Turtle Scale Breastplate
+8191,Turtle Scale Helm
+8192,Nightscape Shoulders
+8193,Nightscape Pants
+8195,Nightscape Cloak
+8197,Nightscape Boots
+8198,Turtle Scale Bracers
+8200,Big Voodoo Robe
+8201,Big Voodoo Mask
+8202,Big Voodoo Pants
+8203,Tough Scorpid Breastplate
+8204,Tough Scorpid Gloves
+8205,Tough Scorpid Bracers
+8206,Tough Scorpid Leggings
+8207,Tough Scorpid Shoulders
+8208,Tough Scorpid Helm
+8209,Tough Scorpid Boots
+8210,Wild Leather Shoulders
+8211,Wild Leather Vest
+8212,Wild Leather Leggings
+8213,Wild Leather Boots
+8214,Wild Leather Helmet
+8215,Wild Leather Cloak
+8216,Big Voodoo Cloak
+8217,Quickdraw Quiver
+8218,Thick Leather Ammo Pouch
+8343,Heavy Silken Thread
+8345,Wolfshead Helm
+8346,Gauntlets of the Sea
+8347,Dragonscale Gauntlets
+8348,Helm of Fire
+8349,Feathered Breastplate
+8364,Mithril Head Trout
+8365,Raw Mithril Head Trout
+8367,Dragonscale Breastplate
+8529,Noggenfogger Elixir
+8544,Mageweave Bandage
+8545,Heavy Mageweave Bandage
+8585,Tapped Dowsing Widget
+8708,Hammer of Expertise
+8827,Elixir of Water Walking
+8831,Purple Lotus
+8836,Arthas&apos; Tears
+8838,Sungrass
+8839,Blindweed
+8845,Ghost Mushroom
+8846,Gromsblood
+8925,Crystal Vial
+8949,Elixir of Agility
+8951,Elixir of Greater Defense
+8956,Oil of Immolation
+9030,Restorative Potion
+9036,Magic Resistance Potion
+9060,Inlaid Mithril Cylinder
+9061,Goblin Rocket Fuel
+9088,Gift of Arthas
+9144,Wildvine Potion
+9149,Philosopher&apos;s Stone
+9154,Elixir of Detect Undead
+9155,Arcane Elixir
+9172,Invisibility Potion
+9173,Goblin Transponder
+9179,Elixir of Greater Intellect
+9187,Elixir of Greater Agility
+9197,Elixir of Dream Vision
+9206,Elixir of Giants
+9210,Ghost Dye
+9224,Elixir of Demonslaying
+9233,Elixir of Detect Demon
+9240,Mallet of Zul&apos;Farrak
+9251,Upper Map Fragment
+9252,Lower Map Fragment
+9253,Middle Map Fragment
+9254,Cuergo&apos;s Treasure Map
+9255,Lahassa Essence
+9256,Imbel Essence
+9257,Samha Essence
+9258,Byltan Essence
+9260,Volatile Rum
+9262,Black Vitriol
+9264,Elixir of Shadow Power
+9279,White Punch Card
+9280,Yellow Punch Card
+9281,Red Punch Card
+9282,Blue Punch Card
+9284,Full Leaden Collection Phial
+9306,Stave of Equinex
+9307,A Sparkling Stone
+9312,Blue Firework
+9313,Green Firework
+9316,Prismatic Punch Card
+9318,Red Firework
+9319,Nimboya&apos;s Laden Pike
+9320,Witherbark Skull
+9330,Snapshot of Gammerita
+9365,High Potency Radioactive Fallout
+9366,Golden Scale Gauntlets
+9372,Sul&apos;thraze the Lasher
+9379,Sang&apos;thraze the Deflector
+9421,Major Healthstone
+9438,Acceptable Scorpid Sample
+9440,Acceptable Basilisk Sample
+9441,Acceptable Hyena Sample
+9593,Treant Muisek
+9594,Beast Muisek
+9595,Hippogryph Muisek
+9596,Faerie Dragon Muisek
+9597,Mountain Giant Muisek
+9718,Reforged Blade of Heroes
+9719,Broken Blade of Heroes
+9998,Black Mageweave Vest
+9999,Black Mageweave Leggings
+10001,Black Mageweave Robe
+10002,Shadoweave Pants
+10003,Black Mageweave Gloves
+10004,Shadoweave Robe
+10007,Red Mageweave Vest
+10008,White Bandit Mask
+10009,Red Mageweave Pants
+10010,Stormcloth Pants
+10011,Stormcloth Gloves
+10018,Red Mageweave Gloves
+10019,Dreamweave Gloves
+10020,Stormcloth Vest
+10021,Dreamweave Vest
+10023,Shadoweave Gloves
+10024,Black Mageweave Headband
+10025,Shadoweave Mask
+10026,Black Mageweave Boots
+10027,Black Mageweave Shoulders
+10028,Shadoweave Shoulders
+10029,Red Mageweave Shoulders
+10030,Admiral&apos;s Hat
+10031,Shadoweave Boots
+10032,Stormcloth Headband
+10033,Red Mageweave Headband
+10034,Tuxedo Shirt
+10035,Tuxedo Pants
+10036,Tuxedo Jacket
+10038,Stormcloth Shoulders
+10039,Stormcloth Boots
+10040,White Wedding Dress
+10041,Dreamweave Circlet
+10042,Cindercloth Robe
+10044,Cindercloth Boots
+10045,Simple Linen Pants
+10046,Simple Linen Boots
+10047,Simple Kilt
+10048,Colorful Kilt
+10050,Mageweave Bag
+10051,Red Mageweave Bag
+10052,Orange Martial Shirt
+10053,Simple Black Dress
+10054,Lavender Mageweave Shirt
+10055,Pink Mageweave Shirt
+10056,Orange Mageweave Shirt
+10285,Shadow Silk
+10286,Heart of the Wild
+10290,Pink Dye
+10306,Scroll of Spirit IV
+10307,Scroll of Stamina IV
+10308,Scroll of Intellect IV
+10309,Scroll of Agility IV
+10310,Scroll of Strength IV
+10421,Rough Copper Vest
+10423,Silvered Bronze Leggings
+10464,Staff of Command
+10465,Egg of Hakkar
+10498,Gyromatic Micro-Adjustor
+10499,Bright-Eye Goggles
+10500,Fire Goggles
+10501,Catseye Ultra Goggles
+10502,Spellpower Goggles Xtreme
+10503,Rose Colored Goggles
+10504,Green Lens
+10505,Solid Blasting Powder
+10506,Deepdive Helmet
+10507,Solid Dynamite
+10508,Mithril Blunderbuss
+10510,Mithril Heavy-bore Rifle
+10512,Hi-Impact Mithril Slugs
+10513,Mithril Gyro-Shot
+10514,Mithril Frag Bomb
+10515,Torch of Retribution
+10518,Parachute Cloak
+10542,Goblin Mining Helmet
+10543,Goblin Construction Helmet
+10545,Gnomish Goggles
+10546,Deadly Scope
+10548,Sniper Scope
+10558,Gold Power Core
+10559,Mithril Tube
+10560,Unstable Trigger
+10561,Mithril Casing
+10562,Hi-Explosive Bomb
+10576,Mithril Mechanical Dragonling
+10577,Goblin Mortar
+10579,Explosive Arrow
+10580,Goblin &quot;Boom&quot; Box
+10585,Goblin Radio
+10586,The Big One
+10587,Goblin Bomb Dispenser
+10588,Goblin Rocket Helmet
+10589,Oathstone of Ysera&apos;s Dragonflight
+10592,Catseye Elixir
+10620,Thorium Ore
+10644,Recipe: Goblin Rocket Fuel
+10645,Gnomish Death Ray
+10646,Goblin Sapper Charge
+10647,Engineer&apos;s Ink
+10648,Common Parchment
+10662,Filled Egg of Hakkar
+10663,Essence of Hakkar
+10691,Filled Vial Labeled #1
+10692,Filled Vial Labeled #2
+10693,Filled Vial Labeled #3
+10694,Filled Vial Labeled #4
+10713,Plans: Inlaid Mithril Cylinder
+10716,Gnomish Shrink Ray
+10719,Mobile Alarm
+10720,Gnomish Net-o-Matic Projector
+10721,Gnomish Harm Prevention Belt
+10723,Gnomish Ham Radio
+10724,Gnomish Rocket Boots
+10725,Gnomish Battle Chicken
+10726,Gnomish Mind Control Cap
+10727,Goblin Dragon Gun
+10818,Yeh&apos;kinya&apos;s Scroll
+10841,Goldthorn Tea
+10938,Lesser Magic Essence
+10939,Greater Magic Essence
+10940,Strange Dust
+10978,Small Glimmering Shard
+10998,Lesser Astral Essence
+11000,Shadowforge Key
+11018,Un&apos;Goro Soil
+11022,Packet of Tharlendris Seeds
+11024,Evergreen Herb Casing
+11040,Morrowgrain
+11082,Greater Astral Essence
+11083,Soul Dust
+11084,Large Glimmering Shard
+11122,Carrot on a Stick
+11128,Golden Rod
+11130,Runed Golden Rod
+11131,Hive Wall Sample
+11134,Lesser Mystic Essence
+11135,Greater Mystic Essence
+11137,Vision Dust
+11138,Small Glowing Shard
+11139,Large Glowing Shard
+11144,Truesilver Rod
+11145,Runed Truesilver Rod
+11147,Samophlange Manual Cover
+11148,Samophlange Manual Page
+11149,Samophlange Manual
+11174,Lesser Nether Essence
+11175,Greater Nether Essence
+11176,Dream Dust
+11177,Small Radiant Shard
+11178,Large Radiant Shard
+11230,Encased Fiery Essence
+11270,Nixx&apos;s Signed Pledge
+11282,Oglethorpe&apos;s Signed Pledge
+11283,Overspark&apos;s Signed Pledge
+11287,Lesser Magic Wand
+11288,Greater Magic Wand
+11289,Lesser Mystic Wand
+11290,Greater Mystic Wand
+11291,Star Wood
+11320,Bloodpetal Zapper
+11370,Dark Iron Ore
+11371,Dark Iron Bar
+11382,Blood of the Mountain
+11413,Nagmara&apos;s Filled Vial
+11445,Flute of the Ancients
+11470,Tablet Transcript
+11482,Crystal Pylon User&apos;s Manual
+11511,Cenarion Beacon
+11582,Fel Salve
+11590,Mechanical Repair Kit
+11604,Dark Iron Plate
+11605,Dark Iron Shoulders
+11606,Dark Iron Mail
+11607,Dark Iron Sunderer
+11608,Dark Iron Pulverizer
+11613,DEBUG Samophlange Manual Cover
+11616,DEBUG Samophlange Manual Page
+11754,Black Diamond
+11811,Smoking Heart of the Mountain
+11825,Pet Bombling
+11826,Lil&apos; Smoky
+11947,Filled Cursed Ooze Jar
+11949,Filled Tainted Ooze Jar
+11950,Windblossom Berries
+11951,Whipper Root Tuber
+11952,Night Dragon&apos;s Breath
+11954,Filled Pure Sample Jar
+12037,Mystery Meat
+12144,Eggscilloscope
+12184,Raptor Flesh
+12190,Dreamless Sleep Potion
+12202,Tiger Meat
+12203,Red Wolf Meat
+12204,Heavy Kodo Meat
+12205,White Spider Meat
+12206,Tender Crab Meat
+12207,Giant Egg
+12208,Tender Wolf Meat
+12209,Lean Wolf Steak
+12210,Roast Raptor
+12212,Jungle Stew
+12213,Carrion Surprise
+12214,Mystery Stew
+12215,Heavy Kodo Stew
+12216,Spiced Chili Crab
+12217,Dragonbreath Chili
+12218,Monster Omelet
+12220,Intact Elemental Bracer
+12223,Meaty Bat Wing
+12224,Crispy Bat Wing
+12241,Collected Dragon Egg
+12259,Glinting Steel Dagger
+12260,Searing Golden Blade
+12263,Caged Worg Pup
+12347,Filled Cleansing Bowl
+12349,Cliffspring River Sample
+12359,Thorium Bar
+12360,Arcanite Bar
+12361,Blue Sapphire
+12363,Arcane Crystal
+12364,Huge Emerald
+12365,Dense Stone
+12368,Dawn&apos;s Gambit
+12384,Cache of Mau&apos;ari
+12404,Dense Sharpening Stone
+12405,Thorium Armor
+12406,Thorium Belt
+12408,Thorium Bracers
+12409,Thorium Boots
+12410,Thorium Helm
+12414,Thorium Leggings
+12415,Radiant Breastplate
+12416,Radiant Belt
+12417,Radiant Circlet
+12418,Radiant Gloves
+12419,Radiant Boots
+12420,Radiant Leggings
+12422,Imperial Plate Chest
+12424,Imperial Plate Belt
+12425,Imperial Plate Bracers
+12426,Imperial Plate Boots
+12427,Imperial Plate Helm
+12428,Imperial Plate Shoulders
+12429,Imperial Plate Leggings
+12567,Filled Flasket
+12607,Brilliant Chromatic Scale
+12610,Runic Plate Shoulders
+12611,Runic Plate Boots
+12612,Runic Plate Helm
+12613,Runic Breastplate
+12614,Runic Plate Leggings
+12618,Enchanted Thorium Breastplate
+12619,Enchanted Thorium Leggings
+12620,Enchanted Thorium Helm
+12624,Wildthorn Mail
+12625,Dawnbringer Shoulders
+12628,Demon Forged Breastplate
+12631,Fiery Plate Gauntlets
+12632,Storm Gauntlets
+12633,Whitesoul Helm
+12636,Helm of the Great Chief
+12639,Stronghold Gauntlets
+12640,Lionheart Helm
+12641,Invulnerable Mail
+12643,Dense Weightstone
+12644,Dense Grinding Stone
+12645,Thorium Shield Spike
+12655,Enchanted Thorium Bar
+12662,Demonic Rune
+12721,Good Luck Half-Charm
+12723,Good Luck Charm
+12753,Skin of Shadow
+12764,Thorium Greatsword
+12769,Bleakwood Hew
+12772,Inlaid Thorium Hammer
+12773,Ornate Thorium Handaxe
+12774,Dawn&apos;s Edge
+12775,Huge Thorium Battleaxe
+12776,Enchanted Battlehammer
+12777,Blazing Rapier
+12779,Rune Edge
+12781,Serenity
+12782,Corruption
+12783,Heartseeker
+12784,Arcanite Reaper
+12790,Arcanite Champion
+12792,Volcanic Hammer
+12794,Masterwork Stormhammer
+12795,Blood Talon
+12796,Hammer of the Titans
+12797,Frostguard
+12798,Annihilator
+12799,Large Opal
+12800,Azerothian Diamond
+12802,Darkspear
+12803,Living Essence
+12804,Powerful Mojo
+12808,Essence of Undeath
+12809,Guardian Stone
+12810,Enchanted Leather
+12811,Righteous Orb
+12846,Argent Dawn Commission
+12847,Soul Stained Pike
+12885,Pamela&apos;s Doll
+12886,Pamela&apos;s Doll&apos;s Head
+12887,Pamela&apos;s Doll&apos;s Left Side
+12888,Pamela&apos;s Doll&apos;s Right Side
+12907,Corrupt Moonwell Water
+12938,Blood of Heroes
+13155,Resonating Skull
+13157,Fetid Skull
+13159,Bone Dust
+13209,Seal of the Dawn
+13370,Vitreous Focuser
+13422,Stonescale Eel
+13423,Stonescale Oil
+13442,Mighty Rage Potion
+13443,Superior Mana Potion
+13444,Major Mana Potion
+13445,Elixir of Superior Defense
+13446,Major Healing Potion
+13447,Elixir of the Sages
+13452,Elixir of the Mongoose
+13453,Elixir of Brute Force
+13454,Greater Arcane Elixir
+13455,Greater Stoneshield Potion
+13456,Greater Frost Protection Potion
+13457,Greater Fire Protection Potion
+13458,Greater Nature Protection Potion
+13459,Greater Shadow Protection Potion
+13460,Greater Holy Protection Potion
+13461,Greater Arcane Protection Potion
+13462,Purification Potion
+13463,Dreamfoil
+13464,Golden Sansam
+13465,Mountain Silversage
+13466,Plaguebloom
+13467,Icecap
+13468,Black Lotus
+13503,Alchemist&apos;s Stone
+13506,Potion of Petrification
+13510,Flask of the Titans
+13511,Flask of Distilled Wisdom
+13512,Flask of Supreme Power
+13513,Flask of Chromatic Resistance
+13544,Spectral Essence
+13704,Skeleton Key
+13754,Raw Glossy Mightfish
+13755,Winter Squid
+13756,Raw Summer Bass
+13757,Lightning Eel
+13758,Raw Redgill
+13759,Raw Nightfin Snapper
+13760,Raw Sunscale Salmon
+13851,Hot Wolf Ribs
+13856,Runecloth Belt
+13857,Runecloth Tunic
+13858,Runecloth Robe
+13860,Runecloth Cloak
+13863,Runecloth Gloves
+13864,Runecloth Boots
+13865,Runecloth Pants
+13866,Runecloth Headband
+13867,Runecloth Shoulders
+13868,Frostweave Robe
+13869,Frostweave Tunic
+13870,Frostweave Gloves
+13871,Frostweave Pants
+13888,Darkclaw Lobster
+13889,Raw Whitescale Salmon
+13893,Large Raw Mightfish
+13909,12 Pound Lobster
+13926,Golden Pearl
+13927,Cooked Glossy Mightfish
+13928,Grilled Squid
+13929,Hot Smoked Bass
+13930,Filet of Redgill
+13931,Nightfin Soup
+13932,Poached Sunscale Salmon
+13933,Lobster Stew
+13934,Mightfish Steak
+13935,Baked Salmon
+14042,Cindercloth Vest
+14043,Cindercloth Gloves
+14044,Cindercloth Cloak
+14045,Cindercloth Pants
+14046,Runecloth Bag
+14047,Runecloth
+14048,Bolt of Runecloth
+14100,Brightcloth Robe
+14101,Brightcloth Gloves
+14103,Brightcloth Cloak
+14104,Brightcloth Pants
+14106,Felcloth Robe
+14107,Felcloth Pants
+14108,Felcloth Boots
+14111,Felcloth Hood
+14112,Felcloth Shoulders
+14128,Wizardweave Robe
+14130,Wizardweave Turban
+14132,Wizardweave Leggings
+14134,Cloak of Fire
+14136,Robe of Winter Night
+14137,Mooncloth Leggings
+14138,Mooncloth Vest
+14139,Mooncloth Shoulders
+14140,Mooncloth Circlet
+14141,Ghostweave Vest
+14142,Ghostweave Gloves
+14143,Ghostweave Belt
+14144,Ghostweave Pants
+14146,Gloves of Spell Mastery
+14152,Robe of the Archmage
+14153,Robe of the Void
+14154,Truefaith Vestments
+14155,Mooncloth Bag
+14156,Bottomless Bag
+14227,Ironweb Spider Silk
+14256,Felcloth
+14339,Moonwell Water Tube
+14341,Rune Thread
+14342,Mooncloth
+14343,Small Brilliant Shard
+14344,Large Brilliant Shard
+14529,Runecloth Bandage
+14530,Heavy Runecloth Bandage
+14645,Unfinished Skeleton Key
+14894,Lily Root
+15045,Green Dragonscale Breastplate
+15046,Green Dragonscale Leggings
+15047,Red Dragonscale Breastplate
+15048,Blue Dragonscale Breastplate
+15049,Blue Dragonscale Shoulders
+15050,Black Dragonscale Breastplate
+15051,Black Dragonscale Shoulders
+15052,Black Dragonscale Leggings
+15053,Volcanic Breastplate
+15054,Volcanic Leggings
+15055,Volcanic Shoulders
+15056,Stormshroud Armor
+15057,Stormshroud Pants
+15058,Stormshroud Shoulders
+15059,Living Breastplate
+15060,Living Leggings
+15061,Living Shoulders
+15062,Devilsaur Leggings
+15063,Devilsaur Gauntlets
+15064,Warbear Harness
+15065,Warbear Woolies
+15066,Ironfeather Breastplate
+15067,Ironfeather Shoulders
+15068,Frostsaber Tunic
+15069,Frostsaber Leggings
+15070,Frostsaber Gloves
+15071,Frostsaber Boots
+15072,Chimeric Leggings
+15073,Chimeric Boots
+15074,Chimeric Gloves
+15075,Chimeric Vest
+15076,Heavy Scorpid Vest
+15077,Heavy Scorpid Bracers
+15078,Heavy Scorpid Gauntlets
+15079,Heavy Scorpid Leggings
+15080,Heavy Scorpid Helm
+15081,Heavy Scorpid Shoulders
+15082,Heavy Scorpid Belt
+15083,Wicked Leather Gauntlets
+15084,Wicked Leather Bracers
+15085,Wicked Leather Armor
+15086,Wicked Leather Headband
+15087,Wicked Leather Pants
+15088,Wicked Leather Belt
+15090,Runic Leather Armor
+15091,Runic Leather Gauntlets
+15092,Runic Leather Bracers
+15093,Runic Leather Belt
+15094,Runic Leather Headband
+15095,Runic Leather Pants
+15096,Runic Leather Shoulders
+15138,Onyxia Scale Cloak
+15141,Onyxia Scale Breastplate
+15209,Relic Bundle
+15407,Cured Rugged Hide
+15408,Heavy Scorpid Scale
+15409,Refined Deeprock Salt
+15410,Scale of Onyxia
+15412,Green Dragonscale
+15414,Red Dragonscale
+15415,Blue Dragonscale
+15416,Black Dragonscale
+15417,Devilsaur Leather
+15419,Warbear Leather
+15447,Living Rot
+15448,Coagulated Rot
+15564,Rugged Armor Kit
+15802,Mooncloth Boots
+15843,Filled Dreadmist Peak Sampler
+15845,Filled Cliffspring Falls Sampler
+15846,Salt Shaker
+15869,Silver Skeleton Key
+15870,Golden Skeleton Key
+15871,Truesilver Skeleton Key
+15872,Arcanite Skeleton Key
+15882,Half Pendant of Aquatic Endurance
+15885,Pendant of the Sea Lion
+15992,Dense Blasting Powder
+15993,Thorium Grenade
+15994,Thorium Widget
+15995,Thorium Rifle
+15996,Lifelike Mechanical Toad
+15997,Thorium Shells
+15999,Spellpower Goggles Xtreme Plus
+16000,Thorium Tube
+16004,Dark Iron Rifle
+16005,Dark Iron Bomb
+16006,Delicate Arcanite Converter
+16007,Flawless Arcanite Rifle
+16008,Master Engineer&apos;s Goggles
+16009,Voice Amplification Modulator
+16022,Arcanite Dragonling
+16023,Masterwork Target Dummy
+16040,Arcane Bomb
+16202,Lesser Eternal Essence
+16203,Greater Eternal Essence
+16204,Illusion Dust
+16206,Arcanite Rod
+16207,Runed Arcanite Rod
+16309,Drakefire Amulet
+16642,Shredder Operating Manual - Chapter 1
+16643,Shredder Operating Manual - Chapter 2
+16644,Shredder Operating Manual - Chapter 3
+16645,Shredder Operating Manual - Page 1
+16646,Shredder Operating Manual - Page 2
+16647,Shredder Operating Manual - Page 3
+16648,Shredder Operating Manual - Page 4
+16649,Shredder Operating Manual - Page 5
+16650,Shredder Operating Manual - Page 6
+16651,Shredder Operating Manual - Page 7
+16652,Shredder Operating Manual - Page 8
+16653,Shredder Operating Manual - Page 9
+16654,Shredder Operating Manual - Page 10
+16655,Shredder Operating Manual - Page 11
+16656,Shredder Operating Manual - Page 12
+16766,Undermine Clam Chowder
+16892,Lesser Soulstone
+16893,Soulstone
+16895,Greater Soulstone
+16896,Major Soulstone
+16973,Vial of Dire Water
+16979,Flarecore Gloves
+16980,Flarecore Mantle
+16982,Corehound Boots
+16983,Molten Helm
+16984,Black Dragonscale Boots
+16988,Fiery Chain Shoulders
+16989,Fiery Chain Girdle
+17010,Fiery Core
+17011,Lava Core
+17012,Core Leather
+17013,Dark Iron Leggings
+17014,Dark Iron Bracers
+17015,Dark Iron Reaver
+17016,Dark Iron Destroyer
+17020,Arcane Powder
+17034,Maple Seed
+17035,Stranglethorn Seed
+17056,Light Feather
+17126,Elegant Letter
+17182,"Sulfuras, Hand of Ragnaros"
+17191,Scepter of Celebras
+17193,Sulfuron Hammer
+17194,Holiday Spices
+17196,Holiday Spirits
+17197,Gingerbread Cookie
+17198,Egg Nog
+17202,Snowball
+17203,Sulfuron Ingot
+17204,Eye of Sulfuras
+17222,Spider Sausage
+17224,Scrying Scope
+17323,Mulverick&apos;s Beacon
+17324,Guse&apos;s Beacon
+17325,Jeztor&apos;s Beacon
+17333,Aqual Quintessence
+17353,Stormpike Assault Orders
+17362,Ryson&apos;s Beacon
+17363,Ryson&apos;s Beacon
+17364,Scrying Scope
+17442,Frostwolf Assault Orders
+17505,Ichman&apos;s Beacon
+17506,Vipore&apos;s Beacon
+17507,Slidore&apos;s Beacon
+17690,Frostwolf Insignia Rank 1
+17691,Stormpike Insignia Rank 1
+17696,Filled Cerulean Vial
+17704,Edge of Winter
+17708,Elixir of Frost Power
+17716,Snowmaster 9000
+17721,Gloves of the Greatfather
+17723,Green Holiday Shirt
+17735,The Feast of Winter Veil
+17757,Amulet of Spirits
+17758,Amulet of Union
+17761,Gem of the First Khan
+17762,Gem of the Second Khan
+17763,Gem of the Third Khan
+17764,Gem of the Fourth Khan
+17765,Gem of the Fifth Khan
+17771,Elementium Bar
+17781,The Pariah&apos;s Instructions
+17900,Stormpike Insignia Rank 2
+17901,Stormpike Insignia Rank 3
+17902,Stormpike Insignia Rank 4
+17903,Stormpike Insignia Rank 5
+17904,Stormpike Insignia Rank 6
+17905,Frostwolf Insignia Rank 2
+17906,Frostwolf Insignia Rank 3
+17907,Frostwolf Insignia Rank 4
+17908,Frostwolf Insignia Rank 5
+17909,Frostwolf Insignia Rank 6
+18045,Tender Wolf Steak
+18151,Filled Amethyst Phial
+18168,Force Reactive Disk
+18232,Field Repair Bot 74A
+18238,Shadowskin Gloves
+18240,Ogre Tannin
+18251,Core Armor Kit
+18253,Major Rejuvenation Potion
+18254,Runn Tum Tuber Surprise
+18255,Runn Tum Tuber
+18256,Imbued Vial
+18258,Gordok Ogre Suit
+18262,Elemental Sharpening Stone
+18263,Flarecore Wraps
+18282,Core Marksman Rifle
+18283,Biznicks 247x128 Accurascope
+18294,Elixir of Greater Water Breathing
+18335,Pristine Black Diamond
+18405,Belt of the Archmage
+18407,Felcloth Gloves
+18408,Inferno Gloves
+18409,Mooncloth Gloves
+18413,Cloak of Warding
+18486,Mooncloth Robe
+18492,Treated Ancient Blade
+18501,Felvine Shard
+18504,Girdle of Insight
+18506,Mongoose Boots
+18508,Swift Flight Bracers
+18509,Chromatic Cloak
+18510,Hide of the Wild
+18511,Shifting Cloak
+18512,Larval Acid
+18540,Sealed Reliquary of Purity
+18562,Elementium Ore
+18567,Elemental Flux
+18582,The Twin Blades of Azzinoth
+18583,Warglaive of Azzinoth (Right)
+18584,Warglaive of Azzinoth (Left)
+18587,Goblin Jumper Cables XL
+18588,Ez-Thro Dynamite II
+18594,Powerful Seaforium Charge
+18597,Orcish Orphan Whistle
+18598,Human Orphan Whistle
+18608,Benediction
+18628,Thorium Brotherhood Contract
+18631,Truesilver Transformer
+18634,Gyrofreeze Ice Reflector
+18637,Major Recombobulator
+18638,Hyper-Radiant Flame Reflector
+18639,Ultra-Flash Shadow Reflector
+18640,Happy Fun Rock
+18641,Dense Dynamite
+18642,Jaina&apos;s Autograph
+18643,Cairne&apos;s Hoofprint
+18645,Gnomish Alarm-o-Bot
+18646,The Eye of Divinity
+18659,Splinter of Nordrassil
+18660,World Enlarger
+18662,Heavy Leather Ball
+18665,The Eye of Shadow
+18707,Ancient Rune Etched Stave
+18713,"Rhok&apos;delar, Longbow of the Ancient Keepers"
+18715,"Lok&apos;delar, Stave of the Ancient Keepers"
+18724,Enchanted Black Dragon Sinew
+18769,Enchanted Thorium Platemail
+18770,Enchanted Thorium Platemail
+18771,Enchanted Thorium Platemail
+18775,Manna-Enriched Horse Feed
+18779,Bottom Half of Advanced Armorsmithing: Volume I
+18780,Top Half of Advanced Armorsmithing: Volume I
+18781,Bottom Half of Advanced Armorsmithing: Volume II
+18782,Top Half of Advanced Armorsmithing: Volume II
+18783,Bottom Half of Advanced Armorsmithing: Volume III
+18784,Top Half of Advanced Armorsmithing: Volume III
+18799,Charger&apos;s Redeemed Soul
+18948,Barbaric Bracers
+18984,Dimensional Ripper - Everlook
+18986,Ultrasafe Transporter: Gadgetzan
+19026,Snake Burst Firework
+19043,Heavy Timbermaw Belt
+19044,Might of the Timbermaw
+19047,Wisdom of the Timbermaw
+19048,Heavy Timbermaw Boots
+19049,Timbermaw Brawlers
+19050,Mantle of the Timbermaw
+19051,Girdle of the Dawn
+19052,Dawn Treaders
+19056,Argent Boots
+19057,Gloves of the Dawn
+19058,Golden Mantle of the Dawn
+19059,Argent Shoulders
+19148,Dark Iron Helm
+19149,Lava Belt
+19156,Flarecore Robe
+19157,Chromatic Gauntlets
+19162,Corehound Belt
+19163,Molten Belt
+19164,Dark Iron Gauntlets
+19165,Flarecore Leggings
+19166,Black Amnesty
+19167,Blackfury
+19168,Blackguard
+19169,Nightfall
+19170,Ebon Hand
+19213,Silverwing Talisman of Merit
+19227,Ace of Beasts
+19228,Beasts Deck
+19230,Two of Beasts
+19231,Three of Beasts
+19232,Four of Beasts
+19233,Five of Beasts
+19234,Six of Beasts
+19235,Seven of Beasts
+19236,Eight of Beasts
+19257,Warlords Deck
+19258,Ace of Warlords
+19259,Two of Warlords
+19260,Three of Warlords
+19261,Four of Warlords
+19262,Five of Warlords
+19263,Six of Warlords
+19264,Seven of Warlords
+19265,Eight of Warlords
+19267,Elementals Deck
+19268,Ace of Elementals
+19269,Two of Elementals
+19270,Three of Elementals
+19271,Four of Elementals
+19272,Five of Elementals
+19273,Six of Elementals
+19274,Seven of Elementals
+19275,Eight of Elementals
+19276,Ace of Portals
+19277,Portals Deck
+19278,Two of Portals
+19279,Three of Portals
+19280,Four of Portals
+19281,Five of Portals
+19282,Six of Portals
+19283,Seven of Portals
+19284,Eight of Portals
+19422,Darkmoon Faire Fortune
+19440,Powerful Anti-Venom
+19441,Huge Venom Sac
+19450,A Jubling&apos;s Tiny Home
+19682,Bloodvine Vest
+19683,Bloodvine Leggings
+19684,Bloodvine Boots
+19685,Primal Batskin Jerkin
+19686,Primal Batskin Gloves
+19687,Primal Batskin Bracers
+19688,Blood Tiger Breastplate
+19689,Blood Tiger Shoulders
+19690,Bloodsoul Breastplate
+19691,Bloodsoul Shoulders
+19692,Bloodsoul Gauntlets
+19693,Darksoul Breastplate
+19694,Darksoul Leggings
+19695,Darksoul Shoulders
+19696,Harvest Bread
+19725,Arathi Resource Crate
+19726,Bloodvine
+19767,Primal Bat Leather
+19768,Primal Tiger Leather
+19774,Souldarite
+19812,Rune of the Dawn
+19858,Zandalar Honor Token
+19880,Gurubashi Head Collection
+19881,Channeler&apos;s Head
+19931,Gurubashi Mojo Madness
+19939,Gri&apos;lek&apos;s Blood
+19940,Renataki&apos;s Tooth
+19941,Wushoolay&apos;s Mane
+19942,Hazza&apos;rah&apos;s Dream Thread
+19943,Massive Mojo
+19951,Gri&apos;lek&apos;s Charm of Might
+19952,Gri&apos;lek&apos;s Charm of Valor
+19953,Renataki&apos;s Charm of Beasts
+19954,Renataki&apos;s Charm of Trickery
+19955,Wushoolay&apos;s Charm of Nature
+19956,Wushoolay&apos;s Charm of Spirits
+19957,Hazza&apos;rah&apos;s Charm of Destruction
+19958,Hazza&apos;rah&apos;s Charm of Healing
+19959,Hazza&apos;rah&apos;s Charm of Magic
+19998,Bloodvine Lens
+19999,Bloodvine Goggles
+20002,Greater Dreamless Sleep Potion
+20004,Mighty Troll&apos;s Blood Elixir
+20007,Mageblood Elixir
+20008,Living Action Potion
+20039,Dark Iron Boots
+20074,Heavy Crocolisk Stew
+20131,Battle Tabard of the Defilers
+20132,Arathor Battle Tabard
+20256,Warsong Gulch Ribbon of Sacrifice
+20295,Blue Dragonscale Leggings
+20296,Green Dragonscale Gauntlets
+20380,Dreamscale Breastplate
+20381,Dreamscale
+20393,Treat Bag
+20402,Agent of Nozdormu
+20416,Crest of Beckoning: Fire
+20418,Crest of Beckoning: Thunder
+20419,Crest of Beckoning: Earth
+20420,Crest of Beckoning: Water
+20424,Sandworm Meat
+20432,Signet of Beckoning: Fire
+20433,Signet of Beckoning: Thunder
+20435,Signet of Beckoning: Stone
+20436,Signet of Beckoning: Water
+20447,Scepter of Beckoning: Fire
+20448,Scepter of Beckoning: Thunder
+20449,Scepter of Beckoning: Stone
+20450,Scepter of Beckoning: Water
+20452,Smoked Desert Dumplings
+20475,Adamantite Arrow Maker
+20476,Sandstalker Bracers
+20477,Sandstalker Gauntlets
+20478,Sandstalker Breastplate
+20479,Spitfire Breastplate
+20480,Spitfire Gauntlets
+20481,Spitfire Bracers
+20487,"Lok&apos;delar, Stave of the Ancient Keepers DEP"
+20488,"Rhok&apos;delar, Longbow of the Ancient Keepers DEP"
+20498,Silithid Chitin
+20500,Light Silithid Carapace
+20501,Heavy Silithid Carapace
+20520,Dark Rune
+20537,Runed Stygian Boots
+20538,Runed Stygian Leggings
+20539,Runed Stygian Belt
+20549,Darkrune Gauntlets
+20550,Darkrune Breastplate
+20551,Darkrune Helm
+20575,Black Whelp Tunic
+20725,Nexus Crystal
+20744,Minor Wizard Oil
+20745,Minor Mana Oil
+20746,Lesser Wizard Oil
+20747,Lesser Mana Oil
+20748,Brilliant Mana Oil
+20749,Brilliant Wizard Oil
+20750,Wizard Oil
+20816,Delicate Copper Wire
+20817,Bronze Setting
+20818,Elegant Silver Ring
+20820,Simple Pearl Ring
+20821,Inlaid Malachite Ring
+20823,Gloom Band
+20826,Heavy Silver Ring
+20827,Ring of Silver Might
+20828,Ring of Twilight Shadows
+20830,Amulet of the Moon
+20831,Heavy Golden Necklace of Battle
+20832,Moonsoul Crown
+20833,Wicked Moonstone Ring
+20906,Braided Copper Ring
+20907,Solid Bronze Ring
+20909,Barbaric Iron Collar
+20950,Pendant of the Agate Shield
+20954,Heavy Iron Knuckles
+20955,Golden Dragon Ring
+20956,Silver Rose Pendant
+20958,Blazing Citrine Ring
+20959,The Jade Eye
+20960,Engraved Truesilver Ring
+20961,Citrine Ring of Rapid Healing
+20963,Mithril Filigree
+20964,Aquamarine Signet
+20966,Jade Pendant of Blasting
+20967,Citrine Pendant of Golden Healing
+20969,Ruby Crown of Restoration
+21023,Dirge&apos;s Kickin&apos; Chimaerok Chops
+21024,Chimaerok Tenderloin
+21071,Raw Sagefish
+21072,Smoked Sagefish
+21103,Draconic for Dummies
+21104,Draconic for Dummies
+21105,Draconic for Dummies
+21106,Draconic for Dummies
+21107,Draconic for Dummies
+21108,Draconic for Dummies
+21109,Draconic for Dummies
+21110,Draconic for Dummies
+21111,Draconic For Dummies: Volume II
+21153,Raw Greater Sagefish
+21154,Festival Dress
+21158,Hive&apos;Zora Scout Report
+21160,Hive&apos;Regal Scout Report
+21161,Hive&apos;Ashi Scout Report
+21171,Filled Festive Mug
+21174,Empty Festive Mug
+21175,The Scepter of the Shifting Sands
+21212,Fresh Holly
+21217,Sagefish Delight
+21277,Tranquil Mechanical Yeti
+21278,Stormshroud Gloves
+21340,Soul Pouch
+21341,Felcloth Bag
+21342,Core Felcloth Bag
+21519,Mistletoe
+21536,Elune Stone
+21542,Festival Suit
+21546,Elixir of Greater Firepower
+21557,Small Red Rocket
+21558,Small Blue Rocket
+21559,Small Green Rocket
+21569,Firework Launcher
+21570,Cluster Launcher
+21571,Blue Rocket Cluster
+21574,Green Rocket Cluster
+21576,Red Rocket Cluster
+21589,Large Blue Rocket
+21590,Large Green Rocket
+21592,Large Red Rocket
+21711,Lunar Festival Invitation
+21714,Large Blue Rocket Cluster
+21716,Large Green Rocket Cluster
+21718,Large Red Rocket Cluster
+21748,Figurine - Jade Owl
+21752,Thorium Setting
+21753,Gem Studded Band
+21754,The Aquamarine Ward
+21755,Aquamarine Pendant of the Warrior
+21756,Figurine - Golden Hare
+21758,Figurine - Black Pearl Panther
+21760,Figurine - Truesilver Crab
+21763,Figurine - Truesilver Boar
+21764,Ruby Pendant of Fire
+21765,Truesilver Healing Ring
+21766,Opal Necklace of Impact
+21767,Simple Opal Ring
+21768,Sapphire Signet
+21769,Figurine - Ruby Serpent
+21774,Emerald Crown of Destruction
+21775,Onslaught Ring
+21777,Figurine - Emerald Owl
+21778,Ring of Bitter Shadows
+21779,Band of Natural Fire
+21780,Blood Crown
+21784,Figurine - Black Diamond Crab
+21785,Cut Emerald
+21786,Cut Azerothian Diamond
+21789,Figurine - Dark Iron Scorpid
+21790,Sapphire Pendant of Winter Night
+21791,Living Emerald Pendant
+21792,Necklace of the Diamond Tower
+21793,Arcanite Sword Pendant
+21815,Love Token
+21840,Bolt of Netherweave
+21841,Netherweave Bag
+21842,Bolt of Imbued Netherweave
+21843,Imbued Netherweave Bag
+21844,Bolt of Soulcloth
+21845,Primal Mooncloth
+21846,Spellfire Belt
+21847,Spellfire Gloves
+21848,Spellfire Robe
+21849,Netherweave Bracers
+21850,Netherweave Belt
+21851,Netherweave Gloves
+21852,Netherweave Pants
+21853,Netherweave Boots
+21854,Netherweave Robe
+21855,Netherweave Tunic
+21858,Spellfire Bag
+21859,Imbued Netherweave Pants
+21860,Imbued Netherweave Boots
+21861,Imbued Netherweave Robe
+21862,Imbued Netherweave Tunic
+21863,Soulcloth Gloves
+21864,Soulcloth Shoulders
+21865,Soulcloth Vest
+21866,Arcanoweave Bracers
+21867,Arcanoweave Boots
+21868,Arcanoweave Robe
+21869,Frozen Shadoweave Shoulders
+21870,Frozen Shadoweave Boots
+21871,Frozen Shadoweave Robe
+21872,Ebon Shadowbag
+21873,Primal Mooncloth Belt
+21874,Primal Mooncloth Shoulders
+21875,Primal Mooncloth Robe
+21876,Primal Mooncloth Bag
+21877,Netherweave Cloth
+21881,Netherweb Spider Silk
+21882,Soul Essence
+21884,Primal Fire
+21885,Primal Water
+21886,Primal Life
+21887,Knothide Leather
+21929,Flame Spessarite
+21931,Woven Copper Ring
+21932,Heavy Copper Ring
+21933,Thick Bronze Necklace
+21934,Ornate Tigerseye Necklace
+21946,Ectoplasmic Distiller
+21960,Handmade Woodcraft
+21975,Pledge of Adoration: Stormwind
+21979,Gift of Adoration: Darnassus
+21980,Gift of Adoration: Ironforge
+21981,Gift of Adoration: Stormwind
+21983,Incomplete Banner of Provocation
+21984,Left Piece of Lord Valthalak&apos;s Amulet
+21986,Banner of Provocation
+21990,Netherweave Bandage
+21991,Heavy Netherweave Bandage
+22018,Conjured Glacier Water
+22019,Conjured Croissant
+22044,Mana Emerald
+22046,Right Piece of Lord Valthalak&apos;s Amulet
+22047,Top Piece of Lord Valthalak&apos;s Amulet
+22048,Lord Valthalak&apos;s Amulet
+22103,Master Healthstone
+22104,Master Healthstone
+22105,Master Healthstone
+22115,Extra-Dimensional Ghost Revealer
+22116,Master Soulstone
+22117,Pledge of Loyalty: Stormwind
+22119,Pledge of Loyalty: Ironforge
+22120,Pledge of Loyalty: Darnassus
+22121,Pledge of Loyalty: Undercity
+22122,Pledge of Loyalty: Thunder Bluff
+22123,Pledge of Loyalty: Orgrimmar
+22131,Stormwind Gift Collection
+22132,Ironforge Gift Collection
+22133,Darnassus Gift Collection
+22134,Undercity Gift Collection
+22135,Thunder Bluff Gift Collection
+22136,Orgrimmar Gift Collection
+22140,Sentinel&apos;s Card
+22141,Ironforge Guard&apos;s Card
+22142,Grunt&apos;s Card
+22143,Stormwind Guard&apos;s Card
+22144,Bluffwatcher&apos;s Card
+22145,Guardian&apos;s Moldy Card
+22154,Pledge of Adoration: Ironforge
+22155,Pledge of Adoration: Darnassus
+22156,Pledge of Adoration: Orgrimmar
+22157,Pledge of Adoration: Undercity
+22158,Pledge of Adoration: Thunder Bluff
+22159,Pledge of Friendship: Darnassus
+22160,Pledge of Friendship: Ironforge
+22161,Pledge of Friendship: Orgrimmar
+22162,Pledge of Friendship: Thunder Bluff
+22163,Pledge of Friendship: Undercity
+22164,Gift of Adoration: Orgrimmar
+22165,Gift of Adoration: Thunder Bluff
+22166,Gift of Adoration: Undercity
+22167,Gift of Friendship: Darnassus
+22168,Gift of Friendship: Ironforge
+22169,Gift of Friendship: Orgrimmar
+22170,Gift of Friendship: Stormwind
+22171,Gift of Friendship: Thunder Bluff
+22172,Gift of Friendship: Undercity
+22173,Dwarven Homebrew
+22174,Romantic Poem
+22175,Freshly Baked Pie
+22176,Homemade Bread
+22177,Freshly Picked Flowers
+22178,Pledge of Friendship: Stormwind
+22191,Obsidian Mail Tunic
+22194,Black Grasp of the Destroyer
+22195,Light Obsidian Belt
+22196,Thick Obsidian Breastplate
+22197,Heavy Obsidian Belt
+22198,Jagged Obsidian Shield
+22202,Small Obsidian Shard
+22203,Large Obsidian Shard
+22246,Enchanted Mageweave Pouch
+22248,Enchanted Runecloth Bag
+22249,Big Bag of Enchantment
+22251,Cenarion Herb Bag
+22252,Satchel of Cenarius
+22260,Friendship Bracelet
+22262,Alliance Gift Collection
+22263,Horde Gift Collection
+22283,Sack of Homemade Bread
+22284,Bundle of Cards
+22285,Stormwind Pledge Collection
+22286,Ironforge Pledge Collection
+22287,Parcel of Cards
+22288,Case of Homebrew
+22289,Stack of Cards
+22290,Darnassus Pledge Collection
+22291,Box of Woodcrafts
+22292,Box of Fresh Pies
+22293,Package of Cards
+22294,Orgrimmar Pledge Collection
+22295,Satchel of Cards
+22296,Basket of Flowers
+22297,Thunder Bluff Pledge Collection
+22298,Book of Romantic Poems
+22299,Sheaf of Cards
+22300,Undercity Pledge Collection
+22383,Sageblade
+22384,Persuader
+22385,Titanic Leggings
+22445,Arcane Dust
+22446,Greater Planar Essence
+22447,Lesser Planar Essence
+22448,Small Prismatic Shard
+22449,Large Prismatic Shard
+22450,Void Crystal
+22451,Primal Air
+22452,Primal Earth
+22456,Primal Shadow
+22457,Primal Mana
+22459,Void Sphere
+22460,Prismatic Sphere
+22461,Runed Fel Iron Rod
+22462,Runed Adamantite Rod
+22463,Runed Eternium Rod
+22484,Necrotic Rune
+22521,Superior Mana Oil
+22522,Superior Wizard Oil
+22572,Mote of Air
+22573,Mote of Earth
+22574,Mote of Fire
+22575,Mote of Life
+22576,Mote of Mana
+22577,Mote of Shadow
+22578,Mote of Water
+22628,Renzithen&apos;s Restorative Draught
+22644,Crunchy Spider Leg
+22645,Crunchy Spider Surprise
+22652,Glacial Vest
+22654,Glacial Gloves
+22655,Glacial Wrists
+22658,Glacial Cloak
+22660,Gaea&apos;s Embrace
+22661,Polar Tunic
+22662,Polar Gloves
+22663,Polar Bracers
+22664,Icy Scale Breastplate
+22665,Icy Scale Bracers
+22666,Icy Scale Gauntlets
+22669,Icebane Breastplate
+22670,Icebane Gauntlets
+22671,Icebane Bracers
+22682,Frozen Rune
+22719,Omarion&apos;s Handbook
+22726,Splinter of Atiesh
+22727,Frame of Atiesh
+22728,Steam Tonk Controller
+22754,Eternal Quintessence
+22756,Sylvan Vest
+22757,Sylvan Crown
+22758,Sylvan Shoulders
+22759,Bramblewood Helm
+22760,Bramblewood Boots
+22761,Bramblewood Belt
+22762,Ironvine Breastplate
+22763,Ironvine Gloves
+22764,Ironvine Belt
+22785,Felweed
+22786,Dreaming Glory
+22787,Ragveil
+22789,Terocone
+22790,Ancient Lichen
+22791,Netherbloom
+22792,Nightmare Vine
+22793,Mana Thistle
+22794,Fel Lotus
+22823,Elixir of Camouflage
+22824,Elixir of Major Strength
+22825,Elixir of Healing Power
+22826,Sneaking Potion
+22827,Elixir of Major Frost Power
+22828,Insane Strength Potion
+22829,Super Healing Potion
+22830,Elixir of the Searching Eye
+22831,Elixir of Major Agility
+22832,Super Mana Potion
+22833,Elixir of Major Firepower
+22834,Elixir of Major Defense
+22835,Elixir of Major Shadow Power
+22836,Major Dreamless Sleep Potion
+22837,Heroic Potion
+22838,Haste Potion
+22839,Destruction Potion
+22840,Elixir of Major Mageblood
+22841,Major Fire Protection Potion
+22842,Major Frost Protection Potion
+22844,Major Nature Protection Potion
+22845,Major Arcane Protection Potion
+22846,Major Shadow Protection Potion
+22847,Major Holy Protection Potion
+22848,Elixir of Empowerment
+22849,Ironshield Potion
+22850,Super Rejuvenation Potion
+22851,Flask of Fortification
+22853,Flask of Mighty Restoration
+22854,Flask of Relentless Assault
+22861,Flask of Blinding Light
+22866,Flask of Pure Death
+22871,Shrouding Potion
+22895,Conjured Cinnamon Roll
+22999,Tabard of the Argent Dawn
+23024,Prepared Field Duty Papers
+23077,Blood Garnet
+23079,Deep Peridot
+23094,Teardrop Blood Garnet
+23095,Bold Blood Garnet
+23096,Runed Blood Garnet
+23097,Delicate Blood Garnet
+23098,Inscribed Flame Spessarite
+23099,Luminous Flame Spessarite
+23100,Glinting Flame Spessarite
+23101,Potent Flame Spessarite
+23103,Radiant Deep Peridot
+23104,Jagged Deep Peridot
+23105,Enduring Deep Peridot
+23106,Dazzling Deep Peridot
+23107,Shadow Draenite
+23108,Glowing Shadow Draenite
+23109,Royal Shadow Draenite
+23110,Shifting Shadow Draenite
+23111,Sovereign Shadow Draenite
+23112,Golden Draenite
+23113,Brilliant Golden Draenite
+23114,Gleaming Golden Draenite
+23115,Thick Golden Draenite
+23116,Rigid Golden Draenite
+23117,Azure Moonstone
+23118,Solid Azure Moonstone
+23119,Sparkling Azure Moonstone
+23120,Stormy Azure Moonstone
+23121,Lustrous Azure Moonstone
+23179,Flame of Orgrimmar
+23180,Flame of Thunder Bluff
+23181,Flame of the Undercity
+23182,Flame of Stormwind
+23183,Flame of Ironforge
+23184,Flame of Darnassus
+23194,Lesser Mark of the Dawn
+23195,Mark of the Dawn
+23196,Greater Mark of the Dawn
+23211,Toasted Smorc
+23248,Purified Helboar Meat
+23270,Tainted Helboar Meat
+23355,Toxic Helboar Meat
+23424,Fel Iron Ore
+23425,Adamantite Ore
+23426,Khorium Ore
+23427,Eternium Ore
+23436,Living Ruby
+23437,Talasite
+23438,Star of Elune
+23439,Noble Topaz
+23440,Dawnstone
+23441,Nightseye
+23445,Fel Iron Bar
+23446,Adamantite Bar
+23447,Eternium Bar
+23448,Felsteel Bar
+23449,Khorium Bar
+23482,Fel Iron Plate Gloves
+23484,Fel Iron Plate Belt
+23486,Caged Female Kaliri Hatchling
+23487,Fel Iron Plate Boots
+23488,Fel Iron Plate Pants
+23489,Fel Iron Breastplate
+23490,Fel Iron Chain Tunic
+23491,Fel Iron Chain Gloves
+23493,Fel Iron Chain Coif
+23494,Fel Iron Chain Bracers
+23497,Fel Iron Hatchet
+23498,Fel Iron Hammer
+23499,Fel Iron Greatsword
+23502,Adamantite Maul
+23503,Adamantite Cleaver
+23504,Adamantite Dagger
+23505,Adamantite Rapier
+23506,Adamantite Plate Bracers
+23507,Adamantite Breastplate
+23508,Adamantite Plate Gloves
+23509,Enchanted Adamantite Breastplate
+23510,Enchanted Adamantite Belt
+23511,Enchanted Adamantite Boots
+23512,Enchanted Adamantite Leggings
+23513,Flamebane Breastplate
+23514,Flamebane Gloves
+23515,Flamebane Bracers
+23516,Flamebane Helm
+23517,Felsteel Gloves
+23518,Felsteel Leggings
+23519,Felsteel Helm
+23520,Ragesteel Gloves
+23521,Ragesteel Helm
+23522,Ragesteel Breastplate
+23523,Khorium Pants
+23524,Khorium Belt
+23525,Khorium Boots
+23526,Swiftsteel Gloves
+23527,Earthpeace Breastplate
+23528,Fel Sharpening Stone
+23529,Adamantite Sharpening Stone
+23530,Felsteel Shield Spike
+23531,Felfury Gauntlets
+23532,Gauntlets of the Iron Tower
+23533,Steelgrip Gauntlets
+23534,Storm Helm
+23535,Helm of the Stalwart Defender
+23536,Oathkeeper&apos;s Helm
+23537,Black Felsteel Bracers
+23538,Bracers of the Green Fortress
+23539,Blessed Bracers
+23540,Felsteel Longblade
+23541,Khorium Champion
+23542,Fel Edged Battleaxe
+23543,Felsteel Reaper
+23544,Runic Hammer
+23546,Fel Hardened Maul
+23552,Filled Azure Phial
+23554,Eternium Runed Blade
+23555,Dirge
+23556,Hand of Eternity
+23559,Lesser Rune of Warding
+23563,Nether Chain Shirt
+23564,Twisting Nether Chain Shirt
+23565,Embrace of the Twisting Nether
+23571,Primal Might
+23572,Primal Nether
+23573,Hardened Adamantite Bar
+23575,Lesser Ward of Shielding
+23576,Greater Ward of Shielding
+23670,Thalanaar Moonwell Water
+23676,Moongraze Stag Tenderloin
+23726,Fel Ember
+23736,Fel Iron Bomb
+23737,Adamantite Grenade
+23742,Fel Iron Musket
+23746,Adamantite Rifle
+23747,Felsteel Boomstick
+23748,Ornate Khorium Rifle
+23750,Filled Bota Bag
+23758,Cogspinner Goggles
+23761,Power Amplification Goggles
+23762,Ultra-Spectropic Detection Goggles
+23763,Hyper-Vision Goggles
+23764,Adamantite Scope
+23765,Khorium Scope
+23766,Stabilized Eternium Scope
+23767,Crashin&apos; Thrashin&apos; Robot
+23768,White Smoke Flare
+23769,Red Smoke Flare
+23770,Blue Smoke Flare
+23771,Green Smoke Flare
+23772,Fel Iron Shells
+23773,Adamantite Shells
+23774,Fel Iron Toolbox
+23775,Titanium Toolbox
+23781,Elemental Blasting Powder
+23782,Fel Iron Casing
+23783,Handful of Fel Iron Bolts
+23784,Adamantite Frame
+23785,Hardened Adamantite Tube
+23786,Khorium Power Core
+23787,Felsteel Stabilizer
+23792,Tree Disguise Kit
+23793,Heavy Knothide Leather
+23819,Elemental Seaforium Charge
+23820,Critter Enlarger
+23821,Zapthrottle Mote Extractor
+23824,Rocket Boots Xtreme
+23825,Nigh Invulnerability Belt
+23826,The Bigger One
+23827,Super Sapper Charge
+23828,Gnomish Power Goggles
+23829,Gnomish Battle Goggles
+23831,Goblin Tonk Controller
+23832,Gnomish Tonk Controller
+23835,Gnomish Poultryizer
+23836,Goblin Rocket Launcher
+23837,Weathered Treasure Map
+23838,Foreman&apos;s Enchanted Helmet
+23839,Foreman&apos;s Reinforced Helmet
+23840,Remote Mail Terminal
+23841,Gnomish Flame Turret
+23858,Singed Page
+23859,Nazzivus Monument Glyph
+23866,Singed Page
+23867,Singed Page
+23868,Singed Page
+23878,Impact Site Crystal Sample
+23879,Altered Crystal Sample
+23880,Axxarien Crystal Sample
+24027,Bold Living Ruby
+24028,Delicate Living Ruby
+24029,Teardrop Living Ruby
+24030,Runed Living Ruby
+24031,Bright Living Ruby
+24032,Subtle Living Ruby
+24033,Solid Star of Elune
+24035,Sparkling Star of Elune
+24036,Flashing Living Ruby
+24037,Lustrous Star of Elune
+24039,Stormy Star of Elune
+24047,Brilliant Dawnstone
+24048,Smooth Dawnstone
+24050,Gleaming Dawnstone
+24051,Rigid Dawnstone
+24052,Thick Dawnstone
+24053,Mystic Dawnstone
+24054,Sovereign Nightseye
+24055,Shifting Nightseye
+24056,Glowing Nightseye
+24057,Royal Nightseye
+24058,Inscribed Noble Topaz
+24059,Potent Noble Topaz
+24060,Luminous Noble Topaz
+24061,Glinting Noble Topaz
+24062,Enduring Talasite
+24065,Dazzling Talasite
+24066,Radiant Talasite
+24067,Jagged Talasite
+24074,Fel Iron Blood Ring
+24075,Golden Draenite Ring
+24076,Azure Moonstone Ring
+24077,Thick Adamantite Necklace
+24078,Heavy Adamantite Ring
+24079,Khorium Band of Shadows
+24080,Khorium Band of Frost
+24082,Khorium Inferno Band
+24085,Khorium Band of Leaves
+24086,Arcane Khorium Band
+24087,Heavy Felsteel Ring
+24088,Delicate Eternium Ring
+24089,Blazing Eternium Band
+24092,Pendant of Frozen Flame
+24093,Pendant of Thawing
+24095,Pendant of Withering
+24097,Pendant of Shadow&apos;s End
+24098,Pendant of the Null Rune
+24105,Roasted Moongraze Tenderloin
+24106,Thick Felsteel Necklace
+24110,Living Ruby Pendant
+24114,Braided Eternium Chain
+24116,Eye of the Night
+24117,Embrace of the Dawn
+24121,Chain of the Twilight Owl
+24122,Coronet of Verdant Flame
+24123,Circlet of Arcane Might
+24124,Figurine - Felsteel Boar
+24125,Figurine - Dawnstone Crab
+24126,Figurine - Living Ruby Serpent
+24127,Figurine - Talasite Owl
+24128,Figurine - Nightseye Panther
+24156,Filled Shimmering Vessel
+24243,Adamantite Powder
+24249,Unyielding Bracers
+24250,Bracers of Havok
+24251,Blackstrike Bracers
+24252,Cloak of the Black Void
+24253,Cloak of Eternity
+24254,White Remedy Cape
+24255,Unyielding Girdle
+24256,Girdle of Ruination
+24257,Black Belt of Knowledge
+24258,Resolute Cape
+24259,Vengeance Wrap
+24260,Manaweave Cloak
+24261,Whitemend Pants
+24262,Spellstrike Pants
+24263,Battlecast Pants
+24264,Whitemend Hood
+24266,Spellstrike Hood
+24267,Battlecast Hood
+24268,Netherweave Net
+24269,Heavy Netherweave Net
+24270,Bag of Jewels
+24271,Spellcloth
+24272,Shadowcloth
+24273,Mystic Spellthread
+24274,Runic Spellthread
+24275,Silver Spellthread
+24276,Golden Spellthread
+24287,Extinguishing Mixture
+24289,Chrono-beacon
+24317,Bloodmyst Water Sample
+24344,Tabard of the Hand
+24477,Jaggal Clam Meat
+24478,Jaggal Pearl
+24479,Shadow Pearl
+24490,The Master&apos;s Key
+24520,Honor Hold Favor
+24522,Thrallmar Favor
+24579,Mark of Honor Hold
+24581,Mark of Thrallmar
+25438,Malachite Pendant
+25439,Tigerseye Band
+25498,Rough Stone Statue
+25521,Greater Rune of Warding
+25535,Netherwhelp&apos;s Collar
+25549,Blood Knight Tabard
+25649,Knothide Leather Scraps
+25650,Knothide Armor Kit
+25651,Vindicator&apos;s Armor Kit
+25652,Magister&apos;s Armor Kit
+25653,Riding Crop
+25654,Felscale Gloves
+25655,Felscale Boots
+25656,Felscale Pants
+25657,Felscale Breastplate
+25659,Scaled Draenic Boots
+25660,Scaled Draenic Vest
+25661,Scaled Draenic Gloves
+25662,Scaled Draenic Pants
+25668,Thick Draenic Boots
+25669,Thick Draenic Gloves
+25670,Thick Draenic Pants
+25671,Thick Draenic Vest
+25673,Wild Draenish Boots
+25674,Wild Draenish Gloves
+25675,Wild Draenish Leggings
+25676,Wild Draenish Vest
+25679,Comfortable Insoles
+25680,Stylin&apos; Purple Hat
+25681,Stylin&apos; Adventure Hat
+25682,Stylin&apos; Jungle Hat
+25683,Stylin&apos; Crimson Hat
+25685,Fel Leather Gloves
+25686,Fel Leather Boots
+25687,Fel Leather Leggings
+25689,Heavy Clefthoof Vest
+25690,Heavy Clefthoof Leggings
+25691,Heavy Clefthoof Boots
+25692,Netherfury Leggings
+25693,Netherfury Boots
+25694,Netherfury Belt
+25695,Felstalker Belt
+25696,Felstalker Breastplate
+25697,Felstalker Bracers
+25699,Crystal Infused Leather
+25700,Fel Scales
+25707,Fel Hide
+25708,Thick Clefthoof Leather
+25719,Arakkoa Feather
+25747,(Deprecated)Mana Bomb Schematics - Page 1
+25748,(Deprecated)Mana Bomb Schematics - Page 2
+25749,(Deprecated)Mana Bomb Schematics - Page 3
+25750,(Deprecated)Mana Bomb Schematics - Page 4
+25843,Fel Iron Rod
+25844,Adamantite Rod
+25845,Eternium Rod
+25867,Earthstorm Diamond
+25868,Skyfire Diamond
+25880,Coarse Stone Statue
+25881,Heavy Stone Statue
+25882,Solid Stone Statue
+25883,Dense Stone Statue
+25884,Primal Stone Statue
+25886,Purple Smoke Flare
+25890,Destructive Skyfire Diamond
+25893,Mystical Skyfire Diamond
+25894,Swift Skyfire Diamond
+25895,Enigmatic Skyfire Diamond
+25896,Powerful Earthstorm Diamond
+25897,Bracing Earthstorm Diamond
+25898,Tenacious Earthstorm Diamond
+25899,Brutal Earthstorm Diamond
+25901,Insightful Earthstorm Diamond
+26045,Halaa Battle Token
+27422,Barbed Gill Trout
+27425,Spotted Feltail
+27429,Zangarian Sporefish
+27435,Figluster&apos;s Mudfish
+27437,Icefin Bluefish
+27438,Golden Darter
+27439,Furious Crawdad
+27445,Magical Crawdad Box
+27446,Mr. Pinchy&apos;s Gift
+27498,Scroll of Agility V
+27499,Scroll of Intellect V
+27501,Scroll of Spirit V
+27502,Scroll of Stamina V
+27503,Scroll of Strength V
+27515,Huge Spotted Feltail
+27516,Enormous Barbed Gill Trout
+27635,Lynx Steak
+27636,Bat Bites
+27651,Buzzard Bites
+27655,Ravager Dog
+27656,Sporeling Snack
+27657,Blackened Basilisk
+27658,Roasted Clefthoof
+27659,Warp Burger
+27660,Talbuk Steak
+27661,Blackened Trout
+27662,Feltail Delight
+27663,Blackened Sporefish
+27664,Grilled Mudfish
+27665,Poached Bluefish
+27666,Golden Fish Sticks
+27667,Spicy Crawdad
+27668,Lynx Meat
+27669,Bat Flesh
+27671,Buzzard Meat
+27674,Ravager Flesh
+27676,Strange Spores
+27677,Chunk o&apos; Basilisk
+27678,Clefthoof Meat
+27681,Warped Flesh
+27682,Talbuk Venison
+27808,Jump-a-tron 4000 Key
+27860,Purified Draenic Water
+28038,Seaforium PU-36 Explosive Nether Modulator
+28100,Volatile Healing Potion
+28101,Unstable Mana Potion
+28102,Onslaught Elixir
+28103,Adept&apos;s Elixir
+28104,Elixir of Mastery
+28112,Underspore Pod
+28132,Area 52 Special
+28290,Smooth Golden Draenite
+28395,Shattered Halls Key
+28420,Fel Weightstone
+28421,Adamantite Weightstone
+28425,Fireguard
+28426,Blazeguard
+28427,Blazefury
+28428,Lionheart Blade
+28429,Lionheart Champion
+28430,Lionheart Executioner
+28431,The Planar Edge
+28432,Black Planar Edge
+28433,Wicked Edge of the Planes
+28434,Lunar Crescent
+28435,Mooncleaver
+28436,Bloodmoon
+28437,Drakefist Hammer
+28438,Dragonmaw
+28439,Dragonstrike
+28440,Thunder
+28441,Deep Thunder
+28442,Stormherald
+28472,Krasus&apos;s Compendium - Chapter 1
+28473,Krasus&apos;s Compendium - Chapter 2
+28474,Krasus&apos;s Compendium - Chapter 3
+28475,Heliotrope Oculus
+28483,Breastplate of Kings
+28484,Bulwark of Kings
+28485,Bulwark of the Ancient Kings
+28595,Bright Blood Garnet
+28788,Tabard of the Protector
+29051,Warp Nether
+29157,Golden Ring of Power
+29158,Truesilver Commander&apos;s Ring
+29159,Glowing Thorium Band
+29160,Emerald Lion Ring
+29201,Thick Bronze Darts
+29202,Whirling Steel Axes
+29203,Enchanted Thorium Blades
+29204,Felsteel Whisper Knives
+29205,Inquisitor&apos;s Crest - Top Half
+29206,Inquisitor&apos;s Crest - Bottom Half
+29207,Conjuring Powder
+29483,Shadow Armor Kit
+29485,Flame Armor Kit
+29486,Frost Armor Kit
+29487,Nature Armor Kit
+29488,Arcane Armor Kit
+29489,Enchanted Felscale Leggings
+29490,Enchanted Felscale Gloves
+29491,Enchanted Felscale Boots
+29492,Flamescale Leggings
+29493,Flamescale Boots
+29494,Flamescale Belt
+29495,Enchanted Clefthoof Leggings
+29496,Enchanted Clefthoof Gloves
+29497,Enchanted Clefthoof Boots
+29498,Blastguard Pants
+29499,Blastguard Boots
+29500,Blastguard Belt
+29502,Cobrascale Hood
+29503,Cobrascale Gloves
+29504,Windscale Hood
+29505,Hood of Primal Life
+29506,Gloves of the Living Touch
+29507,Windslayer Wraps
+29508,Living Dragonscale Helm
+29509,Windstrike Gloves
+29510,Netherdrake Helm
+29511,Netherdrake Gloves
+29512,Earthen Netherscale Boots
+29514,Thick Netherscale Breastplate
+29515,Ebon Netherscale Breastplate
+29516,Ebon Netherscale Belt
+29517,Ebon Netherscale Bracers
+29519,Netherstrike Breastplate
+29520,Netherstrike Belt
+29521,Netherstrike Bracers
+29522,Windhawk Hauberk
+29523,Windhawk Bracers
+29524,Windhawk Belt
+29525,Primalstrike Vest
+29526,Primalstrike Belt
+29527,Primalstrike Bracers
+29528,Drums of War
+29529,Drums of Battle
+29530,Drums of Speed
+29531,Drums of Restoration
+29532,Drums of Panic
+29533,Cobrahide Leg Armor
+29534,Clefthide Leg Armor
+29535,Nethercobra Leg Armor
+29536,Nethercleft Leg Armor
+29539,Cobra Scales
+29540,Reinforced Mining Bag
+29547,Wind Scales
+29548,Nether Dragonscales
+29769,Diagnostic Results
+29778,Phase Disruptor
+29964,Blackstorm Leggings
+29970,Wildfeather Leggings
+29971,Dragonstrike Leggings
+29973,Primalstorm Breastplate
+29974,Living Crystal Breastplate
+29975,Golden Dragonstrike Breastplate
+30031,Red Havoc Boots
+30032,Red Belt of Battle
+30033,Boots of the Protector
+30034,Belt of the Guardian
+30035,Boots of the Long Road
+30036,Belt of the Long Road
+30037,Boots of Blasting
+30038,Belt of Blasting
+30039,Boots of Utter Darkness
+30040,Belt of Deep Shadow
+30041,Boots of Natural Grace
+30042,Belt of Natural Power
+30043,Hurricane Boots
+30044,Monsoon Belt
+30045,Boots of the Crimson Hawk
+30046,Belt of the Black Eagle
+30069,Earthforged Leggings
+30070,Windforged Leggings
+30071,Light Earthforged Blade
+30072,Light Skyforged Axe
+30073,Light Emberforged Hammer
+30074,Heavy Earthforged Breastplate
+30076,Stormforged Hauberk
+30077,Windforged Rapier
+30086,Stoneforged Claymore
+30087,Stormforged Axe
+30088,Skyforged Great Axe
+30089,Lavaforged Warhammer
+30093,Great Earthforged Hammer
+30155,Clam Bar
+30183,Nether Vortex
+30320,Bundle of Nether Spikes
+30419,Brilliant Necklace
+30420,Heavy Jade Ring
+30421,Red Ring of Destruction
+30422,Diamond Focus Ring
+30430,Boiled Blood
+30436,Jagged Blue Crystal
+30437,Jagged Red Crystal
+30438,Cache of the Legion Key
+30459,Netherflame Robe
+30460,Netherflame Belt
+30461,Netherflame Boots
+30463,Lifeblood Belt
+30464,Lifeblood Bracers
+30465,Lifeblood Leggings
+30542,Dimensional Ripper - Area 52
+30544,Ultrasafe Transporter: Toshley&apos;s Station
+30703,Conjured Mountain Spring Water
+30719,Spectrecles
+30721,Spectrecles
+30804,Bronze Band of Force
+30816,Spice Bread
+30817,Simple Flour
+30825,Ring of Arcane Shielding
+30831,Cloak of Arcane Evasion
+30837,Flameheart Bracers
+30838,Flameheart Gloves
+30839,Flameheart Vest
+31079,Mercurial Adamantite
+31080,Mercurial Stone
+31084,Key to the Arcatraz
+31088,Tainted Core
+31121,Costume Scraps
+31122,Overseer Disguise
+31130,Wyrmcult Blackwhelp
+31154,Bronze Torc
+31252,Charred Key Mold
+31279,Enchanted Illidari Tabard
+31346,Burning Bleeding Hollow Torch
+31364,Wildguard Breastplate
+31365,Energized Headpiece
+31366,Felsworn Gas Mask
+31367,Wildguard Leggings
+31368,Wildguard Helm
+31369,Iceguard Breastplate
+31370,Iceguard Leggings
+31371,Iceguard Helm
+31372,Rocknail Flayer Carcass
+31373,Rocknail Flayer Giblets
+31398,The Frozen Eye
+31399,The Natural Ward
+31404,Green Trophy Tabard of the Illidari
+31405,Purple Trophy Tabard of the Illidari
+31495,Grishnath Orb
+31517,Dire Pinfeather
+31518,Exorcism Feather
+31525,Vial of Primal Reagents
+31530,Sample of Primal Mooncloth
+31607,Demoniac Scryer Reading
+31670,Raptor Ribs
+31671,Serpent Flesh
+31672,Mok&apos;Nathal Shortribs
+31673,Crunchy Serpent
+31676,Fel Regeneration Potion
+31677,Fel Mana Potion
+31679,Fel Strength Elixir
+31704,The Tempest Key
+31813,Warp Chaser Blood
+31860,Great Golden Draenite
+31861,Great Dawnstone
+31862,Balanced Shadow Draenite
+31863,Balanced Nightseye
+31864,Infused Shadow Draenite
+31865,Infused Nightseye
+31866,Veiled Flame Spessarite
+31867,Veiled Noble Topaz
+31868,Wicked Noble Topaz
+31869,Wicked Flame Spessarite
+31880,Blood Elf Orphan Whistle
+31881,Draenei Orphan Whistle
+31882,Ace of Blessings
+31883,Eight of Blessings
+31884,Five of Blessings
+31885,Four of Blessings
+31886,Seven of Blessings
+31887,Six of Blessings
+31888,Three of Blessings
+31889,Two of Blessings
+31890,Blessings Deck
+31891,Storms Deck
+31892,Ace of Storms
+31893,Eight of Storms
+31894,Five of Storms
+31895,Four of Storms
+31896,Seven of Storms
+31898,Six of Storms
+31899,Three of Storms
+31900,Two of Storms
+31901,Ace of Furies
+31902,Eight of Furies
+31903,Five of Furies
+31904,Four of Furies
+31905,Seven of Furies
+31906,Six of Furies
+31907,Furies Deck
+31908,Three of Furies
+31909,Two of Furies
+31910,Ace of Lunacy
+31911,Eight of Lunacy
+31912,Five of Lunacy
+31913,Four of Lunacy
+31914,Lunacy Deck
+31915,Seven of Lunacy
+31916,Six of Lunacy
+31917,Three of Lunacy
+31918,Two of Lunacy
+31942,Deathwing Brood Cloak
+32062,Elixir of Major Fortitude
+32063,Earthen Elixir
+32067,Elixir of Draenic Wisdom
+32068,Elixir of Ironskin
+32092,The Eye of Haramad
+32193,Bold Crimson Spinel
+32194,Delicate Crimson Spinel
+32195,Teardrop Crimson Spinel
+32196,Runed Crimson Spinel
+32197,Bright Crimson Spinel
+32198,Subtle Crimson Spinel
+32199,Flashing Crimson Spinel
+32200,Solid Empyrean Sapphire
+32201,Sparkling Empyrean Sapphire
+32202,Lustrous Empyrean Sapphire
+32203,Stormy Empyrean Sapphire
+32204,Brilliant Lionseye
+32205,Smooth Lionseye
+32206,Rigid Lionseye
+32207,Gleaming Lionseye
+32208,Thick Lionseye
+32209,Mystic Lionseye
+32210,Great Lionseye
+32211,Sovereign Shadowsong Amethyst
+32212,Shifting Shadowsong Amethyst
+32213,Balanced Shadowsong Amethyst
+32214,Infused Shadowsong Amethyst
+32215,Glowing Shadowsong Amethyst
+32216,Royal Shadowsong Amethyst
+32217,Inscribed Pyrestone
+32218,Potent Pyrestone
+32219,Luminous Pyrestone
+32220,Glinting Pyrestone
+32221,Veiled Pyrestone
+32222,Wicked Pyrestone
+32223,Enduring Seaspray Emerald
+32224,Radiant Seaspray Emerald
+32225,Dazzling Seaspray Emerald
+32226,Jagged Seaspray Emerald
+32227,Crimson Spinel
+32228,Empyrean Sapphire
+32229,Lionseye
+32230,Shadowsong Amethyst
+32231,Pyrestone
+32249,Seaspray Emerald
+32320,Captive Sparrowhawk
+32364,Southfury Moonstone
+32389,Soulguard Leggings
+32390,Soulguard Girdle
+32391,Soulguard Slippers
+32392,Soulguard Bracers
+32393,Redeemed Soul Cinch
+32394,Redeemed Soul Moccasins
+32395,Redeemed Soul Wristguards
+32396,Redeemed Soul Legguards
+32397,Waistguard of Shackled Souls
+32398,Boots of Shackled Souls
+32399,Bracers of Shackled Souls
+32400,Greaves of Shackled Souls
+32401,Shadesteel Girdle
+32402,Shadesteel Sabots
+32403,Shadesteel Bracers
+32404,Shadesteel Greaves
+32408,Naj&apos;entus Spine
+32409,Relentless Earthstorm Diamond
+32410,Thundering Skyfire Diamond
+32413,Frost Grenade
+32420,Night&apos;s End
+32423,Icy Blasting Primers
+32428,Heart of Darkness
+32449,Essence-Infused Moonstone
+32461,Furious Gizmatic Goggles
+32472,Justicebringer 2000 Specs
+32473,Tankatronic Goggles
+32474,Surestrike Goggles v2.0
+32475,Living Replicator Specs
+32476,Gadgetstorm Goggles
+32478,Deathblow X11 Goggles
+32479,Wonderheal XT40 Shades
+32480,Magnified Moon Specs
+32494,Destruction Holo-gogs
+32495,Powerheal 4000 Lens
+32498,Fortune Coin
+32508,Necklace of the Deep
+32568,Swiftsteel Bracers
+32569,Apexis Shard
+32570,Swiftsteel Shoulders
+32571,Dawnsteel Bracers
+32572,Apexis Crystal
+32573,Dawnsteel Shoulders
+32574,Bindings of Lightning Reflexes
+32575,Shoulders of Lightning Reflexes
+32577,Living Earth Bindings
+32578,Charged Crystal Focus
+32579,Living Earth Shoulders
+32580,Swiftstrike Bracers
+32581,Swiftstrike Shoulders
+32582,Bracers of Renewed Life
+32583,Shoulderpads of Renewed Life
+32584,Swiftheal Wraps
+32585,Swiftheal Mantle
+32586,Bracers of Nimble Thought
+32587,Mantle of Nimble Thought
+32594,Ogrela Test Tunic
+32595,Ogrela Reagent Dust
+32598,Unstable Flask of the Beast
+32601,Unstable Flask of the Sorcerer
+32643,Darkrune
+32655,Crystalweave Bracers
+32656,Crystalhide Handwraps
+32657,Arthorn&apos;s Sparrowhawk Whistle
+32658,Badge of Tenacity
+32659,Crystal-Infused Shiv
+32660,Crystalforged Sword
+32661,Apexis Crystal Mace
+32662,Flaming Quartz Staff
+32663,Apexis Cleaver
+32664,Dreamcrystal Band
+32665,Crystalweave Cape
+32680,Booterang
+32681,Onyx Scale of Rivendark
+32682,Obsidia Scale
+32683,Jet Scale of Furywing
+32684,Insidion&apos;s Ebony Scale
+32734,Hand of the Overseer
+32756,Gyro-Balanced Khorium Destroyer
+32772,Brilliant Pearl Band
+32774,The Black Pearl
+32776,Crown of the Sea Witch
+32833,Purified Jaggal Pearl
+32836,Purified Shadow Pearl
+32839,Cauldron of Major Arcane Protection
+32840,Major Arcane Protection Potion
+32844,Major Nature Protection Potion
+32845,Major Shadow Protection Potion
+32846,Major Fire Protection Potion
+32847,Major Frost Protection Potion
+32849,Cauldron of Major Fire Protection
+32850,Cauldron of Major Frost Protection
+32851,Cauldron of Major Nature Protection
+32852,Cauldron of Major Shadow Protection
+32854,Hammer of Righteous Might
+32857,Reins of the Onyx Netherwing Drake
+32858,Reins of the Azure Netherwing Drake
+32859,Reins of the Cobalt Netherwing Drake
+32860,Reins of the Purple Netherwing Drake
+32861,Reins of the Veridian Netherwing Drake
+32862,Reins of the Violet Netherwing Drake
+32863,Skybreaker Whip
+32897,Mark of the Illidari
+32906,Stunned Wolpertinger
+32971,Water Bucket
+33004,Clamlette Magnifique
+33040,Repaired Diving Gear
+33041,Salvaged Strongbox
+33048,Stewed Trout
+33050,Grimtotem Note
+33051,Grimtotem Battle Plan
+33052,Fisherman&apos;s Feast
+33053,Hot Buttered Trout
+33081,Voodoo Skull
+33087,Black Dragonkin Essence
+33092,Healing Potion Injector
+33093,Mana Potion Injector
+33096,Complimentary Brewfest Sampler
+33105,Budd&apos;s Guise of Zul&apos;aman
+33120,Shoveltusk Meat
+33122,Cloak of Darkness
+33131,Crimson Sun
+33133,Don Julio&apos;s Heart
+33134,Kailee&apos;s Rose
+33135,Falling Star
+33140,Blood of Amber
+33143,Stone of Blades
+33144,Facet of Eternity
+33173,Ragesteel Shoulders
+33185,Adamantite Weapon Chain
+33204,Shadowprowler&apos;s Chestguard
+33208,Flask of Chromatic Wonder
+33218,Goblin Gumbo
+33226,Tricky Treat
+33306,Ram Racing Reins
+33311,Westguard Command Insignia
+33312,Mana Sapphire
+33336,Sergeant&apos;s Spyglass
+33340,Winterhoof Emblem
+33341,Brave&apos;s Spyglass
+33352,Tough Ram Meat
+33447,Runic Healing Potion
+33448,Runic Mana Potion
+33455,Brewfest Prize Ticket
+33457,Scroll of Agility VI
+33458,Scroll of Intellect VI
+33460,Scroll of Spirit VI
+33461,Scroll of Stamina VI
+33462,Scroll of Strength VI
+33470,Frostweave Cloth
+33477,Giant Yeti Meal
+33558,Deranged Explorer Brain
+33567,Borean Leather Scraps
+33568,Borean Leather
+33614,Empty Apothecary&apos;s Flask
+33615,Flask of Vrykul Blood
+33616,Unstable Mix
+33617,Balanced Concoction
+33618,Worg Disguise
+33620,Apothecary&apos;s Package
+33778,Book of Runes - Chapter 1
+33779,Book of Runes - Chapter 2
+33780,Book of Runes - Chapter 3
+33781,The Book of Runes
+33782,Steady Talasite
+33784,Darkrune Fragment
+33791,Heavy Copper Longsword
+33797,Portable Brewfest Keg
+33803,Adamantite Stinger
+33823,Bloodfin Catfish
+33824,Crescent-Tail Skullfish
+33825,Skullfish Soup
+33838,Giant Kaliri Wing
+33839,Kaliri Stew
+33848,Demon Broiled Surprise
+33850,Spiritual Soup
+33852,Cooking Pot
+33866,Stormchops
+33867,Broiled Bloodfin
+33872,Spicy Hot Talbuk
+33874,Kibler&apos;s Bits
+33924,Delicious Chocolate Cake
+33929,Brewfest Brew
+33993,Mojo
+34023,Empty Apothecary&apos;s Flask
+34024,Flask of Vrykul Blood
+34044,B-Ball
+34052,Dream Shard
+34053,Small Dream Shard
+34054,Infinite Dust
+34055,Greater Cosmic Essence
+34056,Lesser Cosmic Essence
+34057,Abyss Crystal
+34060,Flying Machine Control
+34061,Turbo-Charged Flying Machine Control
+34062,Conjured Mana Biscuit
+34077,Crudely Wrapped Gift
+34085,Red Winter Clothes
+34086,Winter Boots
+34087,Green Winter Clothes
+34092,Merciless Nether Drake
+34099,Knothide Ammo Pouch
+34100,Knothide Quiver
+34105,Quiver of a Thousand Feathers
+34106,Netherscale Ammo Pouch
+34112,Fjord Turkey
+34113,Field Repair Bot 110G
+34120,Fjord Hawk
+34123,Fjord Hawk Egg
+34125,Shoveltusk Soup
+34135,Dark Iron Ingots
+34191,Handful of Snowflakes
+34207,Glove Reinforcements
+34220,Chaotic Skyfire Diamond
+34249,Hula Girl Doll
+34330,Heavy Knothide Armor Kit
+34353,Quad Deathblow X44 Goggles
+34354,Mayhem Projection Goggles
+34355,Lightning Etched Specs
+34356,Surestrike Goggles v3.0
+34357,Hard Khorium Goggles
+34358,Hard Khorium Choker
+34359,Pendant of Sunfire
+34360,Amulet of Flowing Life
+34361,Hard Khorium Band
+34362,Loop of Forged Power
+34363,Ring of Flowing Life
+34364,Sunfire Robe
+34365,Robe of Eternal Light
+34366,Sunfire Handwraps
+34367,Hands of Eternal Light
+34369,Carapace of Sun and Shadow
+34370,Gloves of Immortal Dusk
+34371,Leather Chestguard of the Sun
+34372,Leather Gauntlets of the Sun
+34373,Embrace of the Phoenix
+34374,Fletcher&apos;s Gloves of the Phoenix
+34375,Sun-Drenched Scale Chestguard
+34376,Sun-Drenched Scale Gloves
+34377,Hard Khorium Battleplate
+34378,Hard Khorium Battlefists
+34379,Sunblessed Breastplate
+34380,Sunblessed Gauntlets
+34411,Hot Apple Cider
+34412,Sparkling Apple Cider
+34440,Mad Alchemist&apos;s Potion
+34482,Leatherworker&apos;s Satchel
+34490,Bag of Many Hides
+34494,Paper Zeppelin
+34497,Paper Flying Machine
+34501,Cleansed Ata&apos;mal Metal
+34504,Adamantite Shell Machine
+34599,Juggling Torch
+34618,Succulent Orca Blubber
+34623,The King&apos;s Filled Conch
+34663,Silver Quill
+34664,Sunmote
+34721,Frostweave Bandage
+34722,Heavy Frostweave Bandage
+34736,Chunk o&apos; Mammoth
+34747,Northern Stew
+34748,Mammoth Meal
+34749,Shoveltusk Steak
+34750,Worm Delight
+34751,Roasted Worg
+34752,Rhino Dogs
+34753,Great Feast
+34754,Mega Mammoth Meal
+34755,Tender Shoveltusk Steak
+34756,Spiced Worm Burger
+34757,Very Burnt Worg
+34758,Mighty Rhino Dogs
+34759,Smoked Rockfin
+34760,Grilled Bonescale
+34761,Sauteed Goby
+34762,Grilled Sculpin
+34763,Smoked Salmon
+34764,Poached Nettlefish
+34765,Pickled Fangtooth
+34766,Poached Northern Sculpin
+34767,Firecracker Salmon
+34768,Spicy Blue Nettlefish
+34769,Imperial Manta Steak
+34832,Captain Rumsey&apos;s Lager
+34833,Unlit Torches
+34847,Annihilator Holo-Gogs
+35126,Fizzcrank Pilot&apos;s Insignia
+35128,Hardened Khorium
+35181,Powerheal 9000 Lens
+35182,Hyper-Magnified Moon Specs
+35183,Wonderheal XT68 Shades
+35184,Primal-Attuned Goggles
+35185,Justicebringer 3000 Specs
+35276,Gnomish Emergency Toolkit
+35279,Tabard of Summer Skies
+35280,Tabard of Summer Flames
+35288,Uncured Caribou Hide
+35289,Steam Cured Hide
+35315,Quick Dawnstone
+35316,Reckless Noble Topaz
+35318,Forceful Talasite
+35501,Eternal Earthstorm Diamond
+35503,Ember Skyfire Diamond
+35512,Pocket Full of Snow
+35562,Bear Flank
+35563,Charred Bear Kabobs
+35565,Juicy Bear Burger
+35568,Flame of Silvermoon
+35569,Flame of the Exodar
+35581,Rocket Boots Xtreme Lite
+35622,Eternal Water
+35623,Eternal Air
+35624,Eternal Earth
+35625,Eternal Life
+35627,Eternal Shadow
+35671,Augmented Arcane Prison
+35692,Snowfall Glade Pup
+35693,Figurine - Empyrean Tortoise
+35694,Figurine - Khorium Boar
+35700,Figurine - Crimson Serpent
+35701,Issliruk&apos;s Totem
+35702,Figurine - Shadowsong Panther
+35703,Figurine - Seaspray Albatross
+35707,Regal Nightseye
+35734,Boulder
+35737,Missing Journal Page
+35738,Brann Bronzebeard&apos;s Journal
+35739,Incomplete Journal
+35748,Guardian&apos;s Alchemist Stone
+35749,Sorcerer&apos;s Alchemist Stone
+35750,Redeemer&apos;s Alchemist Stone
+35751,Assassin&apos;s Alchemist Stone
+35758,Steady Seaspray Emerald
+35759,Forceful Seaspray Emerald
+35760,Reckless Pyrestone
+35761,Quick Lionseye
+35784,Blood Oath of the Horde
+35792,Mage Hunter Personal Effects
+35797,Drakuru&apos;s Elixir
+35806,Eye of the Prophets
+35908,Mack&apos;s Dark Grog
+35945,Brilliant Glass
+35946,Fizzcrank Practice Parachute
+35948,Savory Snowplum
+35949,Tundra Berries
+36733,Coldwind Lumber
+36734,Xink&apos;s Shredder Control Device
+36748,Dark Brewmaiden&apos;s Brew
+36766,Bright Dragon&apos;s Eye
+36767,Solid Dragon&apos;s Eye
+36768,Vial of Corrosive Spit
+36772,Captured Jormungar Spawn
+36782,Succulent Clam Meat
+36783,Northsea Pearl
+36784,Siren&apos;s Tear
+36786,Bark of the Walkers
+36799,Mana Gem
+36827,Blood Gem
+36828,Filled Blood Gem
+36835,Unholy Gem
+36836,Filled Unholy Gem
+36846,Filled Frost Gem
+36847,Frost Gem
+36848,War Golem Blueprint
+36849,Golem Blueprint Section 1
+36850,Golem Blueprint Section 2
+36851,Golem Blueprint Section 3
+36860,Eternal Fire
+36870,Sacred Drakkari Offering
+36892,Fel Healthstone
+36893,Fel Healthstone
+36894,Fel Healthstone
+36895,Demonic Soulstone
+36901,Goldclover
+36903,Adder&apos;s Tongue
+36904,Tiger Lily
+36905,Lichbloom
+36906,Icethorn
+36907,Talandra&apos;s Rose
+36908,Frost Lotus
+36909,Cobalt Ore
+36910,Titanium Ore
+36912,Saronite Ore
+36913,Saronite Bar
+36916,Cobalt Bar
+36917,Bloodstone
+36918,Scarlet Ruby
+36919,Cardinal Ruby
+36920,Sun Crystal
+36921,Autumn&apos;s Glow
+36922,King&apos;s Amber
+36923,Chalcedony
+36924,Sky Sapphire
+36925,Majestic Zircon
+36926,Shadow Crystal
+36927,Twilight Opal
+36928,Dreadstone
+36929,Huge Citrine
+36930,Monarch Topaz
+36931,Ametrine
+36932,Dark Jade
+36933,Forest Emerald
+36934,Eye of Zul
+37063,Infused Drakkari Offering
+37091,Scroll of Intellect VII
+37092,Scroll of Intellect VIII
+37093,Scroll of Stamina VII
+37094,Scroll of Stamina VIII
+37097,Scroll of Spirit VII
+37098,Scroll of Spirit VIII
+37101,Ivory Ink
+37118,Scroll of Recall
+37140,Ace of Rogues
+37143,Two of Rogues
+37145,Ace of Swords
+37147,Two of Swords
+37156,Three of Rogues
+37157,Four of Rogues
+37158,Five of Rogues
+37159,Three of Swords
+37160,Four of Swords
+37163,Rogues Deck
+37164,Swords Deck
+37250,Partially Processed Amberseeds
+37303,Vordrassil&apos;s Ashes
+37312,Carrot on a Stick
+37372,Harpoon
+37459,Quarterflash&apos;s Homing Bot
+37501,Northern Salmon
+37503,Purified Shadowsong Amethyst
+37567,Healing Injector Kit
+37570,Murkweed Elixir
+37602,Armor Vellum II
+37603,Scroll of Enchant Boots - Dexterity
+37663,Titansteel Bar
+37700,Crystallized Air
+37701,Crystallized Earth
+37702,Crystallized Fire
+37703,Crystallized Shadow
+37704,Crystallized Life
+37705,Crystallized Water
+37706,Hardened Saronite Bar
+37829,Brewfest Prize Token
+37921,Deadnettle
+37925,Experimental Mixture
+38186,Ethereal Credit
+38225,Mycah&apos;s Botanical Bag
+38266,Rotund Relic
+38277,Haliscan Jacket
+38278,Haliscan Pantaloons
+38308,Ethereal Essence Sphere
+38322,Iron-bound Tome
+38323,Water Elemental Link
+38324,Tether to the Plane of Water
+38333,Drakkari Medallion
+38347,Mammoth Mining Bag
+38371,Jormungar Leg Armor
+38372,Nerubian Leg Armor
+38373,Frosthide Leg Armor
+38374,Icescale Leg Armor
+38375,Borean Armor Kit
+38376,Heavy Borean Armor Kit
+38378,Wyrmscale Leg Armor
+38380,Zul&apos;Drak Rat
+38382,Basilisk Crystals
+38387,Grizzled Hat
+38388,Cap of the North
+38389,Comfy Raccoonskin Hat
+38390,The Rugged Marksman
+38399,Trapper&apos;s Traveling Pack
+38400,Arctic Chestpiece
+38401,Arctic Leggings
+38402,Arctic Shoulderpads
+38403,Arctic Gloves
+38404,Arctic Boots
+38405,Arctic Belt
+38406,Iceborne Belt
+38407,Iceborne Boots
+38408,Iceborne Chestguard
+38409,Iceborne Gloves
+38410,Iceborne Leggings
+38411,Iceborne Shoulderpads
+38412,Frostscale Belt
+38413,Frostscale Boots
+38414,Frostscale Chestguard
+38415,Frostscale Gloves
+38416,Frostscale Leggings
+38417,Nerubian Shoulders
+38418,Nerubian Belt
+38419,Nerubian Boots
+38420,Nerubian Chestguard
+38421,Nerubian Gloves
+38422,Nerubian Legguards
+38424,Frostscale Shoulders
+38425,Heavy Borean Leather
+38426,Eternium Thread
+38433,Arctic Wristguards
+38434,Iceborne Wristguards
+38435,Nerubian Bracers
+38436,Frostscale Bracers
+38437,Arctic Helm
+38438,Iceborne Helm
+38439,Nerubian Helm
+38440,Frostscale Helm
+38441,Cloak of Harsh Winds
+38483,Captured Chicken
+38512,Zepik&apos;s Hunting Horn
+38557,Icy Dragonscale
+38558,Nerubian Chitin
+38561,Jormungar Scale
+38590,Black Chitinguard Boots
+38591,Dark Arctic Leggings
+38592,Dark Arctic Chestpiece
+38600,Primordial Hatchling
+38606,Battle-worn Axe
+38607,Battle-worn Sword
+38619,Goregek&apos;s Shackles
+38621,Dajik&apos;s Worn Chalk
+38622,Lafoo&apos;s Bug Bag
+38623,Jaloot&apos;s Favorite Crystal
+38624,Moodle&apos;s Stress Ball
+38626,Empty Brew Bottle
+38630,Runebladed Axe
+38631,Runebladed Sword
+38653,Banana Bunch
+38655,Papaya
+38656,Orange
+38679,Scroll of Enchant Bracer - Minor Health
+38682,Armor Vellum
+38687,Gooey Ghoul Drool
+38699,Ensorcelled Choker
+38766,Scroll of Enchant Chest - Minor Health
+38767,Scroll of Enchant Chest - Minor Absorption
+38768,Scroll of Enchant Bracer - Minor Deflection
+38769,Scroll of Enchant Chest - Minor Mana
+38770,Scroll of Enchant Cloak - Minor Resistance
+38771,Scroll of Enchant Bracer - Minor Stamina
+38772,Scroll of Enchant 2H Weapon - Minor Impact
+38773,Scroll of Enchant Chest - Lesser Health
+38774,Scroll of Enchant Bracer - Minor Spirit
+38775,Scroll of Enchant Cloak - Minor Protection
+38776,Scroll of Enchant Chest - Lesser Mana
+38777,Scroll of Enchant Bracer - Minor Agility
+38778,Scroll of Enchant Bracer - Minor Strength
+38779,Scroll of Enchant Weapon - Minor Beastslayer
+38780,Scroll of Enchant Weapon - Minor Striking
+38781,Scroll of Enchant 2H Weapon - Lesser Intellect
+38782,Scroll of Enchant Chest - Health
+38783,Scroll of Enchant Bracer - Lesser Spirit
+38784,Scroll of Enchant Cloak - Lesser Fire Resistance
+38785,Scroll of Enchant Boots - Minor Stamina
+38786,Scroll of Enchant Boots - Minor Agility
+38787,Scroll of Enchant Shield - Minor Stamina
+38788,Scroll of Enchant 2H Weapon - Lesser Spirit
+38789,Scroll of Enchant Cloak - Minor Agility
+38790,Scroll of Enchant Cloak - Lesser Protection
+38791,Scroll of Enchant Shield - Lesser Protection
+38792,Scroll of Enchant Shield - Lesser Spirit
+38793,Scroll of Enchant Bracer - Lesser Stamina
+38794,Scroll of Enchant Weapon - Lesser Striking
+38795,Scroll of Enchant Cloak - Lesser Shadow Resistance
+38796,Scroll of Enchant 2H Weapon - Lesser Impact
+38797,Scroll of Enchant Bracer - Lesser Strength
+38798,Scroll of Enchant Chest - Lesser Absorption
+38799,Scroll of Enchant Chest - Mana
+38800,Scroll of Enchant Gloves - Mining
+38801,Scroll of Enchant Gloves - Herbalism
+38802,Scroll of Enchant Gloves - Fishing
+38803,Scroll of Enchant Bracer - Lesser Intellect
+38804,Scroll of Enchant Chest - Minor Stats
+38805,Scroll of Enchant Shield - Lesser Stamina
+38806,Scroll of Enchant Cloak - Defense
+38807,Scroll of Enchant Boots - Lesser Agility
+38808,Scroll of Enchant Chest - Greater Health
+38809,Scroll of Enchant Bracer - Spirit
+38810,Scroll of Enchant Boots - Lesser Stamina
+38811,Scroll of Enchant Bracer - Lesser Deflection
+38812,Scroll of Enchant Bracer - Stamina
+38813,Scroll of Enchant Weapon - Lesser Beastslayer
+38814,Scroll of Enchant Weapon - Lesser Elemental Slayer
+38815,Scroll of Enchant Cloak - Fire Resistance
+38816,Scroll of Enchant Shield - Spirit
+38817,Scroll of Enchant Bracer - Strength
+38818,Scroll of Enchant Chest - Greater Mana
+38819,Scroll of Enchant Boots - Lesser Spirit
+38820,Scroll of Enchant Shield - Lesser Block
+38821,Scroll of Enchant Weapon - Striking
+38822,Scroll of Enchant 2H Weapon - Impact
+38823,Scroll of Enchant Gloves - Skinning
+38824,Scroll of Enchant Chest - Lesser Stats
+38825,Scroll of Enchant Cloak - Greater Defense
+38826,Scroll of Enchant Cloak - Resistance
+38827,Scroll of Enchant Gloves - Agility
+38828,Scroll of Enchant Shield - Stamina
+38829,Scroll of Enchant Bracer - Intellect
+38830,Scroll of Enchant Boots - Stamina
+38831,Scroll of Enchant Gloves - Advanced Mining
+38832,Scroll of Enchant Bracer - Greater Spirit
+38833,Scroll of Enchant Chest - Superior Health
+38834,Scroll of Enchant Gloves - Advanced Herbalism
+38835,Scroll of Enchant Cloak - Lesser Agility
+38836,Scroll of Enchant Gloves - Strength
+38837,Scroll of Enchant Boots - Minor Speed
+38838,Scroll of Enchant Weapon - Fiery Weapon
+38839,Scroll of Enchant Shield - Greater Spirit
+38840,Scroll of Enchant Weapon - Demonslaying
+38841,Scroll of Enchant Chest - Superior Mana
+38842,Scroll of Enchant Bracer - Deflection
+38843,Scroll of Enchant Shield - Frost Resistance
+38844,Scroll of Enchant Boots - Agility
+38845,Scroll of Enchant 2H Weapon - Greater Impact
+38846,Scroll of Enchant Bracer - Greater Strength
+38847,Scroll of Enchant Chest - Stats
+38848,Scroll of Enchant Weapon - Greater Striking
+38849,Scroll of Enchant Bracer - Greater Stamina
+38850,Scroll of Enchant Gloves - Riding Skill
+38851,Scroll of Enchant Gloves - Minor Haste
+38852,Scroll of Enchant Bracer - Greater Intellect
+38853,Scroll of Enchant Bracer - Superior Spirit
+38854,Scroll of Enchant Bracer - Superior Strength
+38855,Scroll of Enchant Bracer - Superior Stamina
+38856,Scroll of Enchant Gloves - Greater Agility
+38857,Scroll of Enchant Gloves - Greater Strength
+38858,Scroll of Enchant Cloak - Greater Resistance
+38859,Scroll of Enchant Cloak - Superior Defense
+38860,Scroll of Enchant Shield - Vitality
+38861,Scroll of Enchant Shield - Greater Stamina
+38862,Scroll of Enchant Boots - Greater Stamina
+38863,Scroll of Enchant Boots - Greater Agility
+38864,Scroll of Enchant Boots - Spirit
+38865,Scroll of Enchant Chest - Greater Stats
+38866,Scroll of Enchant Chest - Major Health
+38867,Scroll of Enchant Chest - Major Mana
+38868,Scroll of Enchant Weapon - Icy Chill
+38869,Scroll of Enchant 2H Weapon - Superior Impact
+38870,Scroll of Enchant Weapon - Superior Striking
+38871,Scroll of Enchant Weapon - Lifestealing
+38872,Scroll of Enchant Weapon - Unholy Weapon
+38873,Scroll of Enchant Weapon - Crusader
+38874,Scroll of Enchant 2H Weapon - Major Spirit
+38875,Scroll of Enchant 2H Weapon - Major Intellect
+38876,Scroll of Enchant Weapon - Winter&apos;s Might
+38877,Scroll of Enchant Weapon - Spellpower
+38878,Scroll of Enchant Weapon - Healing Power
+38879,Scroll of Enchant Weapon - Strength
+38880,Scroll of Enchant Weapon - Agility
+38881,Scroll of Enchant Bracer - Mana Regeneration
+38882,Scroll of Enchant Bracer - Healing Power
+38883,Scroll of Enchant Weapon - Mighty Spirit
+38884,Scroll of Enchant Weapon - Mighty Intellect
+38885,Scroll of Enchant Gloves - Threat
+38886,Scroll of Enchant Gloves - Shadow Power
+38887,Scroll of Enchant Gloves - Frost Power
+38888,Scroll of Enchant Gloves - Fire Power
+38889,Scroll of Enchant Gloves - Healing Power
+38890,Scroll of Enchant Gloves - Superior Agility
+38891,Scroll of Enchant Cloak - Greater Fire Resistance
+38892,Scroll of Enchant Cloak - Greater Nature Resistance
+38893,Scroll of Enchant Cloak - Stealth
+38894,Scroll of Enchant Cloak - Subtlety
+38895,Scroll of Enchant Cloak - Dodge
+38896,Scroll of Enchant 2H Weapon - Agility
+38897,Scroll of Enchant Bracer - Brawn
+38898,Scroll of Enchant Bracer - Stats
+38899,Scroll of Enchant Bracer - Major Defense
+38900,Scroll of Enchant Bracer - Superior Healing
+38901,Scroll of Enchant Bracer - Restore Mana Prime
+38902,Scroll of Enchant Bracer - Fortitude
+38903,Scroll of Enchant Bracer - Spellpower
+38904,Scroll of Enchant Shield - Tough Shield
+38905,Scroll of Enchant Shield - Intellect
+38906,Scroll of Enchant Shield - Shield Block
+38907,Scroll of Enchant Shield - Resistance
+38908,Scroll of Enchant Boots - Vitality
+38909,Scroll of Enchant Boots - Fortitude
+38910,Scroll of Enchant Boots - Surefooted
+38911,Scroll of Enchant Chest - Exceptional Health
+38912,Scroll of Enchant Chest - Exceptional Mana
+38913,Scroll of Enchant Chest - Exceptional Stats
+38914,Scroll of Enchant Cloak - Major Armor
+38915,Scroll of Enchant Cloak - Major Resistance
+38916,Enchant Weapon - Major Spirit
+38917,Scroll of Enchant Weapon - Major Striking
+38918,Scroll of Enchant Weapon - Major Intellect
+38919,Scroll of Enchant 2H Weapon - Savagery
+38920,Scroll of Enchant Weapon - Potency
+38921,Scroll of Enchant Weapon - Major Spellpower
+38922,Scroll of Enchant 2H Weapon - Major Agility
+38923,Scroll of Enchant Weapon - Sunfire
+38924,Scroll of Enchant Weapon - Soulfrost
+38925,Scroll of Enchant Weapon - Mongoose
+38926,Scroll of Enchant Weapon - Spellsurge
+38927,Scroll of Enchant Weapon - Battlemaster
+38928,Scroll of Enchant Chest - Major Spirit
+38929,Scroll of Enchant Chest - Restore Mana Prime
+38930,Scroll of Enchant Chest - Major Resilience
+38931,Scroll of Enchant Gloves - Blasting
+38932,Scroll of Enchant Gloves - Precise Strikes
+38933,Scroll of Enchant Gloves - Major Strength
+38934,Scroll of Enchant Gloves - Assault
+38935,Scroll of Enchant Gloves - Major Spellpower
+38936,Scroll of Enchant Gloves - Major Healing
+38937,Scroll of Enchant Bracer - Major Intellect
+38938,Scroll of Enchant Bracer - Assault
+38939,Scroll of Enchant Cloak - Spell Penetration
+38940,Scroll of Enchant Cloak - Greater Agility
+38941,Scroll of Enchant Cloak - Greater Arcane Resistance
+38942,Scroll of Enchant Cloak - Greater Shadow Resistance
+38943,Scroll of Enchant Boots - Cat&apos;s Swiftness
+38944,Scroll of Enchant Boots - Boar&apos;s Speed
+38945,Scroll of Enchant Shield - Major Stamina
+38946,Scroll of Enchant Weapon - Major Healing
+38947,Scroll of Enchant Weapon - Greater Agility
+38948,Scroll of Enchant Weapon - Executioner
+38949,Scroll of Enchant Shield - Resilience
+38950,Scroll of Enchant Cloak - Superior Frost Resistance
+38951,Scroll of Enchant Gloves - Expertise
+38953,Scroll of Enchant Gloves - Precision
+38954,Scroll of Enchant Shield - Defense
+38955,Scroll of Enchant Chest - Mighty Health
+38956,Scroll of Enchant Cloak - Superior Nature Resistance
+38959,Scroll of Enchant Cloak - Superior Agility
+38960,Scroll of Enchant Gloves - Gatherer
+38961,Scroll of Enchant Boots - Greater Spirit
+38962,Scroll of Enchant Chest - Greater Mana Restoration
+38963,Scroll of Enchant Weapon - Exceptional Spirit
+38964,Scroll of Enchant Gloves - Greater Assault
+38965,Scroll of Enchant Weapon - Icebreaker
+38966,Scroll of Enchant Boots - Greater Fortitude
+38967,Scroll of Enchant Gloves - Major Agility
+38968,Scroll of Enchant Bracers - Exceptional Intellect
+38969,Scroll of Enchant Cloak - Superior Fire Resistance
+38971,Scroll of Enchant Bracers - Striking
+38972,Scroll of Enchant Weapon - Lifeward
+38973,Scroll of Enchant Cloak - Spell Piercing
+38974,Scroll of Enchant Boots - Greater Vitality
+38975,Scroll of Enchant Chest - Exceptional Resilience
+38976,Scroll of Enchant Boots - Superior Agility
+38977,Scroll of Enchant Cloak - Superior Shadow Resistance
+38978,Scroll of Enchant Cloak - Titanweave
+38979,Scroll of Enchant Gloves - Exceptional Spellpower
+38980,Scroll of Enchant Bracers - Major Spirit
+38981,Scroll of Enchant 2H Weapon - Scourgebane
+38982,Scroll of Enchant Cloak - Superior Arcane Resistance
+38984,Scroll of Enchant Bracer - Expertise
+38985,Scroll of Enchant Gloves - Greater Blasting
+38986,Scroll of Enchant Boots - Icewalker
+38987,Scroll of Enchant Bracers - Greater Stats
+38988,Scroll of Enchant Weapon - Giant Slayer
+38989,Scroll of Enchant Chest - Super Stats
+38990,Scroll of Enchant Gloves - Armsman
+38991,Scroll of Enchant Weapon - Exceptional Spellpower
+38992,Scroll of Enchant 2H Weapon - Greater Savagery
+38993,Scroll of Enchant Cloak - Shadow Armor
+38995,Scroll of Enchant Weapon - Exceptional Agility
+38997,Scroll of Enchant Bracers - Greater Spellpower
+38998,Scroll of Enchant Weapon - Deathfrost
+38999,Scroll of Enchant Chest - Defense
+39000,Scroll of Enchant Cloak - Steelweave
+39001,Scroll of Enchant Cloak - Mighty Armor
+39002,Scroll of Enchant Chest - Greater Defense
+39003,Scroll of Enchant Cloak - Greater Speed
+39004,Scroll of Enchant Cloak - Wisdom
+39005,Scroll of Enchant Chest - Super Health
+39006,Scroll of Enchant Boots - Tuskarr&apos;s Vitality
+39083,Cobalt Shoulders
+39084,Cobalt Helm
+39085,Cobalt Chestpiece
+39086,Cobalt Legplates
+39087,Cobalt Belt
+39088,Cobalt Boots
+39151,Alabaster Pigment
+39213,Massive Seaforium Charge
+39286,Frosty&apos;s Collar
+39313,Yara&apos;s Sword
+39314,Tiki Dervish Ceremony
+39315,Drek&apos;Maz&apos;s Tiki
+39316,Tiri&apos;s Magical Incantation
+39334,Dusky Pigment
+39338,Golden Pigment
+39339,Emerald Pigment
+39340,Violet Pigment
+39341,Silvery Pigment
+39342,Nether Pigment
+39343,Azure Pigment
+39349,Weapon Vellum
+39350,Weapon Vellum II
+39354,Light Parchment
+39469,Moonglow Ink
+39501,Heavy Parchment
+39502,Resilient Parchment
+39520,Kungaloosh
+39573,Matriarch&apos;s Heartblood
+39575,Suntouched Heartblood
+39576,Suntouched Water
+39614,True Power of the Tempest
+39616,Essence of the Monsoon
+39643,Essence of the Storm
+39656,Tyrael&apos;s Hilt
+39666,Elixir of Mighty Agility
+39671,Resurgent Healing Potion
+39681,Handful of Cobalt Bolts
+39682,Overcharged Capacitor
+39683,Froststeel Tube
+39684,Hair Trigger
+39688,Mark &quot;S&quot; Boomstick
+39690,Volatile Blasting Trigger
+39691,Succulent Orca Stew
+39707,Verdant Tundra Cap
+39708,Verdant Tundra Shoulderpads
+39709,Verdant Tundra Boots
+39710,Verdant Tundra Belt
+39711,Verdant Tundra Bracers
+39737,Secret Strength of the Frenzyheart
+39738,Thunderbrew&apos;s Hard Ale
+39739,Wolvar Berries
+39747,Dormant Polished Crystal
+39748,Energized Polished Crystal
+39774,Midnight Ink
+39970,Fire Leaf
+39996,Bold Scarlet Ruby
+39997,Delicate Scarlet Ruby
+39998,Runed Scarlet Ruby
+39999,Bright Scarlet Ruby
+40000,Subtle Scarlet Ruby
+40001,Flashing Scarlet Ruby
+40002,Fractured Scarlet Ruby
+40003,Precise Scarlet Ruby
+40008,Solid Sky Sapphire
+40009,Sparkling Sky Sapphire
+40010,Lustrous Sky Sapphire
+40011,Stormy Sky Sapphire
+40012,Brilliant Autumn&apos;s Glow
+40013,Smooth Autumn&apos;s Glow
+40014,Rigid Autumn&apos;s Glow
+40015,Thick Autumn&apos;s Glow
+40016,Mystic Autumn&apos;s Glow
+40017,Quick Autumn&apos;s Glow
+40022,Sovereign Twilight Opal
+40023,Shifting Twilight Opal
+40024,Tenuous Twilight Opal
+40025,Glowing Twilight Opal
+40026,Purified Twilight Opal
+40027,Royal Twilight Opal
+40028,Mysterious Twilight Opal
+40029,Balanced Twilight Opal
+40030,Infused Twilight Opal
+40031,Regal Twilight Opal
+40032,Defender&apos;s Twilight Opal
+40033,Puissant Twilight Opal
+40034,Guardian&apos;s Twilight Opal
+40037,Inscribed Monarch Topaz
+40038,Etched Monarch Topaz
+40039,Champion&apos;s Monarch Topaz
+40040,Resplendent Monarch Topaz
+40041,Fierce Monarch Topaz
+40043,Deadly Monarch Topaz
+40044,Glinting Monarch Topaz
+40045,Lucent Monarch Topaz
+40046,Deft Monarch Topaz
+40047,Luminous Monarch Topaz
+40048,Potent Monarch Topaz
+40049,Veiled Monarch Topaz
+40050,Durable Monarch Topaz
+40051,Reckless Monarch Topaz
+40052,Wicked Monarch Topaz
+40053,Pristine Monarch Topaz
+40054,Empowered Monarch Topaz
+40055,Stark Monarch Topaz
+40056,Stalwart Monarch Topaz
+40057,Glimmering Monarch Topaz
+40058,Accurate Monarch Topaz
+40059,Resolute Monarch Topaz
+40067,Icy Mana Potion
+40068,Wrath Elixir
+40070,Spellpower Elixir
+40072,Elixir of Spirit
+40073,Elixir of Mighty Strength
+40076,Guru&apos;s Elixir
+40077,Crazy Alchemist&apos;s Potion
+40078,Elixir of Mighty Fortitude
+40079,Lesser Flask of Toughness
+40081,Potion of Nightmares
+40085,Timeless Forest Emerald
+40086,Jagged Forest Emerald
+40087,Powerful Rejuvenation Potion
+40088,Vivid Forest Emerald
+40089,Enduring Forest Emerald
+40090,Steady Forest Emerald
+40091,Forceful Forest Emerald
+40092,Seer&apos;s Forest Emerald
+40093,Indestructible Potion
+40094,Dazzling Forest Emerald
+40095,Misty Forest Emerald
+40096,Sundered Forest Emerald
+40097,Elixir of Protection
+40098,Radiant Forest Emerald
+40099,Shining Forest Emerald
+40100,Lambent Forest Emerald
+40101,Tense Forest Emerald
+40102,Turbid Forest Emerald
+40103,Opaque Forest Emerald
+40104,Intricate Forest Emerald
+40105,Energized Forest Emerald
+40106,Shattered Forest Emerald
+40109,Elixir of Mighty Mageblood
+40110,Haunted Memento
+40111,Bold Cardinal Ruby
+40112,Delicate Cardinal Ruby
+40113,Runed Cardinal Ruby
+40114,Bright Cardinal Ruby
+40115,Subtle Cardinal Ruby
+40116,Flashing Cardinal Ruby
+40117,Fractured Cardinal Ruby
+40118,Precise Cardinal Ruby
+40119,Solid Majestic Zircon
+40120,Sparkling Majestic Zircon
+40121,Lustrous Majestic Zircon
+40122,Stormy Majestic Zircon
+40123,Brilliant King&apos;s Amber
+40124,Smooth King&apos;s Amber
+40125,Rigid King&apos;s Amber
+40126,Thick King&apos;s Amber
+40127,Mystic King&apos;s Amber
+40128,Quick King&apos;s Amber
+40129,Sovereign Dreadstone
+40130,Shifting Dreadstone
+40131,Tenuous Dreadstone
+40132,Glowing Dreadstone
+40133,Purified Dreadstone
+40134,Royal Dreadstone
+40135,Mysterious Dreadstone
+40136,Balanced Dreadstone
+40137,Infused Dreadstone
+40138,Regal Dreadstone
+40139,Defender&apos;s Dreadstone
+40140,Puissant Dreadstone
+40141,Guardian&apos;s Dreadstone
+40142,Inscribed Ametrine
+40143,Etched Ametrine
+40144,Champion&apos;s Ametrine
+40145,Resplendent Ametrine
+40146,Fierce Ametrine
+40147,Deadly Ametrine
+40148,Glinting Ametrine
+40149,Lucent Ametrine
+40150,Deft Ametrine
+40151,Luminous Ametrine
+40152,Potent Ametrine
+40153,Veiled Ametrine
+40154,Durable Ametrine
+40155,Reckless Ametrine
+40156,Wicked Ametrine
+40157,Pristine Ametrine
+40158,Empowered Ametrine
+40159,Stark Ametrine
+40160,Stalwart Ametrine
+40161,Glimmering Ametrine
+40162,Accurate Ametrine
+40163,Resolute Ametrine
+40164,Timeless Eye of Zul
+40165,Jagged Eye of Zul
+40166,Vivid Eye of Zul
+40167,Enduring Eye of Zul
+40168,Steady Eye of Zul
+40169,Forceful Eye of Zul
+40170,Seer&apos;s Eye of Zul
+40171,Misty Eye of Zul
+40172,Shining Eye of Zul
+40173,Turbid Eye of Zul
+40174,Intricate Eye of Zul
+40175,Dazzling Eye of Zul
+40176,Sundered Eye of Zul
+40177,Lambent Eye of Zul
+40178,Opaque Eye of Zul
+40179,Energized Eye of Zul
+40180,Radiant Eye of Zul
+40181,Tense Eye of Zul
+40182,Shattered Eye of Zul
+40195,Pygmy Oil
+40199,Pygmy Suckerfish
+40211,Potion of Speed
+40212,Potion of Wild Magic
+40213,Mighty Arcane Protection Potion
+40214,Mighty Fire Protection Potion
+40215,Mighty Frost Protection Potion
+40216,Mighty Nature Protection Potion
+40217,Mighty Shadow Protection Potion
+40248,Eternal Might
+40411,Enchanted Vial
+40484,Deprecated Glyph of the White Bear
+40533,Walnut Stock
+40536,Explosive Decoy
+40643,Tabard of the Achiever
+40668,Cobalt Triangle Shield
+40669,Tempered Saronite Belt
+40670,Saronite Defender
+40671,Tempered Saronite Boots
+40672,Tempered Saronite Breastplate
+40673,Tempered Saronite Helm
+40674,Tempered Saronite Legplates
+40675,Tempered Saronite Shoulders
+40686,U.D.E.D.
+40767,Sonic Booster
+40768,MOLL-E
+40769,Scrapbot Construction Kit
+40771,Cobalt Frag Bomb
+40772,Gnomish Army Knife
+40773,Master Firestone
+40865,Noise Machine
+40892,Hammer Pick
+40893,Bladed Pickaxe
+40895,Gnomish X-Ray Specs
+40896,Glyph of Frenzied Regeneration
+40897,Glyph of Maul
+40899,Glyph of Growl
+40900,Glyph of Mangle
+40901,Glyph of Shred
+40902,Glyph of Rip
+40903,Glyph of Rake
+40906,Glyph of Swiftmend
+40908,Glyph of Innervate
+40909,Glyph of Rebirth
+40912,Glyph of Regrowth
+40913,Glyph of Rejuvenation
+40914,Glyph of Healing Touch
+40915,Glyph of Lifebloom
+40916,Glyph of Starfire
+40919,Glyph of Insect Swarm
+40920,Glyph of Hurricane
+40921,Glyph of Starfall
+40922,Glyph of Wrath
+40923,Glyph of Moonfire
+40924,Glyph of Entangling Roots
+40942,Spiked Cobalt Helm
+40943,Spiked Cobalt Legplates
+40948,Deprecated Glyph of the Red Lynx
+40949,Spiked Cobalt Boots
+40950,Spiked Cobalt Shoulders
+40951,Spiked Cobalt Chestpiece
+40952,Spiked Cobalt Gauntlets
+40953,Spiked Cobalt Belt
+40954,Spiked Cobalt Bracers
+40955,Horned Cobalt Helm
+40956,Reinforced Cobalt Shoulders
+40957,Reinforced Cobalt Helm
+40958,Reinforced Cobalt Legplates
+40959,Reinforced Cobalt Chestpiece
+41092,Glyph of Judgement
+41094,Glyph of Seal of Command
+41095,Glyph of Hammer of Justice
+41096,Glyph of Spiritual Attunement
+41097,Glyph of Hammer of Wrath
+41098,Glyph of Crusader Strike
+41099,Glyph of Consecration
+41100,Glyph of Righteous Defense
+41101,Glyph of Avenger&apos;s Shield
+41102,Glyph of Turn Evil
+41103,Glyph of Exorcism
+41104,Glyph of Cleansing
+41105,Glyph of Flash of Light
+41106,Glyph of Holy Light
+41107,Glyph of Avenging Wrath
+41108,Glyph of Divinity
+41109,Glyph of Seal of Wisdom
+41110,Glyph of Seal of Light
+41112,Mechanized Snow Goggles
+41113,Saronite Bulwark
+41114,Tempered Saronite Gauntlets
+41116,Tempered Saronite Bracers
+41117,Saronite Protector
+41121,Gnomish Lightning Generator
+41126,Brilliant Saronite Legplates
+41127,Brilliant Saronite Gauntlets
+41128,Brilliant Saronite Boots
+41129,Brilliant Saronite Breastplate
+41130,Inventor&apos;s Disk Fragment
+41132,The Inventor&apos;s Disk
+41146,Sun Scope
+41163,Titanium Bar
+41164,Mammoth Cutters
+41165,Saronite Razorheads
+41166,Runic Healing Injector
+41167,Heartseeker Scope
+41168,Armor Plated Combat Shotgun
+41169,Firestone
+41170,Lesser Firestone
+41171,Greater Firestone
+41172,Major Firestone
+41173,Fel Firestone
+41174,Grand Firestone
+41181,Honed Cobalt Cleaver
+41182,Savage Cobalt Slicer
+41183,Saronite Ambusher
+41184,Saronite Shiv
+41185,Furious Saronite Beatstick
+41186,Corroded Saronite Edge
+41187,Corroded Saronite Woundbringer
+41188,Saronite Mindcrusher
+41189,Chestplate of Conquest
+41190,Legplates of Conquest
+41191,Spellstone
+41192,Greater Spellstone
+41193,Major Spellstone
+41194,Master Spellstone
+41195,Demonic Spellstone
+41196,Grand Spellstone
+41238,Cloak of Tormented Skies
+41239,Sturdy Cobalt Quickblade
+41240,Cobalt Tenderizer
+41241,Sure-fire Shuriken
+41242,Forged Cobalt Claymore
+41243,Notched Cobalt War Axe
+41245,Deadly Saronite Dirk
+41248,Red Lumberjack Shirt
+41249,Blue Lumberjack Shirt
+41250,Green Lumberjack Shirt
+41251,Yellow Lumberjack Shirt
+41252,Red Workman&apos;s Shirt
+41253,Blue Workman&apos;s Shirt
+41254,Rustic Workman&apos;s Shirt
+41255,Green Workman&apos;s Shirt
+41257,Titansteel Destroyer
+41264,Deflecting Bracers
+41266,Skyflare Diamond
+41285,Chaotic Skyflare Diamond
+41307,Destructive Skyflare Diamond
+41333,Ember Skyflare Diamond
+41334,Earthsiege Diamond
+41335,Enigmatic Skyflare Diamond
+41339,Swift Skyflare Diamond
+41344,Helm of Command
+41345,Daunting Legplates
+41346,Righteous Greaves
+41347,Savage Saronite Legplates
+41348,Savage Saronite Walkers
+41349,Savage Saronite Gauntlets
+41350,Savage Saronite Skullshield
+41351,Savage Saronite Pauldrons
+41352,Savage Saronite Waistguard
+41353,Savage Saronite Hauberk
+41354,Savage Saronite Bracers
+41355,Vengeance Bindings
+41356,Righteous Gauntlets
+41357,Daunting Handguards
+41367,Dark Jade Focusing Lens
+41375,Tireless Skyflare Diamond
+41376,Revitalizing Skyflare Diamond
+41377,Effulgent Skyflare Diamond
+41378,Forlorn Skyflare Diamond
+41379,Impassive Skyflare Diamond
+41380,Austere Earthsiege Diamond
+41381,Persistent Earthsiege Diamond
+41382,Trenchant Earthsiege Diamond
+41383,Titansteel Bonecrusher
+41384,Titansteel Guardian
+41385,Invigorating Earthsiege Diamond
+41386,Spiked Titansteel Helm
+41387,Tempered Titansteel Helm
+41388,Brilliant Titansteel Helm
+41389,Beaming Earthsiege Diamond
+41391,Spiked Titansteel Treads
+41392,Tempered Titansteel Treads
+41394,Brilliant Titansteel Treads
+41395,Bracing Earthsiege Diamond
+41396,Eternal Earthsiege Diamond
+41397,Powerful Earthsiege Diamond
+41398,Relentless Earthsiege Diamond
+41400,Thundering Skyflare Diamond
+41401,Insightful Earthsiege Diamond
+41508,Mechano-hog
+41509,Frostweave Net
+41510,Bolt of Frostweave
+41511,Bolt of Imbued Frostweave
+41512,Frostwoven Wristwraps
+41513,Frostwoven Shoulders
+41515,Frostwoven Robe
+41516,Frostsavage Gloves
+41517,Glyph of Chain Heal
+41518,Glyph of Chain Lightning
+41519,Frostwoven Leggings
+41520,Frostwoven Boots
+41521,Frostwoven Cowl
+41522,Frostwoven Belt
+41523,Mystic Frostwoven Shoulders
+41524,Glyph of Lava
+41525,Mystic Frostwoven Robe
+41526,Glyph of Shocking
+41527,Glyph of Earthliving Weapon
+41528,Mystic Frostwoven Wristwraps
+41529,Glyph of Fire Elemental Totem
+41530,Glyph of Fire Nova
+41531,Glyph of Flame Shock
+41532,Glyph of Flametongue Weapon
+41533,Glyph of Healing Stream Totem
+41534,Glyph of Healing Wave
+41535,Glyph of Lesser Healing Wave
+41536,Glyph of Lightning Bolt
+41537,Glyph of Lightning Shield
+41538,Glyph of Mana Tide Totem
+41539,Glyph of Stormstrike
+41540,Glyph of Lava Lash
+41541,Glyph of Water Mastery
+41542,Glyph of Windfury Weapon
+41543,Duskweave Belt
+41544,Duskweave Boots
+41545,Duskweave Gloves
+41546,Duskweave Cowl
+41547,Glyph of Frost Shock
+41548,Duskweave Leggings
+41549,Duskweave Robe
+41550,Duskweave Shoulders
+41551,Duskweave Wristwraps
+41552,Glyph of Elemental Mastery
+41553,Black Duskweave Leggings
+41554,Black Duskweave Robe
+41555,Black Duskweave Wristwraps
+41593,Ebonweave
+41594,Moonshroud
+41595,Spellweave
+41597,Abyssal Bag
+41598,Mysterious Bag
+41599,Frostweave Bag
+41600,Glacial Bag
+41601,Shining Spellthread
+41602,Brilliant Spellthread
+41603,Azure Spellthread
+41604,Sapphire Spellthread
+41607,Cloak of the Moon
+41608,Cloak of Frozen Spirits
+41609,Wispcloak
+41610,Deathchill Cloak
+41611,Eternal Belt Buckle
+41741,Cobalt Rod
+41745,Titanium Rod
+41800,Deep Sea Monsterbelly
+41801,Moonglow Cuttlefish
+41802,Imperial Manta Ray
+41803,Rockfin Grouper
+41805,Borean Man O&apos; War
+41806,Musselback Sculpin
+41807,Dragonfin Angelfish
+41808,Bonescale Snapper
+41809,Glacial Salmon
+41810,Fangtooth Herring
+41812,Barrelhead Goby
+41813,Nettlefish
+41814,Glassfin Minnow
+41974,Cobalt Bracers
+41975,Cobalt Gauntlets
+41976,Titanium Weapon Chain
+41984,Hat of Wintry Doom
+41985,Silky Iceshard Boots
+41986,Deep Frozen Cord
+42093,Frostmoon Pants
+42095,Light Blessed Mittens
+42096,Aurora Slippers
+42100,Moonshroud Robe
+42101,Ebonweave Robe
+42102,Spellweave Robe
+42103,Moonshroud Gloves
+42111,Ebonweave Gloves
+42113,Spellweave Gloves
+42142,Bold Dragon&apos;s Eye
+42143,Delicate Dragon&apos;s Eye
+42144,Runed Dragon&apos;s Eye
+42145,Sparkling Dragon&apos;s Eye
+42146,Lustrous Dragon&apos;s Eye
+42148,Brilliant Dragon&apos;s Eye
+42149,Smooth Dragon&apos;s Eye
+42150,Quick Dragon&apos;s Eye
+42151,Subtle Dragon&apos;s Eye
+42152,Flashing Dragon&apos;s Eye
+42153,Fractured Dragon&apos;s Eye
+42154,Precise Dragon&apos;s Eye
+42155,Stormy Dragon&apos;s Eye
+42156,Rigid Dragon&apos;s Eye
+42157,Thick Dragon&apos;s Eye
+42158,Mystic Dragon&apos;s Eye
+42225,Dragon&apos;s Eye
+42253,Iceweb Spider Silk
+42336,Bloodstone Band
+42337,Sun Rock Ring
+42338,Jade Dagger Pendant
+42339,Blood Sun Necklace
+42340,Dream Signet
+42341,Figurine - Ruby Hare
+42342,Bag of Popcorn
+42350,Bag of Peanuts
+42381,Anguish Ale
+42395,Figurine - Twilight Serpent
+42396,Glyph of Circle of Healing
+42397,Glyph of Dispel Magic
+42398,Glyph of Fade
+42399,Glyph of Fear Ward
+42400,Glyph of Flash Heal
+42401,Glyph of Holy Nova
+42402,Glyph of Inner Fire
+42403,Glyph of Lightwell
+42404,Glyph of Mass Dispel
+42405,Glyph of Mind Control
+42406,Glyph of Shadow Word: Pain
+42407,Glyph of Shadow
+42408,Glyph of Power Word: Shield
+42409,Glyph of Prayer of Healing
+42410,Glyph of Psychic Scream
+42411,Glyph of Renew
+42412,Glyph of Scourge Imprisonment
+42413,Figurine - Sapphire Owl
+42414,Glyph of Shadow Word: Death
+42415,Glyph of Mind Flay
+42416,Glyph of Smite
+42417,Glyph of Spirit of Redemption
+42418,Figurine - Emerald Boar
+42420,Shadow Crystal Focusing Lens
+42421,Shadow Jade Focusing Lens
+42423,Stormforged Eye
+42432,Berry Pie Slice
+42433,Chocolate Cake Slice
+42434,Lovely Cake Slice
+42435,Titansteel Shanker
+42443,Cudgel of Saronite Justice
+42453,Glyph of Incinerate
+42454,Glyph of Conflagrate
+42455,Glyph of Corruption
+42456,Glyph of Curse of Agony
+42457,Glyph of Death Coil
+42458,Glyph of Fear
+42459,Glyph of Felguard
+42460,Glyph of Felhunter
+42461,Glyph of Health Funnel
+42462,Glyph of Healthstone
+42463,Glyph of Howl of Terror
+42464,Glyph of Immolate
+42465,Glyph of Imp
+42466,Glyph of Searing Pain
+42467,Glyph of Shadow Bolt
+42468,Glyph of Shadowburn
+42469,Glyph of Siphon Life
+42470,Glyph of Soulstone
+42471,Glyph of Succubus
+42472,Glyph of Unstable Affliction
+42473,Glyph of Voidwalker
+42482,The Violet Hold Key
+42500,Titanium Shield Spike
+42508,Titansteel Shield Wall
+42545,Runic Mana Injector
+42546,Mana Injector Kit
+42549,Armored Titanium Goggles
+42550,Weakness Spectralizers
+42551,Truesight Ice Blinders
+42552,Charged Titanium Specs
+42553,Visage Liquification Goggles
+42554,Greensight Gogs
+42555,Electroflux Sight Enhancers
+42641,Global Thermal Sapper Charge
+42642,Titanium Impact Band
+42643,Titanium Earthguard Ring
+42644,Titanium Spellshock Ring
+42645,Titanium Impact Choker
+42646,Titanium Earthguard Chain
+42647,Titanium Spellshock Necklace
+42701,Enchanted Pearl
+42702,Enchanted Tear
+42723,Ornate Saronite Bracers
+42724,Ornate Saronite Gauntlets
+42725,Ornate Saronite Hauberk
+42726,Ornate Saronite Legplates
+42727,Ornate Saronite Pauldrons
+42728,Ornate Saronite Skullshield
+42729,Ornate Saronite Waistguard
+42730,Ornate Saronite Walkers
+42731,Leggings of Visceral Strikes
+42733,Icemaw Bear Flank
+42734,Glyph of Arcane Explosion
+42735,Glyph of Arcane Missiles
+42736,Glyph of Arcane Power
+42737,Glyph of Blink
+42738,Glyph of Evocation
+42739,Glyph of Fireball
+42740,Glyph of Fire Blast
+42741,Glyph of Frost Nova
+42742,Glyph of Frostbolt
+42743,Glyph of Ice Armor
+42744,Glyph of Ice Block
+42745,Glyph of Ice Lance
+42746,Glyph of Icy Veins
+42747,Glyph of Scorch
+42748,Glyph of Invisibility
+42749,Glyph of Mage Armor
+42750,Glyph of Mana Gem
+42751,Glyph of Molten Armor
+42752,Glyph of Polymorph
+42753,Glyph of Remove Curse
+42754,Glyph of Water Elemental
+42897,Glyph of Aimed Shot
+42898,Glyph of Arcane Shot
+42899,Glyph of the Beast
+42900,Glyph of Mending
+42901,Glyph of Aspect of the Viper
+42902,Glyph of Bestial Wrath
+42903,Glyph of Deterrence
+42904,Glyph of Disengage
+42905,Glyph of Freezing Trap
+42906,Glyph of Frost Trap
+42907,Glyph of Hunter&apos;s Mark
+42908,Glyph of Immolation Trap
+42909,Glyph of the Hawk
+42910,Glyph of Multi-Shot
+42911,Glyph of Rapid Fire
+42912,Glyph of Serpent Sting
+42913,Glyph of Snake Trap
+42914,Glyph of Steady Shot
+42915,Glyph of Trueshot Aura
+42916,Glyph of Volley
+42917,Glyph of Wyvern Sting
+42942,Baked Manta Ray
+42954,Glyph of Adrenaline Rush
+42955,Glyph of Ambush
+42956,Glyph of Backstab
+42957,Glyph of Blade Flurry
+42958,Glyph of Crippling Poison
+42959,Glyph of Deadly Throw
+42960,Glyph of Evasion
+42961,Glyph of Eviscerate
+42962,Glyph of Expose Armor
+42963,Glyph of Feint
+42964,Glyph of Garrote
+42965,Glyph of Ghostly Strike
+42966,Glyph of Gouge
+42967,Glyph of Hemorrhage
+42968,Glyph of Preparation
+42969,Glyph of Rupture
+42970,Glyph of Sap
+42971,Glyph of Vigor
+42972,Glyph of Sinister Strike
+42973,Glyph of Slice and Dice
+42974,Glyph of Sprint
+42975,Ace of Lords
+42976,Lords Deck
+42977,Two of Lords
+42978,Three of Lords
+42979,Four of Lords
+42980,Five of Lords
+42981,Six of Lords
+42982,Seven of Lords
+42983,Eight of Lords
+42986,The RP-GG
+42993,Spicy Fried Herring
+42994,Rhinolicious Wormsteak
+42995,Hearty Rhino
+42996,Snapper Extreme
+42997,Blackened Worg Steak
+42998,Cuttlesteak
+42999,Blackened Dragonfin
+43000,Dragonfin Filet
+43001,Tracker Snacks
+43002,Inflatable Land Mines
+43004,Critter Bites
+43005,Spiced Mammoth Treats
+43007,Northern Spices
+43009,Shoveltusk Flank
+43010,Worm Meat
+43011,Worg Haunch
+43012,Rhino Meat
+43013,Chilled Meat
+43015,Fish Feast
+43087,Crisp Dalaran Apple
+43099,Infused Mushroom Meatloaf
+43100,Infused Mushroom
+43102,Frozen Orb
+43103,Verdant Pigment
+43104,Burnt Pigment
+43105,Indigo Pigment
+43106,Ruby Pigment
+43107,Sapphire Pigment
+43108,Ebon Pigment
+43109,Icy Pigment
+43115,Hunter&apos;s Ink
+43116,Lion&apos;s Ink
+43117,Dawnstar Ink
+43118,Jadefire Ink
+43119,Royal Ink
+43120,Celestial Ink
+43121,Fiery Ink
+43122,Shimmering Ink
+43123,Ink of the Sky
+43124,Ethereal Ink
+43125,Darkflame Ink
+43126,Ink of the Sea
+43127,Snowfall Ink
+43129,Razorstrike Breastplate
+43130,Virulent Spaulders
+43131,Eaglebane Bracers
+43132,Nightshock Hood
+43133,Nightshock Girdle
+43136,Wine and Cheese Platter
+43137,Aged Dalaran Limburger
+43138,Half Full Dalaran Wine Glass
+43143,Wild Mustard
+43144,Mustard Dog Basket!
+43145,Armor Vellum III
+43146,Weapon Vellum III
+43148,Crystalsong Carrot
+43149,Vegetable Stew
+43214,Kurzel&apos;s Blouse Scrap
+43215,Ichor-Stained Cloth
+43244,Crystal Citrine Necklace
+43245,Crystal Chalcedony Amulet
+43246,Earthshadow Ring
+43247,Jade Ring of Slaying
+43248,Stoneguard Band
+43249,Shadowmight Ring
+43250,Ring of Earthen Might
+43251,Ring of Scarlet Shadows
+43252,Windfire Band
+43253,Ring of Northern Tears
+43255,Seafoam Gauntlets
+43256,Jormscale Footpads
+43257,Wildscale Breastplate
+43258,Purehorn Spaulders
+43260,Eviscerator&apos;s Facemask
+43261,Overcast Headguard
+43262,Overcast Spaulders
+43263,Overcast Chestguard
+43264,Overcast Bracers
+43265,Overcast Handwraps
+43266,Overcast Belt
+43268,Dalaran Clam Chowder
+43269,Blood Jade Amulet
+43270,Glowing Ivory Figurine
+43271,Overcast Leggings
+43272,Wicked Sun Brooch
+43273,Overcast Boots
+43274,Intricate Bone Figurine
+43275,Bright Armor Relic
+43276,Shifting Sun Curio
+43288,Smelted Metal Bar
+43298,Beautiful Chalcedony Necklace
+43300,Loremaster&apos;s Colors
+43316,Glyph of Aquatic Form
+43331,Glyph of Unburdened Rebirth
+43332,Glyph of Thorns
+43334,Glyph of Challenging Roar
+43335,Glyph of the Wild
+43336,Deprecated Glyph of the Black Bear
+43337,Deprecated Glyph of the Forest Lynx
+43338,Glyph of Revive Pet
+43339,Glyph of Arcane Intellect
+43340,Glyph of Blessing of Might
+43342,Glyph of Fading
+43343,Glyph of Pick Pocket
+43344,Glyph of Water Breathing
+43348,Tabard of the Explorer
+43349,Tabard of Brute Force
+43350,Glyph of Mend Pet
+43351,Glyph of Feign Death
+43354,Glyph of Possessed Strength
+43355,Glyph of the Pack
+43356,Glyph of Scare Beast
+43357,Glyph of Fire Ward
+43359,Glyph of Frost Armor
+43360,Glyph of Frost Ward
+43361,Glyph of the Penguin
+43362,Glyph of the Bear Cub
+43364,Glyph of Slow Fall
+43365,Glyph of Blessing of Kings
+43366,Glyph of Blessing of Wisdom
+43367,Glyph of Lay on Hands
+43368,Glyph of Sense Undead
+43369,Glyph of the Wise
+43370,Glyph of Levitate
+43371,Glyph of Fortitude
+43372,Glyph of Shadow Protection
+43373,Glyph of Shackle Undead
+43374,Glyph of Shadowfiend
+43376,Glyph of Distract
+43377,Glyph of Pick Lock
+43378,Glyph of Safe Fall
+43379,Glyph of Blurred Speed
+43380,Glyph of Vanish
+43381,Glyph of Astral Recall
+43384,Deprecated Glyph of the Black Wolf
+43385,Glyph of Renewed Life
+43386,Glyph of Water Shield
+43388,Glyph of Water Walking
+43389,Glyph of Unending Breath
+43390,Glyph of Drain Soul
+43391,Glyph of Kilrogg
+43392,Glyph of Curse of Exhaustion
+43393,Glyph of Enslave Demon
+43394,Glyph of Souls
+43395,Glyph of Battle
+43396,Glyph of Bloodrage
+43397,Glyph of Charge
+43398,Glyph of Mocking Blow
+43399,Glyph of Thunder Clap
+43400,Glyph of Enduring Victory
+43412,Glyph of Bloodthirst
+43413,Glyph of Rapid Charge
+43414,Glyph of Cleaving
+43415,Glyph of Devastate
+43416,Glyph of Execution
+43417,Glyph of Hamstring
+43418,Glyph of Heroic Strike
+43419,Glyph of Intervene
+43420,Glyph of Barbaric Insults
+43421,Glyph of Mortal Strike
+43422,Glyph of Overpower
+43423,Glyph of Rending
+43424,Glyph of Revenge
+43425,Glyph of Blocking
+43426,Glyph of Last Stand
+43427,Glyph of Sunder Armor
+43428,Glyph of Sweeping Strikes
+43429,Glyph of Taunt
+43430,Glyph of Resonating Power
+43431,Glyph of Victory Rush
+43432,Glyph of Whirlwind
+43433,Eviscerator&apos;s Shoulderpads
+43434,Eviscerator&apos;s Chestguard
+43435,Eviscerator&apos;s Bindings
+43436,Eviscerator&apos;s Gauntlets
+43437,Eviscerator&apos;s Waistguard
+43438,Eviscerator&apos;s Legguards
+43439,Eviscerator&apos;s Treads
+43442,Swiftarrow Belt
+43443,Swiftarrow Boots
+43444,Swiftarrow Bracers
+43445,Swiftarrow Hauberk
+43446,Swiftarrow Gauntlets
+43447,Swiftarrow Helm
+43448,Swiftarrow Leggings
+43449,Swiftarrow Shoulderguards
+43450,Stormhide Belt
+43451,Stormhide Stompers
+43452,Stormhide Wristguards
+43453,Stormhide Hauberk
+43454,Stormhide Grips
+43455,Stormhide Crown
+43456,Stormhide Legguards
+43457,Stormhide Shoulders
+43458,Giantmaim Legguards
+43459,Giantmaim Bracers
+43461,Revenant&apos;s Breastplate
+43463,Scroll of Agility VII
+43464,Scroll of Agility VIII
+43465,Scroll of Strength VII
+43466,Scroll of Strength VIII
+43469,Revenant&apos;s Treads
+43478,Gigantic Feast
+43480,Small Feast
+43481,Trollwoven Spaulders
+43482,Savage Titanium Ring
+43484,Trollwoven Girdle
+43488,Last Weeks Mammoth
+43489,Mohawk Grenade
+43490,Tasty Cupcake
+43491,Bad Clams
+43492,Haunted Herring
+43495,Earthgiving Legguards
+43498,Savage Titanium Band
+43501,Northern Egg
+43502,Earthgiving Boots
+43515,Mystic Tome
+43518,Conjured Mana Pie
+43523,Conjured Mana Strudel
+43533,Glyph of Anti-Magic Shell
+43534,Glyph of Heart Strike
+43535,Glyph of Blood Tap
+43536,Glyph of Bone Shield
+43537,Glyph of Chains of Ice
+43538,Glyph of Dark Command
+43539,Glyph of Death&apos;s Embrace
+43541,Glyph of Death Grip
+43542,Glyph of Death and Decay
+43543,Glyph of Frost Strike
+43544,Glyph of Horn of Winter
+43545,Glyph of Icebound Fortitude
+43546,Glyph of Icy Touch
+43547,Glyph of Obliterate
+43548,Glyph of Plague Strike
+43549,Glyph of the Ghoul
+43550,Glyph of Rune Strike
+43551,Glyph of Scourge Strike
+43552,Glyph of Strangulate
+43553,Glyph of Unbreakable Armor
+43554,Glyph of Vampiric Blood
+43565,Durable Nerubhide Cape
+43566,Ice Striker&apos;s Cloak
+43569,Endless Healing Potion
+43570,Endless Mana Potion
+43582,Titanium Frostguard Ring
+43583,Glacial Robe
+43584,Glacial Waistband
+43585,Glacial Slippers
+43586,Icebane Chestguard
+43587,Icebane Girdle
+43588,Icebane Treads
+43589,Wintergrasp Mark of Honor
+43590,Polar Vest
+43591,Polar Cord
+43592,Polar Boots
+43593,Icy Scale Chestguard
+43594,Icy Scale Belt
+43595,Icy Scale Boots
+43614,Broken Wrath Elixir
+43620,Broken Spellpower Elixir
+43621,Broken Noggenfogger Elixir
+43654,Tome of the Dawn
+43655,Book of Survival
+43656,Tome of Kings
+43657,Royal Guide of Escape Routes
+43660,Fire Eater&apos;s Guide
+43661,Book of Stars
+43663,Stormbound Tome
+43664,Manual of Clouds
+43666,Hellfire Tome
+43667,Book of Clever Tricks
+43671,Glyph of Corpse Explosion
+43672,Glyph of Pestilence
+43673,Glyph of Raise Dead
+43674,Glyph of Dash
+43725,Glyph of Ghost Wolf
+43824,The Schools of Arcane Magic - Mastery
+43825,Glyph of Rune Tap
+43826,Glyph of Blood Strike
+43827,Glyph of Death Strike
+43850,Certificate of Ownership
+43853,Titanium Skeleton Key
+43854,Cobalt Skeleton Key
+43860,Brilliant Saronite Belt
+43864,Brilliant Saronite Bracers
+43865,Brilliant Saronite Pauldrons
+43867,Glyph of Holy Wrath
+43868,Glyph of Seal of Righteousness
+43869,Glyph of Seal of Vengeance
+43870,Brilliant Saronite Helm
+43871,Saronite Spellblade
+43969,Frostsavage Belt
+43970,Frostsavage Boots
+43971,Frostsavage Cowl
+43972,Frostsavage Robe
+43973,Frostsavage Shoulders
+43974,Frostsavage Bracers
+43975,Frostsavage Leggings
+43987,Scroll of Enchant Weapon - Black Magic
+44010,Pustulant Spinal Fluid
+44063,Figurine - Monarch Crab
+44128,Arctic Fur
+44143,Ace of Demons
+44144,Two of Mages
+44145,Three of Mages
+44146,Four of Mages
+44147,Five of Mages
+44148,Mages Deck
+44154,Two of Demons
+44155,Three of Demons
+44156,Four of Demons
+44157,Five of Demons
+44158,Demons Deck
+44165,Ace of Mages
+44210,Faces of Doom
+44211,Frostwoven Gloves
+44221,Loaned Gryphon Reins
+44229,Loaned Wind Rider Reins
+44259,Prisms Deck
+44260,Ace of Prisms
+44261,Two of Prisms
+44262,Three of Prisms
+44263,Four of Prisms
+44264,Five of Prisms
+44265,Six of Prisms
+44266,Seven of Prisms
+44267,Eight of Prisms
+44268,Ace of Nobles
+44269,Two of Nobles
+44270,Three of Nobles
+44271,Four of Nobles
+44272,Five of Nobles
+44273,Six of Nobles
+44274,Seven of Nobles
+44275,Eight of Nobles
+44276,Chaos Deck
+44277,Ace of Chaos
+44278,Two of Chaos
+44279,Three of Chaos
+44280,Four of Chaos
+44281,Five of Chaos
+44282,Six of Chaos
+44284,Seven of Chaos
+44285,Eight of Chaos
+44286,Ace of Undeath
+44287,Two of Undeath
+44288,Three of Undeath
+44289,Four of Undeath
+44290,Five of Undeath
+44291,Six of Undeath
+44292,Seven of Undeath
+44293,Eight of Undeath
+44294,Undeath Deck
+44301,Tainted Essence
+44304,Writhing Mass
+44314,Scroll of Recall II
+44315,Scroll of Recall III
+44322,Mercurial Alchemist Stone
+44323,Indestructible Alchemist&apos;s Stone
+44324,Mighty Alchemist&apos;s Stone
+44325,Elixir of Accuracy
+44326,Nobles Deck
+44327,Elixir of Deadly Strikes
+44328,Elixir of Mighty Defense
+44329,Elixir of Expertise
+44330,Elixir of Armor Piercing
+44331,Elixir of Lightning Speed
+44332,Elixir of Mighty Thoughts
+44413,Mekgineer&apos;s Chopper
+44430,Titanium Seal of Dalaran
+44434,Dark Matter
+44436,Dark Frostscale Leggings
+44437,Dark Frostscale Breastplate
+44438,Dragonstompers
+44440,Dark Iceborne Leggings
+44441,Dark Iceborne Chestguard
+44442,Bugsquashers
+44443,Dark Nerubian Leggings
+44444,Dark Nerubian Chestpiece
+44445,Scaled Icewalkers
+44446,Pack of Endless Pockets
+44447,Dragonscale Ammo Pouch
+44448,Nerubian Reinforced Quiver
+44449,Scroll of Enchant Boots - Assault
+44451,Runed Cobalt Rod
+44452,Runed Titanium Rod
+44453,Scroll of Enchant Weapon - Greater Potency
+44455,Scroll of Enchant Shield - Greater Intellect
+44456,Scroll of Enchant Cloak - Speed
+44457,Scroll of Enchant Cloak - Major Agility
+44458,Scroll of Enchant Gloves - Crusher
+44459,Cult of the Damned Research - Page 1
+44460,Cult of the Damned Research - Page 2
+44461,Cult of the Damned Research - Page 3
+44462,Cult of the Damned Thesis
+44463,Scroll of Enchant 2H Weapon - Massacre
+44465,Scroll of Enchant Chest - Powerful Stats
+44466,Scroll of Enchant Weapon - Superior Potency
+44467,Scroll of Enchant Weapon - Mighty Spellpower
+44469,Scroll of Enchant Boots - Greater Assault
+44470,Scroll of Enchant Bracer - Superior Spellpower
+44476,Alumeth&apos;s Skull
+44477,Alumeth&apos;s Heart
+44478,Alumeth&apos;s Scepter
+44479,Alumeth&apos;s Robes
+44480,Alumeth&apos;s Remains
+44493,Scroll of Enchant Weapon - Berserking
+44497,Scroll of Enchant Weapon - Accuracy
+44499,Salvaged Iron Golem Parts
+44500,Elementium-plated Exhaust Pipe
+44501,Goblin-machined Piston
+44504,Nesingwary 4000
+44554,Flying Carpet
+44555,Swift Mooncloth Carpet
+44556,Swift Spellfire Carpet
+44557,Swift Ebonweave Carpet
+44558,Magnificent Flying Carpet
+44607,Aged Dalaran Sharp
+44608,Dalaran Swiss
+44609,Fresh Dalaran Bread Slice
+44616,Glass of Dalaran White
+44617,Glass of Dalaran Red
+44618,Glass of Aged Dalaran Red
+44619,Glass of Peaked Dalaran Red
+44684,Glyph of Frostfire
+44724,Everfrost Chip
+44738,Kirin Tor Familiar
+44739,Diamond-cut Refractor Scope
+44740,Mechanized Snow Goggles
+44741,Mechanized Snow Goggles
+44742,Mechanized Snow Goggles
+44815,Scroll of Enchant Bracers - Greater Assault
+44834,Wild Turkey
+44835,Autumnal Herbs
+44836,Pumpkin Pie
+44837,Spice Bread Stuffing
+44838,Slow-Roasted Turkey
+44839,Candied Sweet Potato
+44840,Cranberry Chutney
+44853,Honey
+44854,Tangy Wetland Cranberries
+44855,Teldrassil Sweet Potato
+44856,Turkey Parts
+44920,Glyph of Blast Wave
+44922,Glyph of Typhoon
+44923,Glyph of Thunderstorm
+44928,Glyph of Focus
+44930,Windripper Boots
+44931,Windripper Leggings
+44936,Titanium Plating
+44939,Lesser Flask of Resistance
+44943,Icy Prism
+44946,Scroll of Enchant Weapon - Titanguard
+44947,Scroll of Enchant Bracer - Major Stamina
+44949,Unbreakable Healing Amplifiers
+44951,Box of Bombs
+44953,Worg Tartare
+44955,Glyph of Arcane Blast
+44958,Ethereal Oil
+44963,Earthen Leg Armor
+44981,Ashwood Brand
+45003,Winter&apos;s Edge
+45038,Fragment of Val&apos;anyr
+45039,Shattered Fragments of Val&apos;anyr
+45045,Rough Hewn Plank
+45056,Scroll of Enchant Staff - Greater Spellpower
+45060,Scroll of Enchant Staff - Spellpower
+45082,Murderer&apos;s Toolkit
+45085,Titansteel Spellblade
+45087,Runed Orb
+45127,Mark of the Valiant
+45176,Foam Sword
+45229,[ph] Mark of the Scourge Boss 01
+45230,[ph] Mark of the Scourge Boss 02
+45231,[ph] Mark of the Scourge Boss 03
+45500,Mark of the Champion
+45550,Belt of the Titans
+45551,Indestructible Plate Girdle
+45552,Plate Girdle of Righteousness
+45553,Belt of Dragons
+45554,Blue Belt of Chaos
+45555,Death-warmed Belt
+45556,Belt of Arctic Life
+45557,Sash of Ancient Power
+45558,Cord of the White Dawn
+45559,Battlelord&apos;s Plate Boots
+45560,Spiked Deathdealers
+45561,Treads of Destiny
+45562,Boots of Living Scale
+45563,Lightning Grounded Boots
+45564,Footpads of Silence
+45565,Boots of Wintry Endurance
+45566,Spellslinger&apos;s Slippers
+45567,Savior&apos;s Slippers
+45601,Glyph of Berserk
+45602,Glyph of Wild Growth
+45603,Glyph of Nourish
+45604,Glyph of Savage Roar
+45621,Elixir of Minor Accuracy
+45622,Glyph of Monsoon
+45623,Glyph of Barkskin
+45625,Glyph of Chimera Shot
+45626,Spidersilk Drape
+45627,Amulet of Truesight
+45628,Scroll of Enchant Boots - Lesser Accuracy
+45631,High-powered Flashlight
+45731,Glyph of Explosive Shot
+45732,Glyph of Kill Shot
+45733,Glyph of Explosive Trap
+45734,Glyph of Scatter Shot
+45735,Glyph of Raptor Strike
+45736,Glyph of Deep Freeze
+45737,Glyph of Living Bomb
+45738,Glyph of Arcane Barrage
+45739,Glyph of Mirror Image
+45740,Glyph of Ice Barrier
+45741,Glyph of Beacon of Light
+45742,Glyph of Hammer of the Righteous
+45743,Glyph of Divine Storm
+45744,Glyph of Shield of Righteousness
+45745,Glyph of Divine Plea
+45746,Glyph of Holy Shock
+45747,Glyph of Salvation
+45753,Glyph of Dispersion
+45755,Glyph of Guardian Spirit
+45756,Glyph of Penance
+45757,Glyph of Mind Sear
+45758,Glyph of Hymn of Hope
+45760,Glyph of Pain Suppression
+45761,Glyph of Hunger for Blood
+45762,Glyph of Killing Spree
+45764,Glyph of Shadow Dance
+45766,Glyph of Fan of Knives
+45767,Glyph of Tricks of the Trade
+45768,Glyph of Mutilate
+45769,Glyph of Cloak of Shadows
+45770,Glyph of Thunder
+45771,Glyph of Feral Spirit
+45772,Glyph of Riptide
+45773,Emerald Bag
+45775,Glyph of Earth Shield
+45776,Glyph of Totem of Wrath
+45777,Glyph of Hex
+45778,Glyph of Stoneclaw Totem
+45779,Glyph of Haunt
+45780,Glyph of Metamorphosis
+45781,Glyph of Chaos Bolt
+45782,Glyph of Demonic Circle
+45783,Glyph of Shadowflame
+45785,Glyph of Life Tap
+45789,Glyph of Soul Link
+45790,Glyph of Bladestorm
+45792,Glyph of Shockwave
+45793,Glyph of Vigilance
+45794,Glyph of Enraged Regeneration
+45795,Glyph of Spell Reflection
+45797,Glyph of Shield Wall
+45799,Glyph of Dancing Rune Weapon
+45800,Glyph of Hungering Cold
+45803,Glyph of Unholy Blight
+45804,Glyph of Dark Death
+45805,Glyph of Disease
+45806,Glyph of Howling Blast
+45808,Runed Mana Band
+45809,Scarlet Signet
+45810,Cloak of Crimson Snow
+45811,Frostguard Drape
+45812,Emerald Choker
+45813,Sky Sapphire Amulet
+45849,Twilight Tome
+45908,Glyph of Envenom
+45924,Certificate of Appreciation
+45932,Black Jelly
+45942,XS-001 Constructor Bot
+46026,Scroll of Enchant Weapon - Blade Ward
+46069,Alliance Lance
+46070,Horde Lance
+46098,Scroll of Enchant Weapon - Blood Draining
+46106,Argent Lance
+46319,Tournament Brew
+46372,Glyph of Survival Instincts
+46376,Flask of the Frost Wyrm
+46377,Flask of Endless Rage
+46378,Flask of Pure Mojo
+46379,Flask of Stoneblood
+46396,Wolvar Orphan Whistle
+46397,Oracle Orphan Whistle
+46691,Bread of the Dead
+46735,Synthebrew Goggles
+46783,Pink Gumball
+46784,Ripe Elwynn Pumpkin
+46793,Tangy Southfury Cranberries
+46796,Ripe Tirisfal Pumpkin
+46797,Mulgore Sweet Potato
+46847,Seaforium Bombs
+46887,Bountiful Feast
+46955,Kraken Tooth
+46978,Totem of the Earthen Ring
+47030,Huge Seaforium Bombs
+47036,Fresh Chum
+47499,Flask of the North
+47556,Crusader Orb
+47570,Saronite Swordbreakers
+47571,Saronite Swordbreakers
+47572,Titanium Spikeguards
+47573,Titanium Spikeguards
+47574,Sunforged Bracers
+47575,Sunforged Bracers
+47576,Crusader&apos;s Dragonscale Bracers
+47577,Crusader&apos;s Dragonscale Bracers
+47579,Black Chitin Bracers
+47580,Black Chitin Bracers
+47581,Bracers of Swift Death
+47582,Bracers of Swift Death
+47583,Moonshadow Armguards
+47584,Moonshadow Armguards
+47585,Bejeweled Wizard&apos;s Bracers
+47586,Bejeweled Wizard&apos;s Bracers
+47587,Royal Moonshroud Bracers
+47588,Royal Moonshroud Bracers
+47589,Titanium Razorplate
+47590,Titanium Razorplate
+47591,Breastplate of the White Knight
+47592,Breastplate of the White Knight
+47593,Sunforged Breastplate
+47594,Sunforged Breastplate
+47595,Crusader&apos;s Dragonscale Breastplate
+47596,Crusader&apos;s Dragonscale Breastplate
+47597,Ensorcelled Nerubian Breastplate
+47598,Ensorcelled Nerubian Breastplate
+47599,Knightbane Carapace
+47600,Knightbane Carapace
+47601,Lunar Eclipse Robes
+47602,Lunar Eclipse Robes
+47603,Merlin&apos;s Robe
+47604,Merlin&apos;s Robe
+47605,Royal Moonshroud Robe
+47606,Royal Moonshroud Robe
+47828,Goblin Beam Welder
+48720,Glyph of Claw
+48933,Wormhole Generator: Northrend
+48945,Gnomish Thinking Cap
+49040,Jeeves
+49084,Glyph of Command
+49110,Nightmare Tear
+49301,Reclaimed Thunderstrike
+49497,Reinforced Thunderstrike
+49632,Runescroll of Fortitude
+49633,Drums of Forgotten Kings
+49634,Drums of the Wild
+49655,Lovely Charm
+49661,Lovely Charm Collector&apos;s Kit
+49668,Crown Perfume Sprayer
+49669,Crown Cologne Sprayer
+49670,Crown Chocolate Sampler
+49698,Ancient Dragonforged Blades
+49703,Perpetual Purple Firework
+49704,Carved Ogre Idol
+49718,Infused Saronite Bar
+49739,Reforged Quel&apos;Delar
+49740,Remnants of Quel&apos;Delar
+49750,Tempered Quel&apos;Delar
+49888,Shadow&apos;s Edge
+49890,Deathfrost Boots
+49891,Leggings of Woven Death
+49892,Lightweave Leggings
+49893,Sandals of Consecration
+49894,Blessed Cenarion Boots
+49895,Footpads of Impending Death
+49896,Earthsoul Boots
+49897,Rock-Steady Treads
+49898,Legwraps of Unleashed Nature
+49899,Bladeborn Leggings
+49900,Lightning-Infused Leggings
+49901,Draconic Bonesplinter Legguards
+49902,Puresteel Legplates
+49903,Legplates of Painful Death
+49904,Pillars of Might
+49905,Protectors of Life
+49906,Hellfrozen Bonegrinders
+49907,Boots of Kingly Upheaval
+49908,Primordial Saronite
+49915,Snivel&apos;s Ledger
+49916,Lovely Charm Bracelet
+50045,Glyph of Eternal Water
+50077,Glyph of Quick Decay
+50125,Glyph of Rapid Rejuvenation
+50307,Infernal Spear
+50816,Scroll of Enchant Gloves - Angler
+52020,Shatter Rounds
+52021,Iceblade Arrow
+52566,Motivate-a-Tron
+52729,Recruit&apos;s Robe
+53510,Captured Frog
+54467,Tabard Lost &amp; Found
+54797,Frosty Flying Carpet
