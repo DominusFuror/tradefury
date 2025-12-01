@@ -6,7 +6,6 @@ import { decodeHtmlEntities } from '../utils/html';
 
 const STORAGE_KEY_VERSION = 2;
 const HISTORY_LIMIT = 50;
-const SHARED_STORAGE_ENABLED = process.env.REACT_APP_ENABLE_SHARED_STORAGE === 'true';
 
 export interface PriceHistoryEntry {
   price: number;
@@ -198,17 +197,17 @@ const parseNamedPriceDatabase = (tableBlock: string): Map<string, number> => {
         }
       } else if (depth >= 2 && currentRealm) {
         const priceMatch = rawValue.match(/(-?\d+)/);
-          if (priceMatch) {
-            const price = Number(priceMatch[1]);
-            if (!Number.isNaN(price) && price > 0) {
-              const decodedKey = decodeHtmlEntities(key);
-              const existing = prices.get(decodedKey);
-              if (existing === undefined || price < existing) {
-                prices.set(decodedKey, price);
-              }
+        if (priceMatch) {
+          const price = Number(priceMatch[1]);
+          if (!Number.isNaN(price) && price > 0) {
+            const decodedKey = decodeHtmlEntities(key);
+            const existing = prices.get(decodedKey);
+            if (existing === undefined || price < existing) {
+              prices.set(decodedKey, price);
             }
           }
         }
+      }
     }
 
     depth += openCount;
@@ -733,10 +732,7 @@ export const AuctionatorDataService = {
     try {
       await PersistentStorage.clearAuctionatorData();
     } catch (error) {
-      console.warn('Failed to clear local Auctionator price data', error);
-    }
-    if (SHARED_STORAGE_ENABLED) {
-      await this.clearShared();
+      console.warn('Failed to clear Auctionator price data', error);
     }
   },
 
@@ -794,44 +790,5 @@ export const AuctionatorDataService = {
     return this.mergeWithExisting(second, first);
   },
 
-  async loadShared(): Promise<AuctionatorParsedData | null> {
-    if (!SHARED_STORAGE_ENABLED) {
-      return null;
-    }
 
-    try {
-      const raw = (await SharedStorageClient.getAuctionatorData()) as AuctionatorStoragePayload | null;
-      return parseStoragePayload(raw);
-    } catch (error) {
-      console.error('Failed to load shared Auctionator price data', error);
-      return null;
-    }
-  },
-
-  async syncToShared(data: AuctionatorParsedData): Promise<void> {
-    if (!SHARED_STORAGE_ENABLED) {
-      return;
-    }
-
-    try {
-      const existingRaw = (await SharedStorageClient.getAuctionatorData()) as AuctionatorStoragePayload | null;
-      const existingParsed = parseStoragePayload(existingRaw);
-      const merged = this.mergePreferRecent(existingParsed, data) ?? data;
-      await SharedStorageClient.saveAuctionatorData(createStoragePayload(merged));
-    } catch (error) {
-      console.error('Failed to persist shared Auctionator price data', error);
-    }
-  },
-
-  async clearShared(): Promise<void> {
-    if (!SHARED_STORAGE_ENABLED) {
-      return;
-    }
-
-    try {
-      await SharedStorageClient.clearAuctionatorData();
-    } catch (error) {
-      console.error('Failed to clear shared Auctionator price data', error);
-    }
-  }
 };
