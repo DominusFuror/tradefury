@@ -110,6 +110,26 @@ const createApp = () => {
     try {
       await ensureDataDir();
       await writeJsonFile(storagePath, payload);
+
+      // Логирование загрузки auctionator-data
+      if (key === 'auctionator-data') {
+        const clientIP = req.headers['x-forwarded-for'] || req.socket.remoteAddress || 'unknown';
+        const fileSize = JSON.stringify(payload).length;
+        const timestamp = new Date().toISOString();
+
+        // Подсчитываем количество записей
+        let recordCount = 0;
+        if (payload && payload.itemPrices) {
+          recordCount = Object.keys(payload.itemPrices).length;
+        }
+
+        const logEntry = `[${timestamp}] IP: ${clientIP} | File: ${key} | Size: ${fileSize} bytes | Records: ${recordCount} | Source: ${payload.source || 'unknown'}\n`;
+        const logPath = path.join(DATA_DIR, 'uploads.log');
+
+        await fs.appendFile(logPath, logEntry, 'utf8');
+        console.log(`[upload] ${logEntry.trim()}`);
+      }
+
       res.status(204).send();
     } catch (error) {
       res.status(500).json({ error: 'Failed to persist storage payload' });

@@ -96,6 +96,19 @@ export const useAuctionatorData = () => {
 
   const hasData = useMemo(() => Boolean(priceMap && priceMap.size > 0), [priceMap]);
 
+  const reload = useCallback(async () => {
+    try {
+      const data = await AuctionatorDataService.load();
+      if (data) {
+        setFromParsedData(data);
+      }
+      return data;
+    } catch (err) {
+      console.error('Failed to reload Auctionator data', err);
+      return null;
+    }
+  }, [setFromParsedData]);
+
   return {
     priceMap,
     priceHistory,
@@ -104,6 +117,7 @@ export const useAuctionatorData = () => {
     error,
     isLoading,
     handleFileSelection,
-    clear
+    clear,
+    reload
   };
 };
