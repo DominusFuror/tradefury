@@ -43,7 +43,7 @@ export class ProfitCalculator {
     const resolvedSellPrice = this.resolvePrice(recipe.resultItem.id, options?.priceMap);
     const resultUnitPrice = resolvedSellPrice.value;
     const sellPriceSource = resolvedSellPrice.source;
-    const sellPrice = resultUnitPrice ?? 0;
+    const sellPrice = (resultUnitPrice ?? 0) * (recipe.outputCount || 1);
 
     const isCalculable = !hasMissingMaterialPrices && resultUnitPrice !== null;
     const profit = isCalculable ? sellPrice - totalCost : 0;

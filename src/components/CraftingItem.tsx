@@ -68,10 +68,10 @@ export const CraftingItem: React.FC<CraftingItemProps> = ({
   const [isExpanded, setIsExpanded] = useState(false);
   const {
     recipe,
-  totalCost,
-  sellPrice,
-  profit,
-  roi,
+    totalCost,
+    sellPrice,
+    profit,
+    roi,
     materialCosts,
     hasMissingPrices,
     sellPriceSource,
@@ -152,21 +152,33 @@ export const CraftingItem: React.FC<CraftingItemProps> = ({
               anchorClassName="inline-flex"
               tooltipPlacement="bottom"
             >
-              <img
-                src={recipe.resultItem.icon}
-                alt={recipe.resultItem.name}
-                className={`${imageSize} rounded border-2 border-gray-600`}
-                onError={(e) => {
-                  (e.target as HTMLImageElement).src =
-                    'https://wow.zamimg.com/images/wow/icons/large/inv_misc_questionmark.jpg';
-                }}
-              />
+              <div className="relative inline-block">
+                <img
+                  src={recipe.resultItem.icon}
+                  alt={recipe.resultItem.name}
+                  className={`${imageSize} rounded border-2 border-gray-600`}
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).src =
+                      'https://wow.zamimg.com/images/wow/icons/large/inv_misc_questionmark.jpg';
+                  }}
+                />
+                {recipe.outputCount > 1 && (
+                  <span className="absolute bottom-0 right-0 bg-black/90 text-white text-[10px] font-bold px-1 rounded-tl border-t border-l border-gray-600 z-10">
+                    {recipe.outputCount}x
+                  </span>
+                )}
+              </div>
             </WowheadLink>
 
             <div className="flex-1 text-left">
               <div className="flex flex-wrap items-center gap-2">
                 <div className="flex items-center gap-2">
-                  <h3 className={`${titleSize} font-semibold text-white`}>{recipe.name}</h3>
+                  <h3 className={`${titleSize} font-semibold text-white`}>
+                    {recipe.name}
+                    {recipe.outputCount > 1 && (
+                      <span className="text-gray-400 ml-2 text-sm font-normal">(x{recipe.outputCount})</span>
+                    )}
+                  </h3>
                   {onShowItemDetails && (
                     <button
                       type="button"
@@ -195,7 +207,7 @@ export const CraftingItem: React.FC<CraftingItemProps> = ({
               <div className={`flex flex-wrap items-center gap-4 mt-1 ${infoTextSize} text-gray-400`}>
                 <span className={getQualityColor(recipe.resultItem.quality)}>{recipe.resultItem.quality}</span>
                 {showExtendedMeta && <span>iLvl {recipe.resultItem.itemLevel}</span>}
-                {showOutputQuantity && <span>Output quantity: {recipe.resultItem.stackSize}</span>}
+                {/* Output quantity removed as it is now shown in icon and title */}
               </div>
             </div>
           </div>

@@ -258,6 +258,7 @@ export const MockData = {
       }
     ],
     category: 'Базовые товары',
+    outputCount: 1,
     isLearned: true
   })
 };

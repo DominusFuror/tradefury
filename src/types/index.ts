@@ -50,6 +50,7 @@ export interface Recipe {
   trivialSkillLow?: number | null;
   trivialSkillHigh?: number | null;
   resultItem: Item;
+  outputCount: number;
   materials: RecipeMaterial[];
   category: string;
   isLearned?: boolean;
