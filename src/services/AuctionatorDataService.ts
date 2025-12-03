@@ -601,47 +601,48 @@ export const AuctionatorDataService = {
     const itemNameIndex = await loadItemNameIndex();
     const resolved = mapNamePricesToItemIds(namePrices, itemNameIndex, historyIndex);
     ItemNameResolver.prime(resolved.resolvedNames);
-    ItemNameResolver.queueIdResolution(resolved.prices.keys());
+    // ItemNameResolver.queueIdResolution(resolved.prices.keys());
 
     const unresolvedNames = new Set(resolved.unknownNames);
     let itemPrices = resolved.prices;
     let resolvedViaWowhead = 0;
 
-    if (unresolvedNames.size > 0) {
-      const wowheadMatches = await ItemNameResolver.resolveMany(unresolvedNames);
-      if (wowheadMatches.size > 0) {
-        wowheadMatches.forEach((itemId: number, originalName: string) => {
-          const price = namePrices.get(originalName);
-          if (price === undefined) {
-            return;
-          }
+    // Disabled Wowhead lookups - they cause thousands of CORS-blocked requests
+    // if (unresolvedNames.size > 0) {
+    //   const wowheadMatches = await ItemNameResolver.resolveMany(unresolvedNames);
+    //   if (wowheadMatches.size > 0) {
+    //     wowheadMatches.forEach((itemId: number, originalName: string) => {
+    //       const price = namePrices.get(originalName);
+    //       if (price === undefined) {
+    //         return;
+    //       }
 
-          const existing = itemPrices.get(itemId);
-          if (existing === undefined || price < existing) {
-            itemPrices.set(itemId, price);
-          }
+    //       const existing = itemPrices.get(itemId);
+    //       if (existing === undefined || price < existing) {
+    //         itemPrices.set(itemId, price);
+    //       }
 
-          const normalized = normalizeItemName(originalName);
-          if (normalized) {
-            itemNameIndex.set(normalized, itemId);
-          }
+    //       const normalized = normalizeItemName(originalName);
+    //       if (normalized) {
+    //         itemNameIndex.set(normalized, itemId);
+    //       }
 
-          unresolvedNames.delete(originalName);
-          resolvedViaWowhead += 1;
-        });
+    //       unresolvedNames.delete(originalName);
+    //       resolvedViaWowhead += 1;
+    //     });
 
-        if (wowheadMatches.size > 0) {
-          ItemNameResolver.prime(wowheadMatches);
-          ItemNameResolver.queueIdResolution(wowheadMatches.values());
-        }
-      }
-    }
+    //     if (wowheadMatches.size > 0) {
+    //       ItemNameResolver.prime(wowheadMatches);
+    //       ItemNameResolver.queueIdResolution(wowheadMatches.values());
+    //     }
+    //   }
+    // }
 
     if (itemPrices.size === 0 && priceBlock) {
       itemPrices = parseLegacyPriceDatabase(priceBlock);
-      if (itemPrices.size > 0) {
-        ItemNameResolver.queueIdResolution(itemPrices.keys());
-      }
+      // if (itemPrices.size > 0) {
+      //   ItemNameResolver.queueIdResolution(itemPrices.keys());
+      // }
     }
 
     if (resolved.resolvedViaHistory > 0) {
@@ -672,7 +673,7 @@ export const AuctionatorDataService = {
     );
 
     if (historyFromFile.size > 0) {
-      ItemNameResolver.queueIdResolution(Array.from(historyFromFile.keys()));
+      // ItemNameResolver.queueIdResolution(Array.from(historyFromFile.keys()));
       console.info(
         `[Auctionator] Loaded pricing history for ${historyFromFile.size} item(s) from ${sourceLabel}`
       );

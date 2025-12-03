@@ -349,7 +349,7 @@ export class GameDataRepository {
   );
   private itemNameOverrides: Map<number, string> = new Map();
 
-  private constructor() {}
+  private constructor() { }
 
   public static getInstance(): GameDataRepository {
     if (!GameDataRepository.instance) {
@@ -539,52 +539,54 @@ export class GameDataRepository {
         skipEmptyLines: true,
         worker: true,
         step: (stepResult) => {
-        const row = stepResult.data;
-        const id = parseNumber(row.ID);
-        if (id === null || !itemIds.has(id)) {
-          return;
-        }
-
-        const displayInfoId = parseNumber(row.DisplayInfoID);
-        const overrideName = this.itemNameOverrides.get(id) ?? null;
-        const csvName = extractItemName(row);
-        const resolvedName = csvName ?? overrideName ?? null;
-
-        if (!this.items.has(id)) {
-          this.items.set(id, {
-            id,
-            displayInfoId,
-            name: resolvedName
-          });
-
-          if (!resolvedName) {
-            idsMissingNames.add(id);
-          } else if (overrideName) {
-            // ensure overrides stay current
-            this.itemNameOverrides.set(id, resolvedName);
+          const row = stepResult.data;
+          const id = parseNumber(row.ID);
+          if (id === null || !itemIds.has(id)) {
+            return;
           }
-        } else {
-          const existing = this.items.get(id);
-          if (existing) {
-            const updatedName = existing.name ?? resolvedName;
+
+          const displayInfoId = parseNumber(row.DisplayInfoID);
+          const overrideName = this.itemNameOverrides.get(id) ?? null;
+          const csvName = extractItemName(row);
+          const resolvedName = csvName ?? overrideName ?? null;
+
+          if (!this.items.has(id)) {
             this.items.set(id, {
-              ...existing,
-              displayInfoId: existing.displayInfoId ?? displayInfoId ?? null,
-              name: updatedName ?? null
+              id,
+              displayInfoId,
+              name: resolvedName
             });
 
-            if (!updatedName) {
+            if (!resolvedName) {
               idsMissingNames.add(id);
             } else if (overrideName) {
-              this.itemNameOverrides.set(id, updatedName);
+              // ensure overrides stay current
+              this.itemNameOverrides.set(id, resolvedName);
+            }
+          } else {
+            const existing = this.items.get(id);
+            if (existing) {
+              const updatedName = existing.name ?? resolvedName;
+              this.items.set(id, {
+                ...existing,
+                displayInfoId: existing.displayInfoId ?? displayInfoId ?? null,
+                name: updatedName ?? null
+              });
+
+              if (!updatedName) {
+                idsMissingNames.add(id);
+              } else if (overrideName) {
+                this.itemNameOverrides.set(id, updatedName);
+              }
             }
           }
-        }
-      },
-      complete: () => {
-          if (idsMissingNames.size > 0) {
-            ItemNameResolver.queueIdResolution(idsMissingNames);
-          }
+        },
+        complete: () => {
+          // Disabled Wowhead lookups - CSV files already contain all item names
+          // and CORS blocks external requests anyway
+          // if (idsMissingNames.size > 0) {
+          //   ItemNameResolver.queueIdResolution(idsMissingNames);
+          // }
           resolve();
         },
         error: (error) => reject(error)
