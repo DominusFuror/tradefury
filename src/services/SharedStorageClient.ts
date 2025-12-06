@@ -25,7 +25,8 @@ export const SharedStorageClient = {
     const endpoint = storageEndpoint(key);
     try {
       const response = await fetch(endpoint, {
-        method: 'GET'
+        method: 'GET',
+        cache: 'default' // Use browser's HTTP cache
       });
 
       if (!response.ok && response.status !== 404) {

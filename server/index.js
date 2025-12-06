@@ -82,6 +82,19 @@ const createApp = () => {
 
     try {
       const payload = await readJsonFile(storagePath);
+
+      // Set Cache-Control headers based on key type
+      if (key === 'auctionator-data') {
+        // Cache with mandatory revalidation - faster 304 responses
+        res.setHeader('Cache-Control', 'no-cache, must-revalidate');
+      } else if (key === 'item-name-cache') {
+        // Cache for 7 days with revalidation at end
+        res.setHeader('Cache-Control', 'public, max-age=604800, must-revalidate');
+      } else {
+        // Cache for 2 days with revalidation (server-info, user-preferences, etc)
+        res.setHeader('Cache-Control', 'public, max-age=172800, must-revalidate');
+      }
+
       if (payload === null) {
         res.status(204).send();
         return;
@@ -150,6 +163,39 @@ const createApp = () => {
     } catch (error) {
       res.status(500).json({ error: 'Failed to delete storage payload' });
     }
+  });
+
+  // --- Serve Static Files (Production) ---
+  const buildPath = path.join(__dirname, '..', 'build');
+  const dbPath = path.join(__dirname, '..', 'public', 'db');
+
+  // Serve CSV database files with 2-day cache
+  app.use('/db', express.static(dbPath, {
+    maxAge: 172800000, // 2 days in milliseconds
+    etag: true,
+    lastModified: true,
+    immutable: false,
+    setHeaders: (res, path) => {
+      res.setHeader('Cache-Control', 'public, max-age=172800, must-revalidate');
+    }
+  }));
+
+  // Serve static files from React build
+  app.use(express.static(buildPath, {
+    maxAge: 86400000, // 1 day in milliseconds
+    etag: true,
+    lastModified: true
+  }));
+
+  // Catch-all handler для React Router
+  // Любой запрос, не попавший в API, возвращает index.html
+  app.get('*', (req, res) => {
+    // Игнорируем запросы к API, которые не были обработаны (404)
+    if (req.path.startsWith('/api/')) {
+      res.status(404).json({ error: 'API endpoint not found' });
+      return;
+    }
+    res.sendFile(path.join(buildPath, 'index.html'));
   });
 
   return app;
