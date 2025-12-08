@@ -6,9 +6,10 @@ import { loadItemIdToNameMap } from './ItemNameIndex';
 
 const CRAFTING_DB_FILE = 'craftingdb.csv';
 const CRAFTING_WITH_SKILL_FILE = 'crafting_with_skill.csv';
-const SKILL_LINE_FILE = 'SkillLineAbility.csv';
+const SKILL_LINE_FILE = 'SkillLine Ability.csv';
 const ITEM_FILE = 'Item.csv';
 const ITEM_DISPLAY_INFO_FILE = 'ItemDisplayInfo.csv';
+const GAME_DATA_JSON_FILE = 'game-data.json';
 
 const CREATE_ITEM_EFFECT_ID = '24';
 const ENCHANT_SCROLL_EFFECT_ID = '53';
@@ -371,6 +372,67 @@ export class GameDataRepository {
     await this.loadPromise;
   }
 
+  private async loadFromJson(): Promise<boolean> {
+    try {
+      const url = getCsvUrl(GAME_DATA_JSON_FILE);
+      console.log('[GameDataRepository] Attempting to load pre-parsed JSON...');
+      const response = await fetch(url, { cache: 'default' });
+
+      if (!response.ok) {
+        console.log('[GameDataRepository] JSON not found, falling back to CSV parsing');
+        return false;
+      }
+
+      const gameData = await response.json();
+      console.log('[GameDataRepository] Successfully loaded JSON, version:', gameData.version);
+
+      // Restore professionSpellIds
+      this.professionSpellIds.clear();
+      Object.entries(gameData.professionSpellIds).forEach(([profIdStr, spellIds]) => {
+        this.professionSpellIds.set(Number(profIdStr), new Set(spellIds as number[]));
+      });
+
+      // Restore spells
+      this.spells.clear();
+      (gameData.spells as SpellRecord[]).forEach(spell => {
+        this.spells.set(spell.spellId, spell);
+      });
+
+      // Restore items
+      this.items.clear();
+      (gameData.items as ItemRecord[]).forEach(item => {
+        this.items.set(item.id, item);
+        // Register names with ItemNameResolver
+        if (item.name) {
+          this.itemNameOverrides.set(item.id, item.name);
+        }
+      });
+
+      // Ensure ItemNameResolver is aware of all overrides (including those from loadItemIdToNameMap)
+      if (this.itemNameOverrides.size > 0) {
+        const primeMap = new Map<string, number>();
+        this.itemNameOverrides.forEach((name, id) => {
+          if (name) {
+            primeMap.set(name, id);
+          }
+        });
+        ItemNameResolver.prime(primeMap);
+      }
+
+      // Restore itemDisplayInfo
+      this.itemDisplayInfo.clear();
+      (gameData.itemDisplayInfo as ItemDisplayRecord[]).forEach(displayInfo => {
+        this.itemDisplayInfo.set(displayInfo.id, displayInfo);
+      });
+
+      console.log(`[GameDataRepository] Loaded ${this.spells.size} spells, ${this.items.size} items`);
+      return true;
+    } catch (error) {
+      console.warn('[GameDataRepository] Failed to load JSON:', error);
+      return false;
+    }
+  }
+
   private async performLoad(): Promise<void> {
     this.itemNameOverrides = new Map(await loadItemIdToNameMap());
     if (this.itemNameOverrides.size > 0) {
@@ -380,6 +442,16 @@ export class GameDataRepository {
       });
       ItemNameResolver.prime(primeMap);
     }
+
+    // Try loading from pre-parsed JSON first (fast!)
+    const loadedFromJson = await this.loadFromJson();
+    if (loadedFromJson) {
+      this.isLoaded = true;
+      return;
+    }
+
+    // Fallback to CSV parsing (slow, only if JSON not available)
+    console.log('[GameDataRepository] Falling back to CSV parsing...');
 
     const skillRows = await parseCsvFile<CraftingSkillRow>(CRAFTING_WITH_SKILL_FILE);
 

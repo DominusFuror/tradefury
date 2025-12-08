@@ -176,7 +176,8 @@ const createApp = () => {
     lastModified: true,
     immutable: false,
     setHeaders: (res, path) => {
-      res.setHeader('Cache-Control', 'public, max-age=172800, must-revalidate');
+      // Cache for 2 days without revalidation - instant load from disk cache
+      res.setHeader('Cache-Control', 'public, max-age=172800');
     }
   }));
 

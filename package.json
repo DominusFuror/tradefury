@@ -19,6 +19,7 @@
   },
   "scripts": {
     "sync-db": "node scripts/sync-db.js",
+    "build-game-data": "node scripts/build-game-data.js",
     "prestart": "npm run sync-db",
     "prebuild": "npm run sync-db",
     "server": "node server/index.js",
