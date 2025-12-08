@@ -10,6 +10,7 @@ const SKILL_LINE_FILE = 'SkillLine Ability.csv';
 const ITEM_FILE = 'Item.csv';
 const ITEM_DISPLAY_INFO_FILE = 'ItemDisplayInfo.csv';
 const GAME_DATA_JSON_FILE = 'game-data.json';
+const VENDOR_PRICES_FILE = 'vendor_prices.json';
 
 const CREATE_ITEM_EFFECT_ID = '24';
 const ENCHANT_SCROLL_EFFECT_ID = '53';
@@ -330,6 +331,7 @@ export class GameDataRepository {
   private readonly spells = new Map<number, SpellRecord>();
   private readonly items = new Map<number, ItemRecord>();
   private readonly itemDisplayInfo = new Map<number, ItemDisplayRecord>();
+  private readonly vendorPrices = new Map<number, number>();
   private readonly professionSpellIds = new Map<number, Set<number>>();
   private readonly unsubscribeItemNameListener = ItemNameResolver.addListener(
     ({ id, name }: { id: number; name: string }) => {
@@ -446,6 +448,7 @@ export class GameDataRepository {
     // Try loading from pre-parsed JSON first (fast!)
     const loadedFromJson = await this.loadFromJson();
     if (loadedFromJson) {
+      await this.loadVendorPrices();
       this.isLoaded = true;
       return;
     }
@@ -598,7 +601,26 @@ export class GameDataRepository {
       await this.loadItemDisplayInfo(displayInfoIds);
     }
 
+    await this.loadVendorPrices();
+
     this.isLoaded = true;
+  }
+
+  private async loadVendorPrices(): Promise<void> {
+    try {
+      const url = getCsvUrl(VENDOR_PRICES_FILE) + '?t=' + Date.now();
+      console.log(`[GameDataRepository] Fetching vendor prices from: ${url}`);
+      const response = await fetch(url, { cache: 'no-store' });
+      if (response.ok) {
+        const prices = await response.json();
+        Object.entries(prices).forEach(([id, price]) => {
+          this.vendorPrices.set(Number(id), Number(price));
+        });
+        console.log(`[GameDataRepository] Loaded ${this.vendorPrices.size} vendor prices`);
+      }
+    } catch (error) {
+      console.warn('[GameDataRepository] Failed to load vendor prices:', error);
+    }
   }
 
   private async loadItems(itemIds: Set<number>): Promise<void> {
@@ -724,6 +746,12 @@ export class GameDataRepository {
 
     const displayInfo = this.itemDisplayInfo.get(item.displayInfoId);
     return createIconUrl(displayInfo?.iconName);
+  }
+
+  public getVendorPrice(itemId: number): number | undefined {
+    const price = this.vendorPrices.get(itemId);
+    // console.log(`[GameDataRepository] getVendorPrice(${itemId}) = ${price}`); 
+    return price;
   }
 }
 

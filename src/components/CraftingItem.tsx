@@ -356,21 +356,45 @@ export const CraftingItem: React.FC<CraftingItemProps> = ({
                         {hasPriceData ? (
                           <div className="flex flex-col items-end gap-1">
                             {showUnitBreakdown && (
-                              <div className="text-[11px] text-gray-400 inline-flex items-center gap-1">
-                                <CurrencyAmount
-                                  amount={unitPriceValue}
-                                  size={currencySize}
-                                  className="text-gray-400"
-                                />
-                                <span>each</span>
+                              <div className="flex flex-col items-end">
+                                <div className="text-[11px] text-gray-400 inline-flex items-center gap-1">
+                                  <CurrencyAmount
+                                    amount={unitPriceValue}
+                                    size={currencySize}
+                                    className="text-gray-400"
+                                  />
+                                  <span>each</span>
+                                  {materialCost.source === 'vendor' && (
+                                    <span className="text-blue-400 text-[10px] ml-1 font-medium">
+                                      (Vendor)
+                                    </span>
+                                  )}
+                                </div>
+                                {materialCost.source === 'vendor' && materialCost.auctionPrice ? (
+                                  <div className="text-[10px] text-gray-500 inline-flex items-center gap-1">
+                                    <span>AH:</span>
+                                    <CurrencyAmount
+                                      amount={materialCost.auctionPrice}
+                                      size={currencySize}
+                                      className="text-gray-500"
+                                    />
+                                  </div>
+                                ) : null}
                               </div>
                             )}
                             {totalMaterialCost !== null && (
-                              <CurrencyAmount
-                                amount={totalMaterialCost}
-                                size={currencySize}
-                                className="text-[11px] text-gray-300"
-                              />
+                              <div className="flex items-center justify-end gap-1">
+                                <CurrencyAmount
+                                  amount={totalMaterialCost}
+                                  size={currencySize}
+                                  className="text-[11px] text-gray-300"
+                                />
+                                {!showUnitBreakdown && materialCost.source === 'vendor' && (
+                                  <span className="text-blue-400 text-[10px] font-medium">
+                                    (Vendor)
+                                  </span>
+                                )}
+                              </div>
                             )}
                           </div>
                         ) : (
