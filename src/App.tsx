@@ -90,19 +90,18 @@ function App() {
   };
 
   const handleRefresh = async () => {
-    if (!selectedProfession) {
-      setRefreshError('Select a profession to refresh the crafting data.');
-      return;
-    }
-
     setIsRefreshing(true);
     setRefreshError(null);
 
     try {
-      await new Promise((resolve) => setTimeout(resolve, REFRESH_DELAY_MS));
+      // Перезагружаем данные с сервера
+      const data = await auctionator.reload();
+      if (!data) {
+        setRefreshError('No price data available. Please upload an Auctionator.lua file first.');
+      }
     } catch (error) {
-      console.error(error);
-      setRefreshError('Failed to refresh crafting data. Please try again.');
+      console.error('Failed to refresh data:', error);
+      setRefreshError('Failed to refresh data from server. Please try again.');
     } finally {
       setIsRefreshing(false);
     }

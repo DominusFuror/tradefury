@@ -11,7 +11,7 @@ export interface AuctionatorMetadata {
   itemCount: number;
 }
 
-const SHARED_STORAGE_ENABLED = process.env.REACT_APP_ENABLE_SHARED_STORAGE === 'true';
+const SHARED_STORAGE_ENABLED = false; // Always use server storage
 
 export const useAuctionatorData = () => {
   const [priceMap, setPriceMap] = useState<Map<number, number> | null>(null);
@@ -44,33 +44,13 @@ export const useAuctionatorData = () => {
     let cancelled = false;
 
     const loadData = async () => {
-      const local = await AuctionatorDataService.load();
-      if (!cancelled && local) {
-        setFromParsedData(local);
-      }
-
-      if (!SHARED_STORAGE_ENABLED || cancelled) {
-        return;
-      }
-
       try {
-        const shared = await AuctionatorDataService.loadShared();
-        if (cancelled || !shared) {
-          return;
-        }
-
-        const currentLocal = await AuctionatorDataService.load();
-        const merged = AuctionatorDataService.mergePreferRecent(currentLocal, shared);
-        if (!merged) {
-          return;
-        }
-
-        await AuctionatorDataService.save(merged);
-        if (!cancelled) {
-          setFromParsedData(merged);
+        const data = await AuctionatorDataService.load();
+        if (!cancelled && data) {
+          setFromParsedData(data);
         }
       } catch (err) {
-        console.error('Failed to load shared Auctionator data', err);
+        console.error('Failed to load Auctionator data', err);
       }
     };
 
@@ -93,9 +73,6 @@ export const useAuctionatorData = () => {
       const existing = await AuctionatorDataService.load();
       const merged = AuctionatorDataService.mergeWithExisting(existing, parsed);
       await AuctionatorDataService.save(merged);
-      if (SHARED_STORAGE_ENABLED) {
-        await AuctionatorDataService.syncToShared(merged);
-      }
       setFromParsedData(merged);
     } catch (err) {
       console.error('Failed to parse Auctionator.lua file', err);
@@ -119,6 +96,19 @@ export const useAuctionatorData = () => {
 
   const hasData = useMemo(() => Boolean(priceMap && priceMap.size > 0), [priceMap]);
 
+  const reload = useCallback(async () => {
+    try {
+      const data = await AuctionatorDataService.load();
+      if (data) {
+        setFromParsedData(data);
+      }
+      return data;
+    } catch (err) {
+      console.error('Failed to reload Auctionator data', err);
+      return null;
+    }
+  }, [setFromParsedData]);
+
   return {
     priceMap,
     priceHistory,
@@ -127,6 +117,7 @@ export const useAuctionatorData = () => {
     error,
     isLoading,
     handleFileSelection,
-    clear
+    clear,
+    reload
   };
 };

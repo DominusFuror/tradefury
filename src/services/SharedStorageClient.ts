@@ -1,4 +1,4 @@
-const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:3001/api';
+const API_BASE_URL = process.env.REACT_APP_API_URL || '/api';
 
 const storageEndpoint = (key: string): string => `${API_BASE_URL}/storage/${key}`;
 
@@ -26,7 +26,7 @@ export const SharedStorageClient = {
     try {
       const response = await fetch(endpoint, {
         method: 'GET',
-        credentials: 'include'
+        cache: 'default' // Use browser's HTTP cache
       });
 
       if (!response.ok && response.status !== 404) {
@@ -52,7 +52,6 @@ export const SharedStorageClient = {
         headers: {
           'Content-Type': 'application/json'
         },
-        credentials: 'include',
         body: JSON.stringify(payload)
       });
 
@@ -69,8 +68,7 @@ export const SharedStorageClient = {
     const endpoint = storageEndpoint(key);
     try {
       const response = await fetch(endpoint, {
-        method: 'DELETE',
-        credentials: 'include'
+        method: 'DELETE'
       });
 
       if (!response.ok && response.status !== 404) {

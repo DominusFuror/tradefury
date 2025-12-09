@@ -6,7 +6,6 @@ import { decodeHtmlEntities } from '../utils/html';
 
 const STORAGE_KEY_VERSION = 2;
 const HISTORY_LIMIT = 50;
-const SHARED_STORAGE_ENABLED = process.env.REACT_APP_ENABLE_SHARED_STORAGE === 'true';
 
 export interface PriceHistoryEntry {
   price: number;
@@ -198,17 +197,17 @@ const parseNamedPriceDatabase = (tableBlock: string): Map<string, number> => {
         }
       } else if (depth >= 2 && currentRealm) {
         const priceMatch = rawValue.match(/(-?\d+)/);
-          if (priceMatch) {
-            const price = Number(priceMatch[1]);
-            if (!Number.isNaN(price) && price > 0) {
-              const decodedKey = decodeHtmlEntities(key);
-              const existing = prices.get(decodedKey);
-              if (existing === undefined || price < existing) {
-                prices.set(decodedKey, price);
-              }
+        if (priceMatch) {
+          const price = Number(priceMatch[1]);
+          if (!Number.isNaN(price) && price > 0) {
+            const decodedKey = decodeHtmlEntities(key);
+            const existing = prices.get(decodedKey);
+            if (existing === undefined || price < existing) {
+              prices.set(decodedKey, price);
             }
           }
         }
+      }
     }
 
     depth += openCount;
@@ -602,47 +601,48 @@ export const AuctionatorDataService = {
     const itemNameIndex = await loadItemNameIndex();
     const resolved = mapNamePricesToItemIds(namePrices, itemNameIndex, historyIndex);
     ItemNameResolver.prime(resolved.resolvedNames);
-    ItemNameResolver.queueIdResolution(resolved.prices.keys());
+    // ItemNameResolver.queueIdResolution(resolved.prices.keys());
 
     const unresolvedNames = new Set(resolved.unknownNames);
     let itemPrices = resolved.prices;
     let resolvedViaWowhead = 0;
 
-    if (unresolvedNames.size > 0) {
-      const wowheadMatches = await ItemNameResolver.resolveMany(unresolvedNames);
-      if (wowheadMatches.size > 0) {
-        wowheadMatches.forEach((itemId: number, originalName: string) => {
-          const price = namePrices.get(originalName);
-          if (price === undefined) {
-            return;
-          }
+    // Disabled Wowhead lookups - they cause thousands of CORS-blocked requests
+    // if (unresolvedNames.size > 0) {
+    //   const wowheadMatches = await ItemNameResolver.resolveMany(unresolvedNames);
+    //   if (wowheadMatches.size > 0) {
+    //     wowheadMatches.forEach((itemId: number, originalName: string) => {
+    //       const price = namePrices.get(originalName);
+    //       if (price === undefined) {
+    //         return;
+    //       }
 
-          const existing = itemPrices.get(itemId);
-          if (existing === undefined || price < existing) {
-            itemPrices.set(itemId, price);
-          }
+    //       const existing = itemPrices.get(itemId);
+    //       if (existing === undefined || price < existing) {
+    //         itemPrices.set(itemId, price);
+    //       }
 
-          const normalized = normalizeItemName(originalName);
-          if (normalized) {
-            itemNameIndex.set(normalized, itemId);
-          }
+    //       const normalized = normalizeItemName(originalName);
+    //       if (normalized) {
+    //         itemNameIndex.set(normalized, itemId);
+    //       }
 
-          unresolvedNames.delete(originalName);
-          resolvedViaWowhead += 1;
-        });
+    //       unresolvedNames.delete(originalName);
+    //       resolvedViaWowhead += 1;
+    //     });
 
-        if (wowheadMatches.size > 0) {
-          ItemNameResolver.prime(wowheadMatches);
-          ItemNameResolver.queueIdResolution(wowheadMatches.values());
-        }
-      }
-    }
+    //     if (wowheadMatches.size > 0) {
+    //       ItemNameResolver.prime(wowheadMatches);
+    //       ItemNameResolver.queueIdResolution(wowheadMatches.values());
+    //     }
+    //   }
+    // }
 
     if (itemPrices.size === 0 && priceBlock) {
       itemPrices = parseLegacyPriceDatabase(priceBlock);
-      if (itemPrices.size > 0) {
-        ItemNameResolver.queueIdResolution(itemPrices.keys());
-      }
+      // if (itemPrices.size > 0) {
+      //   ItemNameResolver.queueIdResolution(itemPrices.keys());
+      // }
     }
 
     if (resolved.resolvedViaHistory > 0) {
@@ -673,7 +673,7 @@ export const AuctionatorDataService = {
     );
 
     if (historyFromFile.size > 0) {
-      ItemNameResolver.queueIdResolution(Array.from(historyFromFile.keys()));
+      // ItemNameResolver.queueIdResolution(Array.from(historyFromFile.keys()));
       console.info(
         `[Auctionator] Loaded pricing history for ${historyFromFile.size} item(s) from ${sourceLabel}`
       );
@@ -733,10 +733,7 @@ export const AuctionatorDataService = {
     try {
       await PersistentStorage.clearAuctionatorData();
     } catch (error) {
-      console.warn('Failed to clear local Auctionator price data', error);
-    }
-    if (SHARED_STORAGE_ENABLED) {
-      await this.clearShared();
+      console.warn('Failed to clear Auctionator price data', error);
     }
   },
 
@@ -794,44 +791,5 @@ export const AuctionatorDataService = {
     return this.mergeWithExisting(second, first);
   },
 
-  async loadShared(): Promise<AuctionatorParsedData | null> {
-    if (!SHARED_STORAGE_ENABLED) {
-      return null;
-    }
 
-    try {
-      const raw = (await SharedStorageClient.getAuctionatorData()) as AuctionatorStoragePayload | null;
-      return parseStoragePayload(raw);
-    } catch (error) {
-      console.error('Failed to load shared Auctionator price data', error);
-      return null;
-    }
-  },
-
-  async syncToShared(data: AuctionatorParsedData): Promise<void> {
-    if (!SHARED_STORAGE_ENABLED) {
-      return;
-    }
-
-    try {
-      const existingRaw = (await SharedStorageClient.getAuctionatorData()) as AuctionatorStoragePayload | null;
-      const existingParsed = parseStoragePayload(existingRaw);
-      const merged = this.mergePreferRecent(existingParsed, data) ?? data;
-      await SharedStorageClient.saveAuctionatorData(createStoragePayload(merged));
-    } catch (error) {
-      console.error('Failed to persist shared Auctionator price data', error);
-    }
-  },
-
-  async clearShared(): Promise<void> {
-    if (!SHARED_STORAGE_ENABLED) {
-      return;
-    }
-
-    try {
-      await SharedStorageClient.clearAuctionatorData();
-    } catch (error) {
-      console.error('Failed to clear shared Auctionator price data', error);
-    }
-  }
 };

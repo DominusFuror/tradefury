@@ -116,7 +116,6 @@ const mapSpellToRecipe = (spell: SpellRecord, profession: Profession): Recipe | 
 
   const resultBase = getBaseItem(spell.resultItemId);
   const resultItem = cloneItem(resultBase, {
-    stackSize: spell.resultItemQuantity,
     name: resolveItemName(spell.resultItemId)
   });
 
@@ -137,6 +136,7 @@ const mapSpellToRecipe = (spell: SpellRecord, profession: Profession): Recipe | 
     trivialSkillLow: spell.trivialSkillLow,
     trivialSkillHigh: spell.trivialSkillHigh,
     resultItem,
+    outputCount: spell.resultItemQuantity,
     materials,
     category: profession.categories[0] ?? 'General',
     isLearned: spell.minSkill > 0

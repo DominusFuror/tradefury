@@ -1,4 +1,5 @@
 import { Recipe, CraftingProfit, MaterialCostInfo, PriceSource } from '../types';
+import { gameDataRepository } from './GameDataRepository';
 
 interface ProfitCalculationOptions {
   priceMap?: Map<number, number> | null;
@@ -29,6 +30,8 @@ export class ProfitCalculator {
         itemId: material.item.id,
         quantity: material.quantity,
         unitPrice: resolved.value,
+        vendorPrice: resolved.vendorPrice,
+        auctionPrice: resolved.auctionPrice,
         source: resolved.source
       };
     });
@@ -43,7 +46,7 @@ export class ProfitCalculator {
     const resolvedSellPrice = this.resolvePrice(recipe.resultItem.id, options?.priceMap);
     const resultUnitPrice = resolvedSellPrice.value;
     const sellPriceSource = resolvedSellPrice.source;
-    const sellPrice = resultUnitPrice ?? 0;
+    const sellPrice = (resultUnitPrice ?? 0) * (recipe.outputCount || 1);
 
     const isCalculable = !hasMissingMaterialPrices && resultUnitPrice !== null;
     const profit = isCalculable ? sellPrice - totalCost : 0;
@@ -69,18 +72,33 @@ export class ProfitCalculator {
   private static resolvePrice(
     itemId: number,
     priceMap?: Map<number, number> | null
-  ): ResolvedPrice {
-    if (priceMap && priceMap.has(itemId)) {
-      const value = priceMap.get(itemId) ?? null;
+  ): ResolvedPrice & { vendorPrice?: number | null; auctionPrice?: number | null } {
+    const vendorPrice = gameDataRepository.getVendorPrice(itemId);
+    const auctionPrice = priceMap?.get(itemId) ?? null;
+
+    if (vendorPrice !== undefined && vendorPrice !== null) {
       return {
-        value,
-        source: value !== null ? 'auctionator' : 'unavailable'
+        value: vendorPrice,
+        source: 'vendor',
+        vendorPrice,
+        auctionPrice
+      };
+    }
+
+    if (auctionPrice !== null) {
+      return {
+        value: auctionPrice,
+        source: 'auctionator',
+        vendorPrice: null,
+        auctionPrice
       };
     }
 
     return {
       value: null,
-      source: 'unavailable'
+      source: 'unavailable',
+      vendorPrice: null,
+      auctionPrice: null
     };
   }
 
@@ -153,4 +171,3 @@ export class ProfitCalculator {
     });
   }
 }
-

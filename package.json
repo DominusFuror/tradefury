@@ -19,6 +19,7 @@
   },
   "scripts": {
     "sync-db": "node scripts/sync-db.js",
+    "build-game-data": "node scripts/build-game-data.js",
     "prestart": "npm run sync-db",
     "prebuild": "npm run sync-db",
     "server": "node server/index.js",
@@ -27,6 +28,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  "proxy": "http://localhost:3001",
   "eslintConfig": {
     "extends": [
       "react-app",
@@ -53,4 +55,3 @@
     "typescript": "^5.9.3"
   }
 }
-

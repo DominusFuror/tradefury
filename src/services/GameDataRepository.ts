@@ -6,9 +6,11 @@ import { loadItemIdToNameMap } from './ItemNameIndex';
 
 const CRAFTING_DB_FILE = 'craftingdb.csv';
 const CRAFTING_WITH_SKILL_FILE = 'crafting_with_skill.csv';
-const SKILL_LINE_FILE = 'SkillLineAbility.csv';
+const SKILL_LINE_FILE = 'SkillLine Ability.csv';
 const ITEM_FILE = 'Item.csv';
 const ITEM_DISPLAY_INFO_FILE = 'ItemDisplayInfo.csv';
+const GAME_DATA_JSON_FILE = 'game-data.json';
+const VENDOR_PRICES_FILE = 'vendor_prices.json';
 
 const CREATE_ITEM_EFFECT_ID = '24';
 const ENCHANT_SCROLL_EFFECT_ID = '53';
@@ -329,6 +331,7 @@ export class GameDataRepository {
   private readonly spells = new Map<number, SpellRecord>();
   private readonly items = new Map<number, ItemRecord>();
   private readonly itemDisplayInfo = new Map<number, ItemDisplayRecord>();
+  private readonly vendorPrices = new Map<number, number>();
   private readonly professionSpellIds = new Map<number, Set<number>>();
   private readonly unsubscribeItemNameListener = ItemNameResolver.addListener(
     ({ id, name }: { id: number; name: string }) => {
@@ -349,7 +352,7 @@ export class GameDataRepository {
   );
   private itemNameOverrides: Map<number, string> = new Map();
 
-  private constructor() {}
+  private constructor() { }
 
   public static getInstance(): GameDataRepository {
     if (!GameDataRepository.instance) {
@@ -371,6 +374,67 @@ export class GameDataRepository {
     await this.loadPromise;
   }
 
+  private async loadFromJson(): Promise<boolean> {
+    try {
+      const url = getCsvUrl(GAME_DATA_JSON_FILE);
+      console.log('[GameDataRepository] Attempting to load pre-parsed JSON...');
+      const response = await fetch(url, { cache: 'default' });
+
+      if (!response.ok) {
+        console.log('[GameDataRepository] JSON not found, falling back to CSV parsing');
+        return false;
+      }
+
+      const gameData = await response.json();
+      console.log('[GameDataRepository] Successfully loaded JSON, version:', gameData.version);
+
+      // Restore professionSpellIds
+      this.professionSpellIds.clear();
+      Object.entries(gameData.professionSpellIds).forEach(([profIdStr, spellIds]) => {
+        this.professionSpellIds.set(Number(profIdStr), new Set(spellIds as number[]));
+      });
+
+      // Restore spells
+      this.spells.clear();
+      (gameData.spells as SpellRecord[]).forEach(spell => {
+        this.spells.set(spell.spellId, spell);
+      });
+
+      // Restore items
+      this.items.clear();
+      (gameData.items as ItemRecord[]).forEach(item => {
+        this.items.set(item.id, item);
+        // Register names with ItemNameResolver
+        if (item.name) {
+          this.itemNameOverrides.set(item.id, item.name);
+        }
+      });
+
+      // Ensure ItemNameResolver is aware of all overrides (including those from loadItemIdToNameMap)
+      if (this.itemNameOverrides.size > 0) {
+        const primeMap = new Map<string, number>();
+        this.itemNameOverrides.forEach((name, id) => {
+          if (name) {
+            primeMap.set(name, id);
+          }
+        });
+        ItemNameResolver.prime(primeMap);
+      }
+
+      // Restore itemDisplayInfo
+      this.itemDisplayInfo.clear();
+      (gameData.itemDisplayInfo as ItemDisplayRecord[]).forEach(displayInfo => {
+        this.itemDisplayInfo.set(displayInfo.id, displayInfo);
+      });
+
+      console.log(`[GameDataRepository] Loaded ${this.spells.size} spells, ${this.items.size} items`);
+      return true;
+    } catch (error) {
+      console.warn('[GameDataRepository] Failed to load JSON:', error);
+      return false;
+    }
+  }
+
   private async performLoad(): Promise<void> {
     this.itemNameOverrides = new Map(await loadItemIdToNameMap());
     if (this.itemNameOverrides.size > 0) {
@@ -380,6 +444,17 @@ export class GameDataRepository {
       });
       ItemNameResolver.prime(primeMap);
     }
+
+    // Try loading from pre-parsed JSON first (fast!)
+    const loadedFromJson = await this.loadFromJson();
+    if (loadedFromJson) {
+      await this.loadVendorPrices();
+      this.isLoaded = true;
+      return;
+    }
+
+    // Fallback to CSV parsing (slow, only if JSON not available)
+    console.log('[GameDataRepository] Falling back to CSV parsing...');
 
     const skillRows = await parseCsvFile<CraftingSkillRow>(CRAFTING_WITH_SKILL_FILE);
 
@@ -526,7 +601,26 @@ export class GameDataRepository {
       await this.loadItemDisplayInfo(displayInfoIds);
     }
 
+    await this.loadVendorPrices();
+
     this.isLoaded = true;
+  }
+
+  private async loadVendorPrices(): Promise<void> {
+    try {
+      const url = getCsvUrl(VENDOR_PRICES_FILE) + '?t=' + Date.now();
+      console.log(`[GameDataRepository] Fetching vendor prices from: ${url}`);
+      const response = await fetch(url, { cache: 'no-store' });
+      if (response.ok) {
+        const prices = await response.json();
+        Object.entries(prices).forEach(([id, price]) => {
+          this.vendorPrices.set(Number(id), Number(price));
+        });
+        console.log(`[GameDataRepository] Loaded ${this.vendorPrices.size} vendor prices`);
+      }
+    } catch (error) {
+      console.warn('[GameDataRepository] Failed to load vendor prices:', error);
+    }
   }
 
   private async loadItems(itemIds: Set<number>): Promise<void> {
@@ -539,52 +633,54 @@ export class GameDataRepository {
         skipEmptyLines: true,
         worker: true,
         step: (stepResult) => {
-        const row = stepResult.data;
-        const id = parseNumber(row.ID);
-        if (id === null || !itemIds.has(id)) {
-          return;
-        }
-
-        const displayInfoId = parseNumber(row.DisplayInfoID);
-        const overrideName = this.itemNameOverrides.get(id) ?? null;
-        const csvName = extractItemName(row);
-        const resolvedName = csvName ?? overrideName ?? null;
-
-        if (!this.items.has(id)) {
-          this.items.set(id, {
-            id,
-            displayInfoId,
-            name: resolvedName
-          });
-
-          if (!resolvedName) {
-            idsMissingNames.add(id);
-          } else if (overrideName) {
-            // ensure overrides stay current
-            this.itemNameOverrides.set(id, resolvedName);
+          const row = stepResult.data;
+          const id = parseNumber(row.ID);
+          if (id === null || !itemIds.has(id)) {
+            return;
           }
-        } else {
-          const existing = this.items.get(id);
-          if (existing) {
-            const updatedName = existing.name ?? resolvedName;
+
+          const displayInfoId = parseNumber(row.DisplayInfoID);
+          const overrideName = this.itemNameOverrides.get(id) ?? null;
+          const csvName = extractItemName(row);
+          const resolvedName = csvName ?? overrideName ?? null;
+
+          if (!this.items.has(id)) {
             this.items.set(id, {
-              ...existing,
-              displayInfoId: existing.displayInfoId ?? displayInfoId ?? null,
-              name: updatedName ?? null
+              id,
+              displayInfoId,
+              name: resolvedName
             });
 
-            if (!updatedName) {
+            if (!resolvedName) {
               idsMissingNames.add(id);
             } else if (overrideName) {
-              this.itemNameOverrides.set(id, updatedName);
+              // ensure overrides stay current
+              this.itemNameOverrides.set(id, resolvedName);
+            }
+          } else {
+            const existing = this.items.get(id);
+            if (existing) {
+              const updatedName = existing.name ?? resolvedName;
+              this.items.set(id, {
+                ...existing,
+                displayInfoId: existing.displayInfoId ?? displayInfoId ?? null,
+                name: updatedName ?? null
+              });
+
+              if (!updatedName) {
+                idsMissingNames.add(id);
+              } else if (overrideName) {
+                this.itemNameOverrides.set(id, updatedName);
+              }
             }
           }
-        }
-      },
-      complete: () => {
-          if (idsMissingNames.size > 0) {
-            ItemNameResolver.queueIdResolution(idsMissingNames);
-          }
+        },
+        complete: () => {
+          // Disabled Wowhead lookups - CSV files already contain all item names
+          // and CORS blocks external requests anyway
+          // if (idsMissingNames.size > 0) {
+          //   ItemNameResolver.queueIdResolution(idsMissingNames);
+          // }
           resolve();
         },
         error: (error) => reject(error)
@@ -650,6 +746,12 @@ export class GameDataRepository {
 
     const displayInfo = this.itemDisplayInfo.get(item.displayInfoId);
     return createIconUrl(displayInfo?.iconName);
+  }
+
+  public getVendorPrice(itemId: number): number | undefined {
+    const price = this.vendorPrices.get(itemId);
+    // console.log(`[GameDataRepository] getVendorPrice(${itemId}) = ${price}`); 
+    return price;
   }
 }
 

@@ -68,10 +68,10 @@ export const CraftingItem: React.FC<CraftingItemProps> = ({
   const [isExpanded, setIsExpanded] = useState(false);
   const {
     recipe,
-  totalCost,
-  sellPrice,
-  profit,
-  roi,
+    totalCost,
+    sellPrice,
+    profit,
+    roi,
     materialCosts,
     hasMissingPrices,
     sellPriceSource,
@@ -152,21 +152,33 @@ export const CraftingItem: React.FC<CraftingItemProps> = ({
               anchorClassName="inline-flex"
               tooltipPlacement="bottom"
             >
-              <img
-                src={recipe.resultItem.icon}
-                alt={recipe.resultItem.name}
-                className={`${imageSize} rounded border-2 border-gray-600`}
-                onError={(e) => {
-                  (e.target as HTMLImageElement).src =
-                    'https://wow.zamimg.com/images/wow/icons/large/inv_misc_questionmark.jpg';
-                }}
-              />
+              <div className="relative inline-block">
+                <img
+                  src={recipe.resultItem.icon}
+                  alt={recipe.resultItem.name}
+                  className={`${imageSize} rounded border-2 border-gray-600`}
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).src =
+                      'https://wow.zamimg.com/images/wow/icons/large/inv_misc_questionmark.jpg';
+                  }}
+                />
+                {recipe.outputCount > 1 && (
+                  <span className="absolute bottom-0 right-0 bg-black/90 text-white text-[10px] font-bold px-1 rounded-tl border-t border-l border-gray-600 z-10">
+                    {recipe.outputCount}x
+                  </span>
+                )}
+              </div>
             </WowheadLink>
 
             <div className="flex-1 text-left">
               <div className="flex flex-wrap items-center gap-2">
                 <div className="flex items-center gap-2">
-                  <h3 className={`${titleSize} font-semibold text-white`}>{recipe.name}</h3>
+                  <h3 className={`${titleSize} font-semibold text-white`}>
+                    {recipe.name}
+                    {recipe.outputCount > 1 && (
+                      <span className="text-gray-400 ml-2 text-sm font-normal">(x{recipe.outputCount})</span>
+                    )}
+                  </h3>
                   {onShowItemDetails && (
                     <button
                       type="button"
@@ -195,7 +207,7 @@ export const CraftingItem: React.FC<CraftingItemProps> = ({
               <div className={`flex flex-wrap items-center gap-4 mt-1 ${infoTextSize} text-gray-400`}>
                 <span className={getQualityColor(recipe.resultItem.quality)}>{recipe.resultItem.quality}</span>
                 {showExtendedMeta && <span>iLvl {recipe.resultItem.itemLevel}</span>}
-                {showOutputQuantity && <span>Output quantity: {recipe.resultItem.stackSize}</span>}
+                {/* Output quantity removed as it is now shown in icon and title */}
               </div>
             </div>
           </div>
@@ -344,21 +356,45 @@ export const CraftingItem: React.FC<CraftingItemProps> = ({
                         {hasPriceData ? (
                           <div className="flex flex-col items-end gap-1">
                             {showUnitBreakdown && (
-                              <div className="text-[11px] text-gray-400 inline-flex items-center gap-1">
-                                <CurrencyAmount
-                                  amount={unitPriceValue}
-                                  size={currencySize}
-                                  className="text-gray-400"
-                                />
-                                <span>each</span>
+                              <div className="flex flex-col items-end">
+                                <div className="text-[11px] text-gray-400 inline-flex items-center gap-1">
+                                  <CurrencyAmount
+                                    amount={unitPriceValue}
+                                    size={currencySize}
+                                    className="text-gray-400"
+                                  />
+                                  <span>each</span>
+                                  {materialCost.source === 'vendor' && (
+                                    <span className="text-blue-400 text-[10px] ml-1 font-medium">
+                                      (Vendor)
+                                    </span>
+                                  )}
+                                </div>
+                                {materialCost.source === 'vendor' && materialCost.auctionPrice ? (
+                                  <div className="text-[10px] text-gray-500 inline-flex items-center gap-1">
+                                    <span>AH:</span>
+                                    <CurrencyAmount
+                                      amount={materialCost.auctionPrice}
+                                      size={currencySize}
+                                      className="text-gray-500"
+                                    />
+                                  </div>
+                                ) : null}
                               </div>
                             )}
                             {totalMaterialCost !== null && (
-                              <CurrencyAmount
-                                amount={totalMaterialCost}
-                                size={currencySize}
-                                className="text-[11px] text-gray-300"
-                              />
+                              <div className="flex items-center justify-end gap-1">
+                                <CurrencyAmount
+                                  amount={totalMaterialCost}
+                                  size={currencySize}
+                                  className="text-[11px] text-gray-300"
+                                />
+                                {!showUnitBreakdown && materialCost.source === 'vendor' && (
+                                  <span className="text-blue-400 text-[10px] font-medium">
+                                    (Vendor)
+                                  </span>
+                                )}
+                              </div>
                             )}
                           </div>
                         ) : (

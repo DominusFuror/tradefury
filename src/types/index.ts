@@ -23,13 +23,15 @@ export interface RecipeMaterial {
   quantity: number;
 }
 
-export type PriceSource = 'auctionator' | 'unavailable';
+export type PriceSource = 'auctionator' | 'unavailable' | 'vendor';
 
 export interface MaterialCostInfo {
   index: number;
   itemId: number;
   quantity: number;
   unitPrice: number | null;
+  vendorPrice?: number | null;
+  auctionPrice?: number | null;
   source: PriceSource;
 }
 
@@ -50,6 +52,7 @@ export interface Recipe {
   trivialSkillLow?: number | null;
   trivialSkillHigh?: number | null;
   resultItem: Item;
+  outputCount: number;
   materials: RecipeMaterial[];
   category: string;
   isLearned?: boolean;
