@@ -214,7 +214,7 @@ wc -l server/data/uploads.log
 
 ### CI/CD Integration
 
-See `ci_cd.sh` for automated deployment script.
+Automated deployment configuration depends on your specific hosting environment.
 
 ## Troubleshooting
 
